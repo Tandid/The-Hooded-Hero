@@ -2,8 +2,9 @@ import Phaser from "phaser";
 import Player from "../entities/Player";
 
 class Play extends Phaser.Scene {
-  constructor() {
+  constructor(config) {
     super("PlayScene");
+    this.config = config;
   }
 
   create() {
@@ -16,6 +17,8 @@ class Play extends Phaser.Scene {
         platformsColliders: layers.platformsColliders,
       },
     });
+
+    this.setupFollowupCameraOn(player);
   }
 
   createMap() {
@@ -44,6 +47,15 @@ class Play extends Phaser.Scene {
 
   createPlayerColliders(player, { colliders }) {
     player.addCollider(colliders.platformsColliders);
+  }
+
+  setupFollowupCameraOn(player) {
+    const { height, width, mapOffset, zoomFactor } = this.config;
+    this.physics.world.setBounds(0, 0, width + mapOffset, height + 200);
+    this.cameras.main
+      .setBounds(0, 0, width + mapOffset, height)
+      .setZoom(zoomFactor);
+    this.cameras.main.startFollow(player);
   }
 }
 
