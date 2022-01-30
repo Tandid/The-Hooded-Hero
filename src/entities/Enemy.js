@@ -29,8 +29,5 @@ class Enemy extends Phaser.Physics.Arcade.Sprite {
   }
 }
 
-<<<<<<< HEAD
 
-=======
->>>>>>> 799beb502015e51436279121fee66ee729ad27e0
 export default Enemy;
