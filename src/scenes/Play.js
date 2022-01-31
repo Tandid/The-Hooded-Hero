@@ -45,7 +45,21 @@ class Play extends Phaser.Scene {
     );
   }
 
+  drawDebug(layer) {
+    const collidingTileColor = new Phaser.Display.Color(243, 134, 48, 255);
+    layer.renderDebug(this.graphics, {
+      tileColor: null,
+      collidingTileColor,
+    });
+  }
+
   startDrawing(pointer) {
+    if (this.tileHits && this.tileHits.length > 0) {
+      this.tileHits.forEach((tile) => {
+        tile.index !== -1 && tile.setCollision(false);
+      });
+    }
+
     this.line.x1 = pointer.worldX;
     this.line.y1 = pointer.worldY;
     this.plotting = true;
@@ -62,9 +76,11 @@ class Play extends Phaser.Scene {
 
     if (this.tileHits.length > 0) {
       this.tileHits.forEach((tile) => {
-        tile.index !== -1 && console.log("I have hit the platform!");
+        tile.index !== -1 && tile.setCollision(true);
       });
     }
+
+    this.drawDebug(layer);
 
     this.plotting = false;
   }
