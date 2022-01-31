@@ -19,6 +19,7 @@ class Enemy extends Phaser.Physics.Arcade.Sprite {
   init() {
     this.gravity = 500;
     this.speed = 150;
+    this.timeFromLastTurn = 0;
     this.platformCollidersLayer = null;
     this.rayGraphics = this.scene.add.graphics({
       lineStyle: { width: 2, color: 0xaa00aa },
@@ -30,6 +31,7 @@ class Enemy extends Phaser.Physics.Arcade.Sprite {
     this.setCollideWorldBounds(true);
     this.setImmovable(true);
     this.setOrigin(0.5, 1);
+    this.setVelocityX(this.speed);
   }
 
   initEvents() {
@@ -37,7 +39,6 @@ class Enemy extends Phaser.Physics.Arcade.Sprite {
   }
 
   update(time, delta) {
-    this.setVelocityX(30);
     const { ray, hasHit } = this.raycast(
       this.body,
       this.platformCollidersLayer,
@@ -45,8 +46,10 @@ class Enemy extends Phaser.Physics.Arcade.Sprite {
       1
     );
 
-    if (hasHit) {
-      console.log("Hitting the platform!");
+    if (!hasHit && this.timeFromLastTurn + 100 < time) {
+      this.setFlipX(!this.flipX);
+      this.setVelocityX((this.speed = -this.speed));
+      this.timeFromLastTurn = time;
     }
 
     this.rayGraphics.clear();
