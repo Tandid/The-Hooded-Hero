@@ -54,8 +54,10 @@ class Enemy extends Phaser.Physics.Arcade.Sprite {
     const { ray, hasHit } = this.raycast(
       this.body,
       this.platformCollidersLayer,
-      30,
-      1
+      {
+        precision: 1,
+        steepnes: 0.2,
+      }
     );
 
     if (
