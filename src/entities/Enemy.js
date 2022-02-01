@@ -22,8 +22,12 @@ class Enemy extends Phaser.Physics.Arcade.Sprite {
     this.gravity = 500;
     this.speed = 75;
     this.timeFromLastTurn = 0;
-    this.maxPatrolDistance = 200;
+    this.maxPatrolDistance = 250;
     this.currentPatrolDistance = 0;
+
+    this.health = 40;
+    this.damage = 10;
+
     this.platformCollidersLayer = null;
     this.rayGraphics = this.scene.add.graphics({
       lineStyle: { width: 2, color: 0xaa00aa },
@@ -52,7 +56,6 @@ class Enemy extends Phaser.Physics.Arcade.Sprite {
     }
 
     this.currentPatrolDistance += Math.abs(this.body.deltaX());
-    this.damage = 20;
 
     const { ray, hasHit } = this.raycast(
       this.body,
@@ -81,6 +84,17 @@ class Enemy extends Phaser.Physics.Arcade.Sprite {
 
   setPlatformColliders(platformCollidersLayer) {
     this.platformCollidersLayer = platformCollidersLayer;
+  }
+
+  takesHit(source) {
+    this.health -= source.damage;
+
+    source.setActive(false);
+    source.setVisible(false);
+
+    if (this.health <= 0) {
+      console.log("Enemy is terminated");
+    }
   }
 }
 
