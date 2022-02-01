@@ -52,6 +52,7 @@ class Enemy extends Phaser.Physics.Arcade.Sprite {
     }
 
     this.currentPatrolDistance += Math.abs(this.body.deltaX());
+    this.damage = 20;
 
     const { ray, hasHit } = this.raycast(
       this.body,
