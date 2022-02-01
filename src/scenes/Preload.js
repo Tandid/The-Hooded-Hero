@@ -37,6 +37,12 @@ class Preload extends Phaser.Scene {
       frameWidth: 32,
       frameHeight: 32,
     });
+
+    this.load.spritesheet("sword-default", "assets/weapons/sword_sheet_1.png", {
+      frameWidth: 52,
+      frameHeight: 32,
+      spacing: 16,
+    });
   }
 
   create() {
