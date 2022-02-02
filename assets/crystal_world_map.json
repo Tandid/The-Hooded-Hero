@@ -161,6 +161,12 @@
                  "height":14,
                  "id":8,
                  "name":"",
+                 "properties":[
+                        {
+                         "name":"score",
+                         "type":"int",
+                         "value":5
+                        }],
                  "rotation":0,
                  "type":"",
                  "visible":true,
@@ -221,6 +227,12 @@
                  "height":14,
                  "id":13,
                  "name":"",
+                 "properties":[
+                        {
+                         "name":"score",
+                         "type":"int",
+                         "value":10
+                        }],
                  "rotation":0,
                  "type":"",
                  "visible":true,
@@ -293,6 +305,12 @@
                  "height":14,
                  "id":19,
                  "name":"",
+                 "properties":[
+                        {
+                         "name":"score",
+                         "type":"int",
+                         "value":20
+                        }],
                  "rotation":0,
                  "type":"",
                  "visible":true,
@@ -397,6 +415,17 @@
                  "y":192
                 }],
          "opacity":1,
+         "properties":[
+                {
+                 "name":"score",
+                 "type":"int",
+                 "value":1
+                }, 
+                {
+                 "name":"type",
+                 "type":"string",
+                 "value":"diamond"
+                }],
          "type":"objectgroup",
          "visible":true,
          "x":0,

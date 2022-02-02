@@ -1,7 +1,7 @@
 import Phaser from "phaser";
 import Player from "../entities/Player";
 import Enemies from "../groups/Enemies";
-import Collectable from "../collectables/Collectable";
+import Collectables from "../groups/Collectables";
 
 import initAnims from "../anims";
 
@@ -77,13 +77,9 @@ class Play extends Phaser.Scene {
   }
 
   createCollectables(collectableLayer) {
-    const collectables = this.physics.add.staticGroup().setDepth(-1);
+    const collectables = new Collectables(this).setDepth(-1);
 
-    collectableLayer.objects.forEach((collectableO) => {
-      collectables.add(
-        new Collectable(this, collectableO.x, collectableO.y, "diamond")
-      );
-    });
+    collectables.addFromLayer(collectableLayer);
 
     collectables.playAnimation("diamond-shine");
 
