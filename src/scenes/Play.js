@@ -126,7 +126,7 @@ class Play extends Phaser.Scene {
     player.takesHit(enemy);
   }
 
-  onWeaponHit(entity, source) {
+  onHit(entity, source) {
     entity.takesHit(source);
   }
 
