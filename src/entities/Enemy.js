@@ -1,7 +1,8 @@
-import Phaser from "phaser";
 
-import collidable from "../mixins/collidable";
-import anims from "../mixins/anims";
+import Phaser from 'phaser';
+
+import collidable from '../mixins/collidable';
+import anims from '../mixins/anims';
 
 class Enemy extends Phaser.Physics.Arcade.Sprite {
   constructor(scene, x, y, key) {
@@ -27,16 +28,13 @@ class Enemy extends Phaser.Physics.Arcade.Sprite {
     this.maxPatrolDistance = 250;
     this.currentPatrolDistance = 0;
 
-    this.health = 40;
+    this.health = 200;
     this.damage = 10;
 
     this.platformCollidersLayer = null;
-    this.rayGraphics = this.scene.add.graphics({
-      lineStyle: { width: 2, color: 0xaa00aa },
-    });
+    this.rayGraphics = this.scene.add.graphics({lineStyle: {width: 2, color: 0xaa00aa}});
 
     this.body.setGravityY(this.gravity);
-
     this.setCollideWorldBounds(true);
     this.setImmovable(true);
     this.setOrigin(0.5, 1);
@@ -44,16 +42,12 @@ class Enemy extends Phaser.Physics.Arcade.Sprite {
   }
 
   initEvents() {
-    this.scene.events.on(Phaser.Scenes.Events.UPDATE, this.update, this);
+    this.scene.events.on(Phaser.Scenes.Events.UPDATE, this.update, this)
   }
 
   update(time) {
     if (this.getBounds().bottom > 600) {
-      this.scene.events.removeListener(
-        Phaser.Scenes.Events.UPDATE,
-        this.update,
-        this
-      );
+      this.scene.events.removeListener(Phaser.Scenes.Events.UPDATE, this.update, this);
       this.setActive(false);
       this.rayGraphics.clear();
       this.destroy();
@@ -64,27 +58,17 @@ class Enemy extends Phaser.Physics.Arcade.Sprite {
   }
 
   patrol(time) {
-    if (!this.body || !this.body.onFloor()) {
-      return;
-    }
+    if (!this.body || !this.body.onFloor()) { return; }
 
     this.currentPatrolDistance += Math.abs(this.body.deltaX());
 
-    const { ray, hasHit } = this.raycast(
-      this.body,
-      this.platformCollidersLayer,
-      {
-        precision: 1,
-        steepnes: 0.2,
-      }
-    );
+    const { ray, hasHit } = this.raycast(this.body, this.platformCollidersLayer, {
+      precision: 1, steepnes: 0.2});
 
-    if (
-      (!hasHit || this.currentPatrolDistance >= this.maxPatrolDistance) &&
-      this.timeFromLastTurn + 100 < time
-    ) {
+    if ((!hasHit || this.currentPatrolDistance >= this.maxPatrolDistance) &&
+         this.timeFromLastTurn + 100 < time) {
       this.setFlipX(!this.flipX);
-      this.setVelocityX((this.speed = -this.speed));
+      this.setVelocityX(this.speed = -this.speed);
       this.timeFromLastTurn = time;
       this.currentPatrolDistance = 0;
     }
@@ -114,5 +98,6 @@ class Enemy extends Phaser.Physics.Arcade.Sprite {
     }
   }
 }
+
 
 export default Enemy;
