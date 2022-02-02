@@ -14,6 +14,7 @@ class Play extends Phaser.Scene {
 
   create() {
     this.score = 0;
+    this.hud = new Hud(this, 0, 0);
     const map = this.createMap();
 
     initAnims(this.anims);
@@ -26,8 +27,6 @@ class Play extends Phaser.Scene {
       layers.platformsColliders
     );
     const collectables = this.createCollectables(layers.collectables);
-
-    new Hud(this, 0, 0);
 
     this.createEnemyColliders(enemies, {
       colliders: {
@@ -97,7 +96,7 @@ class Play extends Phaser.Scene {
 
   onCollect(entity, collectable) {
     this.score += collectable.score;
-    console.log(this.score);
+    this.hud.updateScoreboard(this.score);
     collectable.disableBody(true, true);
   }
 
