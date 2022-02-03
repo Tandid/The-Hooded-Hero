@@ -29,6 +29,8 @@ class Play extends Phaser.Scene {
     );
     const collectables = this.createCollectables(layers.collectables);
 
+    this.createBG(map);
+
     this.createEnemyColliders(enemies, {
       colliders: {
         platformsColliders: layers.platformsColliders,
@@ -58,11 +60,16 @@ class Play extends Phaser.Scene {
   createMap() {
     const map = this.make.tilemap({ key: "map" });
     map.addTilesetImage("main_lev_build_1", "tiles-1");
+    map.addTilesetImage("bg_spikes_tileset", "bg-spikes-tileset");
     return map;
   }
 
   createLayers(map) {
     const tileset = map.getTileset("main_lev_build_1");
+    const tilesetBg = map.getTileset("bg_spikes_tileset");
+
+    map.createStaticLayer("distance", tilesetBg).setDepth(-12);
+
     const platformsColliders = map.createStaticLayer(
       "platforms_colliders",
       tileset
@@ -88,6 +95,28 @@ class Play extends Phaser.Scene {
       collectables,
       traps,
     };
+  }
+
+  createBG(map) {
+    const bgObject = map.getObjectLayer("distance_bg").objects[0];
+    this.add
+      .tileSprite(
+        bgObject.x,
+        bgObject.y,
+        this.config.width,
+        bgObject.height,
+        "bg-spikes-dark"
+      )
+      .setOrigin(0, 1)
+      .setDepth(-10)
+      .setScrollFactor(0, 1);
+
+    this.add
+      .tileSprite(0, 0, this.config.width, 180, "sky-play")
+      .setOrigin(0, 0)
+      .setDepth(-11)
+      .setScale(1.1)
+      .setScrollFactor(0, 1);
   }
 
   createGameEvents() {
