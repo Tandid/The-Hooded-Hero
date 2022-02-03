@@ -16,6 +16,10 @@ class Play extends Phaser.Scene {
   create({ gameStatus }) {
     this.score = 0;
     this.hud = new Hud(this, 0, 0);
+
+    this.playBgMusic();
+    this.collectSound = this.sound.add("coin-pickup", { volume: 0.2 });
+
     const map = this.createMap();
 
     initAnims(this.anims);
@@ -28,8 +32,6 @@ class Play extends Phaser.Scene {
       layers.platformsColliders
     );
     const collectables = this.createCollectables(layers.collectables);
-
-    this.createBG(map);
 
     this.createEnemyColliders(enemies, {
       colliders: {
@@ -47,6 +49,7 @@ class Play extends Phaser.Scene {
       },
     });
 
+    this.createBG(map);
     this.createBackButton();
     this.createEndOfLevel(playerZones.end, player);
     this.setupFollowupCameraOn(player);
@@ -56,6 +59,14 @@ class Play extends Phaser.Scene {
     }
 
     this.createGameEvents();
+  }
+
+  playBgMusic() {
+    if (this.sound.get("theme")) {
+      return;
+    }
+
+    // this.sound.add('theme', {loop: true, volume: 0.03}).play();
   }
 
   createMap() {
@@ -161,6 +172,7 @@ class Play extends Phaser.Scene {
   onCollect(entity, collectable) {
     this.score += collectable.score;
     this.hud.updateScoreboard(this.score);
+    this.collectSound.play();
     collectable.disableBody(true, true);
   }
 
