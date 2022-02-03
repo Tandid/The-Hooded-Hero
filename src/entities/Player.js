@@ -63,9 +63,15 @@ class Player extends Phaser.Physics.Arcade.Sprite {
   }
 
   update() {
-    if (this.hasBeenHit || this.isSliding) {
+    if (this.hasBeenHit || this.isSliding || !this.body) {
       return;
     }
+
+    if (this.getBounds().top > this.scene.config.height) {
+      EventEmitter.emit("PLAYER_LOSE");
+      return;
+    }
+
     const { left, right, space } = this.cursors;
     const isSpaceJustDown = Phaser.Input.Keyboard.JustDown(space);
     const onFloor = this.body.onFloor();
@@ -173,7 +179,7 @@ class Player extends Phaser.Physics.Arcade.Sprite {
 
     this.health -= source.damage || source.properties.damage || 0;
     if (this.health <= 0) {
-      EventEmitter.emit("PLAYER_LOOSE");
+      EventEmitter.emit("PLAYER_LOSE");
       return;
     }
 

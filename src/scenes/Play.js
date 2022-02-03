@@ -13,7 +13,7 @@ class Play extends Phaser.Scene {
     this.config = config;
   }
 
-  create() {
+  create({ gameStatus }) {
     this.score = 0;
     this.hud = new Hud(this, 0, 0);
     const map = this.createMap();
@@ -45,9 +45,14 @@ class Play extends Phaser.Scene {
       },
     });
 
-    this.createGameEvents();
     this.createEndOfLevel(playerZones.end, player);
     this.setupFollowupCameraOn(player);
+
+    if (gameStatus === "PLAYER_LOSE") {
+      return;
+    }
+
+    this.createGameEvents();
   }
 
   createMap() {
@@ -86,11 +91,11 @@ class Play extends Phaser.Scene {
   }
 
   createGameEvents() {
-    EventEmitter.on("PLAYER_LOOSE", () => {
-      alert("Player has lost the game!");
+    EventEmitter.on("PLAYER_LOSE", () => {
+      console.log("Hello!");
+      this.scene.restart({ gameStatus: "PLAYER_LOSE" });
     });
   }
-
   createCollectables(collectableLayer) {
     const collectables = new Collectables(this).setDepth(-1);
 
