@@ -7,11 +7,11 @@ import LevelScene from "./scenes/Levels";
 import CreditsScene from "./scenes/Credits";
 // 1600px
 
-const MAP_WIDTH = 1600;
+const MAP_WIDTH = 6400;
 
 const WIDTH = document.body.offsetWidth;
-const HEIGHT = 600;
-const ZOOM_FACTOR = 1.5;
+const HEIGHT = 900;
+const ZOOM_FACTOR = 2;
 
 const SHARED_CONFIG = {
   mapOffset: MAP_WIDTH > WIDTH ? MAP_WIDTH - WIDTH : 0,
