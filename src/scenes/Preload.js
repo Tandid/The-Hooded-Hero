@@ -20,6 +20,8 @@ class Preload extends Phaser.Scene {
     this.load.image("bg-spikes-dark", "assets/bg_spikes_dark.png");
     this.load.image("sky-play", "assets/sky_play.png");
 
+    this.load.image("menu-bg", "assets/background01.png");
+
     this.load.image("iceball-1", "assets/weapons/iceball_001.png");
     this.load.image("iceball-2", "assets/weapons/iceball_002.png");
 
@@ -92,7 +94,7 @@ class Preload extends Phaser.Scene {
 
   startGame() {
     this.registry.set("level", 1);
-    this.scene.start("PlayScene");
+    this.scene.start("MenuScene");
   }
 }
 

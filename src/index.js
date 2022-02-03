@@ -1,9 +1,8 @@
+import Phaser from "phaser";
 
-
-import Phaser from 'phaser';
-
-import PlayScene from './scenes/Play';
-import PreloadScene from './scenes/Preload';
+import PlayScene from "./scenes/Play";
+import PreloadScene from "./scenes/Preload";
+import MenuScene from "./scenes/Menu";
 // 1600px
 
 const MAP_WIDTH = 1600;
@@ -19,30 +18,30 @@ const SHARED_CONFIG = {
   zoomFactor: ZOOM_FACTOR,
   debug: true,
   leftTopCorner: {
-    x: (WIDTH - (WIDTH / ZOOM_FACTOR)) / 2,
-    y: (HEIGHT - (HEIGHT / ZOOM_FACTOR)) / 2
+    x: (WIDTH - WIDTH / ZOOM_FACTOR) / 2,
+    y: (HEIGHT - HEIGHT / ZOOM_FACTOR) / 2,
   },
   rightTopCorner: {
-    x: ((WIDTH / ZOOM_FACTOR) + ((WIDTH - (WIDTH / ZOOM_FACTOR)) / 2)),
-    y: (HEIGHT - (HEIGHT / ZOOM_FACTOR)) / 2
-  }
-}
+    x: WIDTH / ZOOM_FACTOR + (WIDTH - WIDTH / ZOOM_FACTOR) / 2,
+    y: (HEIGHT - HEIGHT / ZOOM_FACTOR) / 2,
+  },
+};
 
-const Scenes = [PreloadScene, PlayScene];
-const createScene = Scene => new Scene(SHARED_CONFIG)
-const initScenes = () => Scenes.map(createScene)
+const Scenes = [PreloadScene, MenuScene, PlayScene];
+const createScene = (Scene) => new Scene(SHARED_CONFIG);
+const initScenes = () => Scenes.map(createScene);
 
 const config = {
   type: Phaser.AUTO,
   ...SHARED_CONFIG,
   pixelArt: true,
   physics: {
-    default: 'arcade',
+    default: "arcade",
     arcade: {
       debug: SHARED_CONFIG.debug,
-    }
+    },
   },
-  scene: initScenes()
-}
+  scene: initScenes(),
+};
 
 new Phaser.Game(config);
