@@ -22,7 +22,8 @@ class Preload extends Phaser.Scene {
     this.load.image("bg-spikes-dark", "assets/bg_spikes_dark.png");
     this.load.image("sky-play", "assets/sky_play.png");
 
-    this.load.image("menu-bg", "assets/background01.png");
+    this.load.image("menu-bg", "assets/background01.png", {});
+
     this.load.image("back", "assets/back.png");
 
     this.load.image("iceball-1", "assets/weapons/iceball_001.png");
