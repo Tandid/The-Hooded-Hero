@@ -14,9 +14,10 @@ class Preload extends Phaser.Scene {
       "level_2",
       "assets/crystal_world_map_level_2.json"
     );
+
     this.load.image("tiles-1", "assets/main_lev_build_1.png");
     this.load.image("tiles-2", "assets/main_lev_build_2.png");
-    this.load.image("tiles-3", "assets/TX_Tileset_Ground.png");
+    this.load.image("tiles-3", "assets/tileset_1.png");
 
     this.load.image("bg-spikes-tileset", "assets/bg_spikes_tileset.png");
     this.load.image("bg-spikes-dark", "assets/bg_spikes_dark.png");
@@ -26,12 +27,15 @@ class Preload extends Phaser.Scene {
 
     this.load.image("back", "assets/back.png");
 
+    // PROJECTILES
     this.load.image("iceball-1", "assets/weapons/iceball_001.png");
     this.load.image("iceball-2", "assets/weapons/iceball_002.png");
 
     this.load.image("fireball-1", "assets/weapons/improved_fireball_001.png");
     this.load.image("fireball-2", "assets/weapons/improved_fireball_002.png");
     this.load.image("fireball-3", "assets/weapons/improved_fireball_003.png");
+
+    // COLLECTIBLES
 
     this.load.image("diamond", "assets/collectables/diamond.png");
 
@@ -41,6 +45,8 @@ class Preload extends Phaser.Scene {
     this.load.image("diamond-4", "assets/collectables/diamond_big_04.png");
     this.load.image("diamond-5", "assets/collectables/diamond_big_05.png");
     this.load.image("diamond-6", "assets/collectables/diamond_big_06.png");
+
+    // PLAYER MOVEMENT
 
     this.load.spritesheet("player", "assets/player/move_sprite_1.png", {
       frameWidth: 32,
@@ -57,18 +63,6 @@ class Preload extends Phaser.Scene {
         spacing: 32,
       }
     );
-
-    this.load.spritesheet("birdman", "assets/enemy/enemy_sheet.png", {
-      frameWidth: 32,
-      frameHeight: 64,
-      spacing: 32,
-    });
-
-    this.load.spritesheet("snaky", "assets/enemy/enemy_sheet_2.png", {
-      frameWidth: 32,
-      frameHeight: 64,
-      spacing: 32,
-    });
 
     this.load.spritesheet(
       "player-throw",
@@ -91,6 +85,21 @@ class Preload extends Phaser.Scene {
       spacing: 16,
     });
 
+    // ENEMIES
+
+    this.load.spritesheet("birdman", "assets/enemy/enemy_sheet.png", {
+      frameWidth: 32,
+      frameHeight: 64,
+      spacing: 32,
+    });
+
+    this.load.spritesheet("snaky", "assets/enemy/enemy_sheet_2.png", {
+      frameWidth: 32,
+      frameHeight: 64,
+      spacing: 32,
+    });
+
+    // SOUND EFFECTS
     this.load.audio("theme", "assets/music/theme_music.wav");
 
     this.load.audio("projectile-launch", "assets/music/projectile_launch.wav");

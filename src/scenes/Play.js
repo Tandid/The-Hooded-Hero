@@ -72,12 +72,14 @@ class Play extends Phaser.Scene {
   createMap() {
     const map = this.make.tilemap({ key: `level_${this.getCurrentLevel()}` });
     map.addTilesetImage("main_lev_build_1", "tiles-1");
+    map.addTilesetImage("tileset_1", "tiles-3");
     map.addTilesetImage("bg_spikes_tileset", "bg-spikes-tileset");
     return map;
   }
 
   createLayers(map) {
     const tileset = map.getTileset("main_lev_build_1");
+    const tileset2 = map.getTileset("tileset_1");
     const tilesetBg = map.getTileset("bg_spikes_tileset");
 
     map.createStaticLayer("distance", tilesetBg).setDepth(-12);
@@ -89,7 +91,7 @@ class Play extends Phaser.Scene {
     const environment = map
       .createStaticLayer("environment", tileset)
       .setDepth(-2);
-    const platforms = map.createStaticLayer("platforms", tileset);
+    const platforms = map.createStaticLayer("platforms", [tileset, tileset2]);
     const playerZones = map.getObjectLayer("player_zones");
     const enemySpawns = map.getObjectLayer("enemy_spawns");
     const collectables = map.getObjectLayer("collectables");
