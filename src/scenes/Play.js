@@ -74,12 +74,14 @@ class Play extends Phaser.Scene {
     map.addTilesetImage("main_lev_build_1", "tiles-1");
     map.addTilesetImage("tileset_1", "tiles-3");
     map.addTilesetImage("bg_spikes_tileset", "bg-spikes-tileset");
+    map.addTilesetImage("environment", "environment");
     return map;
   }
 
   createLayers(map) {
     const tileset = map.getTileset("main_lev_build_1");
     const tileset2 = map.getTileset("tileset_1");
+    const tileset3 = map.getTileset("environment");
     const tilesetBg = map.getTileset("bg_spikes_tileset");
 
     map.createStaticLayer("distance", tilesetBg).setDepth(-12);
@@ -87,11 +89,24 @@ class Play extends Phaser.Scene {
     const platformsColliders = map.createStaticLayer("platforms_colliders", [
       tileset,
       tileset2,
+      tileset3,
     ]);
+
+    // const frontEnv = map
+    //   .createStaticLayer("environment", [tileset, tileset3])
+    //   .setDepth(-2);
     const environment = map
-      .createStaticLayer("environment", tileset)
-      .setDepth(-2);
-    const platforms = map.createStaticLayer("platforms", [tileset, tileset2]);
+      .createStaticLayer("environment", [tileset, tileset3])
+      .setDepth(-3);
+    // const backEnv = map
+    //   .createStaticLayer("environment", [tileset, tileset3])
+    //   .setDepth(-4);
+
+    const platforms = map.createStaticLayer("platforms", [
+      tileset,
+      tileset2,
+      tileset3,
+    ]);
     const playerZones = map.getObjectLayer("player_zones");
     const enemySpawns = map.getObjectLayer("enemy_spawns");
     const collectables = map.getObjectLayer("collectables");
@@ -102,6 +117,8 @@ class Play extends Phaser.Scene {
 
     return {
       environment,
+      // backEnv,
+      // frontEnv,
       platforms,
       platformsColliders,
       playerZones,
@@ -164,7 +181,6 @@ class Play extends Phaser.Scene {
     collectables.playAnimation("diamond-shine");
 
     return collectables;
-    s;
   }
 
   createPlayer(start) {
