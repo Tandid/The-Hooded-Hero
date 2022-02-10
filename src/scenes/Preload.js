@@ -51,9 +51,9 @@ class Preload extends Phaser.Scene {
     // PLAYER MOVEMENT
 
     this.load.spritesheet("player", "assets/player/move_sprite_1.png", {
-      frameWidth: 120,
+      frameWidth: 150,
       frameHeight: 170,
-      spacing: 100,
+      spacing: 150,
     });
 
     this.load.spritesheet(
