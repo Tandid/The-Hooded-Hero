@@ -92,15 +92,13 @@ class Play extends Phaser.Scene {
       tileset3,
     ]);
 
-    // const frontEnv = map
-    //   .createStaticLayer("environment", [tileset, tileset3])
-    //   .setDepth(-2);
+    const frontEnv = map.createStaticLayer("front_env", [tileset, tileset3]);
+    // .setDepth(-2);
     const environment = map
       .createStaticLayer("environment", [tileset, tileset3])
-      .setDepth(-3);
-    // const backEnv = map
-    //   .createStaticLayer("environment", [tileset, tileset3])
-    //   .setDepth(-4);
+      .setDepth(-4);
+    const backEnv = map.createStaticLayer("back_env", [tileset, tileset3]);
+    // .setDepth(-5);
 
     const platforms = map.createStaticLayer("platforms", [
       tileset,
@@ -117,8 +115,8 @@ class Play extends Phaser.Scene {
 
     return {
       environment,
-      // backEnv,
-      // frontEnv,
+      backEnv,
+      frontEnv,
       platforms,
       platformsColliders,
       playerZones,

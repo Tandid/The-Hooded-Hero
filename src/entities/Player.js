@@ -54,7 +54,7 @@ class Player extends Phaser.Physics.Arcade.Sprite {
       this.health
     );
 
-    this.body.setSize(20, 36);
+    this.body.setSize(200, 200);
     this.body.setGravityY(this.gravity);
     this.setCollideWorldBounds(true);
     this.setOrigin(0.5, 1);
