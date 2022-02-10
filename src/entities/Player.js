@@ -24,13 +24,13 @@ class Player extends Phaser.Physics.Arcade.Sprite {
   }
 
   init() {
-    this.gravity = 500;
-    this.playerSpeed = 150;
+    this.gravity = 1000;
+    this.playerSpeed = 300;
     this.jumpCount = 0;
     this.consecutiveJumps = 1;
     this.hasBeenHit = false;
     this.isSliding = false;
-    this.bounceVelocity = 250;
+    this.bounceVelocity = 500;
     this.cursors = this.scene.input.keyboard.createCursorKeys();
 
     this.jumpSound = this.scene.sound.add("jump", { volume: 0.2 });
