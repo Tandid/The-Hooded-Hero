@@ -51,18 +51,18 @@ class Preload extends Phaser.Scene {
     // PLAYER MOVEMENT
 
     this.load.spritesheet("player", "assets/player/move_sprite_1.png", {
-      frameWidth: 150,
-      frameHeight: 170,
-      spacing: 150,
+      frameWidth: 300,
+      frameHeight: 190,
+      // spacing: 50,
     });
 
     this.load.spritesheet(
       "player-slide-sheet",
       "assets/player/slide_sheet_2.png",
       {
-        frameWidth: 32,
-        frameHeight: 38,
-        spacing: 32,
+        frameWidth: 300,
+        frameHeight: 190,
+        // spacing: 32,
       }
     );
 
@@ -70,9 +70,9 @@ class Preload extends Phaser.Scene {
       "player-throw",
       "assets/player/throw_attack_sheet_1.png",
       {
-        frameWidth: 32,
-        frameHeight: 38,
-        spacing: 32,
+        frameWidth: 300,
+        frameHeight: 190,
+        // spacing: 32,
       }
     );
 
