@@ -39,14 +39,16 @@ class Preload extends Phaser.Scene {
 
     // COLLECTIBLES
 
-    this.load.image("diamond", "assets/collectables/diamond.png");
+    this.load.image("coin", "assets/collectables/coin_2.png");
 
-    this.load.image("diamond-1", "assets/collectables/diamond_big_01.png");
-    this.load.image("diamond-2", "assets/collectables/diamond_big_02.png");
-    this.load.image("diamond-3", "assets/collectables/diamond_big_03.png");
-    this.load.image("diamond-4", "assets/collectables/diamond_big_04.png");
-    this.load.image("diamond-5", "assets/collectables/diamond_big_05.png");
-    this.load.image("diamond-6", "assets/collectables/diamond_big_06.png");
+    this.load.image("coin-1", "assets/collectables/coin_1.png");
+    this.load.image("coin-2", "assets/collectables/coin_2.png");
+    this.load.image("coin-3", "assets/collectables/coin_3.png");
+    this.load.image("coin-4", "assets/collectables/coin_4.png");
+    this.load.image("coin-5", "assets/collectables/coin_5.png");
+    this.load.image("coin-6", "assets/collectables/coin_6.png");
+    this.load.image("coin-7", "assets/collectables/coin_7.png");
+    this.load.image("coin-8", "assets/collectables/coin_8.png");
 
     // PLAYER MOVEMENT
 
@@ -90,9 +92,9 @@ class Preload extends Phaser.Scene {
     // ENEMIES
 
     this.load.spritesheet("birdman", "assets/enemy/enemy_sheet.png", {
-      frameWidth: 32,
-      frameHeight: 64,
-      spacing: 32,
+      frameWidth: 290,
+      frameHeight: 170,
+      // spacing: 32,
     });
 
     this.load.spritesheet("snaky", "assets/enemy/enemy_sheet_2.png", {

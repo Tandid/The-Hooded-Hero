@@ -176,7 +176,7 @@ class Play extends Phaser.Scene {
 
     collectables.addFromLayer(collectableLayer);
 
-    collectables.playAnimation("diamond-shine");
+    collectables.playAnimation("coin-spin");
 
     return collectables;
   }

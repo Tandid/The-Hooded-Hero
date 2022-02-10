@@ -36,7 +36,7 @@ class Hud extends Phaser.GameObjects.Container {
       fill: "#fff",
     });
     const scoreImage = this.scene.add
-      .image(scoreText.width + 5, 0, "diamond")
+      .image(scoreText.width + 5, 0, "coin")
       .setOrigin(0)
       .setScale(1.3);
 

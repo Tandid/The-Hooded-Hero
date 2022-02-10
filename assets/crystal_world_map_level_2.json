@@ -194,7 +194,7 @@
                 {
                  "name":"type",
                  "type":"string",
-                 "value":"diamond"
+                 "value":"coin"
                 }],
          "type":"objectgroup",
          "visible":true,
