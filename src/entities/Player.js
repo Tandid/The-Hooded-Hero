@@ -146,7 +146,7 @@ class Player extends Phaser.Physics.Arcade.Sprite {
       }
 
       this.swipeSound.play();
-      this.play("throw", true);
+      // this.play("throw", true);
       this.meleeWeapon.swing(this);
       this.timeFromLastSwing = getTimestamp();
     });
