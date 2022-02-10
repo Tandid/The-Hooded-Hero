@@ -32,14 +32,16 @@ export default (anims) => {
   // });
 
   anims.create({
-    key: "diamond-shine",
+    key: "coin-spin",
     frames: [
-      { key: "diamond-1" },
-      { key: "diamond-2" },
-      { key: "diamond-3" },
-      { key: "diamond-4" },
-      { key: "diamond-5" },
-      { key: "diamond-6" },
+      { key: "coin-1" },
+      { key: "coin-2" },
+      { key: "coin-3" },
+      { key: "coin-4" },
+      { key: "coin-5" },
+      { key: "coin-6" },
+      { key: "coin-7" },
+      { key: "coin-8" },
     ],
     frameRate: 5,
     repeat: -1,
