@@ -9,7 +9,7 @@ export default (anims) => {
   anims.create({
     key: "birdman-hurt",
     frames: anims.generateFrameNumbers("birdman", { start: 11, end: 12 }),
-    frameRate: 10,
+    frameRate: 2,
     repeat: 0,
   });
 };

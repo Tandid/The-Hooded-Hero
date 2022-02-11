@@ -17,7 +17,6 @@ class Preload extends Phaser.Scene {
     );
 
     this.load.image("tiles-1", "assets/main_lev_build_1.png");
-    // this.load.image("tiles-2", "assets/main_lev_build_2.png");
     this.load.image("tiles-3", "assets/tileset_1.png");
     this.load.image("environment", "assets/environment.png");
 
@@ -97,9 +96,9 @@ class Preload extends Phaser.Scene {
     });
 
     this.load.spritesheet("snaky", "assets/enemy/enemy_sheet_2.png", {
-      frameWidth: 32,
-      frameHeight: 64,
-      spacing: 32,
+      frameWidth: 233,
+      frameHeight: 193,
+      // spacing: 32,
     });
 
     // SOUND EFFECTS

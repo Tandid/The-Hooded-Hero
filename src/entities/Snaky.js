@@ -10,15 +10,15 @@ class Snaky extends Enemy {
 
   init() {
     super.init();
-    this.speed = 50;
+    this.speed = 150;
 
     this.projectiles = new Projectiles(this.scene, "fireball-1");
     this.timeFromLastAttack = 0;
     this.attackDelay = this.getAttackDelay();
     this.lastDirection = null;
 
-    this.setSize(12, 45);
-    this.setOffset(10, 15);
+    this.setSize(120, 170);
+    // this.setOffset(10, 15);
   }
 
   update(time, delta) {
