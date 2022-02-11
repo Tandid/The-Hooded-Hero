@@ -41,7 +41,7 @@ class Player extends Phaser.Physics.Arcade.Sprite {
     this.swipeSound = this.scene.sound.add("swipe", { volume: 0.2 });
 
     this.lastDirection = Phaser.Physics.Arcade.FACING_RIGHT;
-    this.projectiles = new Projectiles(this.scene, "iceball-1");
+    this.projectiles = new Projectiles(this.scene, "arrow");
     this.meleeWeapon = new MeleeWeapon(this.scene, 0, 0, "sword-default");
     this.timeFromLastSwing = null;
 
@@ -125,6 +125,10 @@ class Player extends Phaser.Physics.Arcade.Sprite {
       return;
     }
 
+    if (this.isPlayingAnims("melee")) {
+      return;
+    }
+
     onFloor
       ? this.body.velocity.x !== 0
         ? this.play("run", true)
@@ -136,7 +140,7 @@ class Player extends Phaser.Physics.Arcade.Sprite {
     this.scene.input.keyboard.on("keydown-Q", () => {
       this.projectileSound.play();
       this.play("throw", true);
-      setTimeout(() => this.projectiles.fireProjectile(this, "iceball"), 300);
+      setTimeout(() => this.projectiles.fireProjectile(this, "arrow"), 300);
     });
 
     this.scene.input.keyboard.on("keydown-E", () => {
@@ -148,7 +152,7 @@ class Player extends Phaser.Physics.Arcade.Sprite {
       }
 
       this.swipeSound.play();
-      // this.play("throw", true);
+      this.play("melee", true);
       this.meleeWeapon.swing(this);
       this.timeFromLastSwing = getTimestamp();
     });

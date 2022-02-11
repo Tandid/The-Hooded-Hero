@@ -8,8 +8,8 @@ export default (anims) => {
 
   anims.create({
     key: "sword-default-swing",
-    frames: anims.generateFrameNumbers("sword-default", { start: 0, end: 2 }),
-    frameRate: 20,
+    frames: anims.generateFrameNumbers("sword-default", { start: 0, end: 7 }),
+    frameRate: 30,
     repeat: 0,
   });
 
@@ -25,8 +25,8 @@ export default (anims) => {
   });
 
   // anims.create({
-  //   key: "iceball",
-  //   frames: [{ key: "iceball-1" }],
+  //   key: "arrow",
+  //   frames: [{ key: "arrow" }],
   //   frameRate: 5,
   //   repeat: -1,
   // });

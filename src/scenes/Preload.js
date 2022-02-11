@@ -29,7 +29,7 @@ class Preload extends Phaser.Scene {
     this.load.image("back", "assets/back.png");
 
     // PROJECTILES
-    this.load.image("iceball-1", "assets/weapons/iceball_001.png");
+    this.load.image("arrow", "assets/weapons/arrow.png");
 
     this.load.image("fireball-1", "assets/weapons/improved_fireball_001.png");
     this.load.image("fireball-2", "assets/weapons/improved_fireball_002.png");
@@ -76,15 +76,25 @@ class Preload extends Phaser.Scene {
       }
     );
 
+    this.load.spritesheet(
+      "player-melee",
+      "assets/player/attackspritesheet.png",
+      {
+        frameWidth: 300,
+        frameHeight: 190,
+        // spacing: 32,
+      }
+    );
+
     this.load.spritesheet("hit-sheet", "assets/weapons/hit_effect_sheet.png", {
       frameWidth: 226,
       frameHeight: 272,
     });
 
-    this.load.spritesheet("sword-default", "assets/weapons/sword_sheet_1.png", {
-      frameWidth: 52,
-      frameHeight: 32,
-      spacing: 16,
+    this.load.spritesheet("sword-default", "assets/weapons/sword_hitbox.png", {
+      frameWidth: 300,
+      frameHeight: 190,
+      // spacing: 32,
     });
 
     // ENEMIES

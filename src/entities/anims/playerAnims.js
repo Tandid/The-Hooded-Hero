@@ -28,12 +28,19 @@ export default (anims) => {
   });
 
   anims.create({
-    key: "slide",
-    frames: anims.generateFrameNumbers("player-slide-sheet", {
-      start: 0,
-      end: 2,
-    }),
-    frameRate: 20,
+    key: "melee",
+    frames: anims.generateFrameNumbers("player-melee", { start: 0, end: 7 }),
+    frameRate: 30,
     repeat: 0,
   });
+
+  // anims.create({
+  //   key: "slide",
+  //   frames: anims.generateFrameNumbers("player-slide-sheet", {
+  //     start: 0,
+  //     end: 2,
+  //   }),
+  //   frameRate: 20,
+  //   repeat: 0,
+  // });
 };
