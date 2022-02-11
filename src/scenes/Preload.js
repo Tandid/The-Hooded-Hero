@@ -31,9 +31,9 @@ class Preload extends Phaser.Scene {
     // PROJECTILES
     this.load.image("arrow", "assets/weapons/arrow.png");
 
-    this.load.image("fireball-1", "assets/weapons/improved_fireball_001.png");
-    this.load.image("fireball-2", "assets/weapons/improved_fireball_002.png");
-    this.load.image("fireball-3", "assets/weapons/improved_fireball_003.png");
+    // this.load.image("fireball-1", "assets/weapons/improved_fireball_001.png");
+    // this.load.image("fireball-2", "assets/weapons/improved_fireball_002.png");
+    // this.load.image("fireball-3", "assets/weapons/improved_fireball_003.png");
 
     // COLLECTIBLES
 
@@ -108,6 +108,24 @@ class Preload extends Phaser.Scene {
     this.load.spritesheet("archer", "assets/enemy/archer.png", {
       frameWidth: 233,
       frameHeight: 193,
+      // spacing: 32,
+    });
+
+    this.load.spritesheet("slime", "assets/enemy/slime.png", {
+      frameWidth: 258,
+      frameHeight: 153,
+      // spacing: 32,
+    });
+
+    this.load.spritesheet("bee", "assets/enemy/bee.png", {
+      frameWidth: 170,
+      frameHeight: 155,
+      // spacing: 32,
+    });
+
+    this.load.spritesheet("spider", "assets/enemy/spider.png", {
+      frameWidth: 184,
+      frameHeight: 126,
       // spacing: 32,
     });
 

@@ -172,6 +172,42 @@
                  "width":0,
                  "x":1769.33333333333,
                  "y":582.666666666667
+                }, 
+                {
+                 "height":0,
+                 "id":49,
+                 "name":"Spawn",
+                 "point":true,
+                 "rotation":0,
+                 "type":"Spider",
+                 "visible":true,
+                 "width":0,
+                 "x":2716,
+                 "y":609.333333333333
+                }, 
+                {
+                 "height":0,
+                 "id":50,
+                 "name":"Spawn",
+                 "point":true,
+                 "rotation":0,
+                 "type":"Slime",
+                 "visible":true,
+                 "width":0,
+                 "x":2460,
+                 "y":593.333333333333
+                }, 
+                {
+                 "height":0,
+                 "id":51,
+                 "name":"Spawn",
+                 "point":true,
+                 "rotation":0,
+                 "type":"Bee",
+                 "visible":true,
+                 "width":0,
+                 "x":2174.66666666667,
+                 "y":593.333333333333
                 }],
          "opacity":1,
          "type":"objectgroup",
@@ -250,7 +286,7 @@
          "y":0
         }],
  "nextlayerid":14,
- "nextobjectid":48,
+ "nextobjectid":52,
  "orientation":"orthogonal",
  "renderorder":"right-down",
  "tiledversion":"1.7.2",
@@ -379,9 +415,7 @@
          "tiles":[
                 {
                  "id":0,
-                 "image":"collectables\/diamond.png",
-                 "imageheight":14,
-                 "imagewidth":16
+                 "image":"collectables\/diamond.png"
                 }],
          "tilewidth":16
         }, 
