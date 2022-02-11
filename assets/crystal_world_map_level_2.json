@@ -8,16 +8,16 @@
          "name":"distance_bg",
          "objects":[
                 {
-                 "gid":4097,
-                 "height":270,
-                 "id":32,
+                 "gid":76313,
+                 "height":1182,
+                 "id":44,
                  "name":"",
                  "rotation":0,
                  "type":"",
                  "visible":true,
-                 "width":480,
-                 "x":0,
-                 "y":272
+                 "width":3575,
+                 "x":2.33333333333326,
+                 "y":960.333333333333
                 }],
          "opacity":1,
          "type":"objectgroup",
@@ -178,7 +178,7 @@
          "y":0
         }],
  "nextlayerid":14,
- "nextobjectid":44,
+ "nextobjectid":46,
  "orientation":"orthogonal",
  "renderorder":"right-down",
  "tiledversion":"1.7.2",
@@ -404,6 +404,29 @@
          "tilecount":31250,
          "tileheight":32,
          "tilewidth":32
+        }, 
+        {
+         "columns":0,
+         "firstgid":76313,
+         "grid":
+            {
+             "height":1,
+             "orientation":"orthogonal",
+             "width":1
+            },
+         "margin":0,
+         "name":"bg_forest_1",
+         "spacing":0,
+         "tilecount":1,
+         "tileheight":1182,
+         "tiles":[
+                {
+                 "id":0,
+                 "image":"..\/..\/..\/Desktop\/2D Platformer Tileset\/Forest Background\/bg_forest_1.png",
+                 "imageheight":1182,
+                 "imagewidth":3575
+                }],
+         "tilewidth":3575
         }],
  "tilewidth":32,
  "type":"map",

@@ -134,11 +134,11 @@ class Play extends Phaser.Scene {
         bgObject.y,
         this.config.width,
         bgObject.height,
-        "bg-spikes-dark"
+        "bg-forest"
       )
       .setOrigin(0, 1)
       .setDepth(-10)
-      .setScrollFactor(0, 1);
+      .setScrollFactor(0, 2);
 
     this.skyImage = this.add
       .tileSprite(0, 0, this.config.width, 180, "sky-play")

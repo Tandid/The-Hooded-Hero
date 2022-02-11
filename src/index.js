@@ -11,7 +11,7 @@ const MAP_WIDTH = 9600;
 
 const WIDTH = document.body.offsetWidth;
 const HEIGHT = 900;
-const ZOOM_FACTOR = 1;
+const ZOOM_FACTOR = 0.75;
 
 const SHARED_CONFIG = {
   mapOffset: MAP_WIDTH > WIDTH ? MAP_WIDTH - WIDTH : 0,
