@@ -12,7 +12,7 @@ class Archer extends Enemy {
     super.init();
     this.speed = 150;
 
-    this.projectiles = new Projectiles(this.scene, "fireball-1");
+    this.projectiles = new Projectiles(this.scene, "arrow");
     this.timeFromLastAttack = 0;
     this.attackDelay = this.getAttackDelay();
     this.lastDirection = null;
@@ -35,7 +35,8 @@ class Archer extends Enemy {
     }
 
     if (this.timeFromLastAttack + this.attackDelay <= time) {
-      this.projectiles.fireProjectile(this, "fireball");
+      this.play("archer-attack", true);
+      this.projectiles.fireProjectile(this, "arrow");
 
       this.timeFromLastAttack = time;
       this.attackDelay = this.getAttackDelay();
@@ -45,6 +46,10 @@ class Archer extends Enemy {
       return;
     }
     if (this.isPlayingAnims("archer-hurt")) {
+      return;
+    }
+
+    if (this.isPlayingAnims("archer-attack")) {
       return;
     }
 

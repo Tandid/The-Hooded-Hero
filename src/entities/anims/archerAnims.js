@@ -12,4 +12,11 @@ export default (anims) => {
     frameRate: 10,
     repeat: 0,
   });
+
+  anims.create({
+    key: "archer-attack",
+    frames: anims.generateFrameNumbers("archer", { start: 13, end: 25 }),
+    frameRate: 60,
+    repeat: 0,
+  });
 };
