@@ -25,7 +25,7 @@ export default {
   prevRay: null,
   prevHasHit: null,
 
-  raycast(body, layer, { raylength = 30, precision = 0, steepnes = 1 }) {
+  raycast(body, layer, { raylength = 100, precision = 0, steepnes = 1 }) {
     const { x, y, width, halfHeight } = body;
 
     this.bodyPositionDifferenceX += body.x - body.prev.x;

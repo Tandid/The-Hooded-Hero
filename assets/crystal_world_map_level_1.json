@@ -146,8 +146,8 @@
                  "type":"Birdman",
                  "visible":true,
                  "width":0,
-                 "x":1358,
-                 "y":584
+                 "x":1362,
+                 "y":669.333333333333
                 }, 
                 {
                  "height":0,
@@ -158,8 +158,8 @@
                  "type":"Birdman",
                  "visible":true,
                  "width":0,
-                 "x":1532,
-                 "y":580
+                 "x":3306.66666666667,
+                 "y":652
                 }, 
                 {
                  "height":0,
@@ -170,8 +170,8 @@
                  "type":"Snaky",
                  "visible":true,
                  "width":0,
-                 "x":1712,
-                 "y":588
+                 "x":3582.66666666667,
+                 "y":661.333333333333
                 }],
          "opacity":1,
          "type":"objectgroup",
@@ -183,7 +183,43 @@
          "draworder":"topdown",
          "id":6,
          "name":"collectables",
-         "objects":[],
+         "objects":[
+                {
+                 "gid":76313,
+                 "height":32,
+                 "id":44,
+                 "name":"",
+                 "rotation":0,
+                 "type":"",
+                 "visible":true,
+                 "width":32,
+                 "x":994.666666666667,
+                 "y":385.333333333333
+                }, 
+                {
+                 "gid":76313,
+                 "height":32,
+                 "id":45,
+                 "name":"",
+                 "rotation":0,
+                 "type":"",
+                 "visible":true,
+                 "width":32,
+                 "x":1249.33333333333,
+                 "y":382.666666666667
+                }, 
+                {
+                 "gid":76313,
+                 "height":32,
+                 "id":46,
+                 "name":"",
+                 "rotation":0,
+                 "type":"",
+                 "visible":true,
+                 "width":32,
+                 "x":1468,
+                 "y":382.666666666667
+                }],
          "opacity":1,
          "properties":[
                 {
@@ -214,7 +250,7 @@
          "y":0
         }],
  "nextlayerid":14,
- "nextobjectid":44,
+ "nextobjectid":48,
  "orientation":"orthogonal",
  "renderorder":"right-down",
  "tiledversion":"1.7.2",
@@ -440,6 +476,19 @@
          "name":"environment",
          "spacing":0,
          "tilecount":31250,
+         "tileheight":32,
+         "tilewidth":32
+        }, 
+        {
+         "columns":1,
+         "firstgid":76313,
+         "image":"..\/..\/..\/Desktop\/2D Platformer Tileset\/Sprites\/Animations\/Coin\/coin_1.png",
+         "imageheight":42,
+         "imagewidth":42,
+         "margin":0,
+         "name":"diamond",
+         "spacing":0,
+         "tilecount":1,
          "tileheight":32,
          "tilewidth":32
         }],

@@ -55,6 +55,8 @@ class Player extends Phaser.Physics.Arcade.Sprite {
     );
 
     this.body.setSize(120, 180);
+    // this.setOffset(0, 10);
+
     this.body.setGravityY(this.gravity);
     this.setCollideWorldBounds(true);
     this.setOrigin(0, 1);
@@ -62,7 +64,7 @@ class Player extends Phaser.Physics.Arcade.Sprite {
     initAnimations(this.scene.anims);
 
     this.handleAttacks();
-    this.handleMovements();
+    // this.handleMovements();
 
     this.scene.time.addEvent({
       delay: 350,
@@ -119,7 +121,7 @@ class Player extends Phaser.Physics.Arcade.Sprite {
       this.jumpCount = 0;
     }
 
-    if (this.isPlayingAnims("throw") || this.isPlayingAnims("slide")) {
+    if (this.isPlayingAnims("throw")) {
       return;
     }
 
@@ -152,23 +154,23 @@ class Player extends Phaser.Physics.Arcade.Sprite {
     });
   }
 
-  handleMovements() {
-    this.scene.input.keyboard.on("keydown-DOWN", () => {
-      // if (!this.body.onFloor()) { return; }
+  // handleMovements() {
+  //   this.scene.input.keyboard.on("keydown-DOWN", () => {
+  //     // if (!this.body.onFloor()) { return; }
 
-      this.body.setSize(this.width, this.height / 2);
-      this.setOffset(0, this.height / 2);
-      this.setVelocityX(0);
-      this.play("slide", true);
-      this.isSliding = true;
-    });
+  //     this.body.setSize(this.width, this.height / 2);
+  //     this.setOffset(0, this.height / 2);
+  //     this.setVelocityX(0);
+  //     this.play("slide", true);
+  //     this.isSliding = true;
+  //   });
 
-    this.scene.input.keyboard.on("keyup-DOWN", () => {
-      this.body.setSize(this.width, 38);
-      this.setOffset(0, 0);
-      this.isSliding = false;
-    });
-  }
+  //   this.scene.input.keyboard.on("keyup-DOWN", () => {
+  //     this.body.setSize(this.width, 38);
+  //     this.setOffset(0, 0);
+  //     this.isSliding = false;
+  //   });
+  // }
 
   playDamageTween() {
     return this.scene.tweens.add({
