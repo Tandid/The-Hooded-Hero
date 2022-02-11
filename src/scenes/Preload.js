@@ -17,7 +17,7 @@ class Preload extends Phaser.Scene {
     );
 
     this.load.image("tiles-1", "assets/main_lev_build_1.png");
-    this.load.image("tiles-2", "assets/main_lev_build_2.png");
+    // this.load.image("tiles-2", "assets/main_lev_build_2.png");
     this.load.image("tiles-3", "assets/tileset_1.png");
     this.load.image("environment", "assets/environment.png");
 
@@ -31,7 +31,6 @@ class Preload extends Phaser.Scene {
 
     // PROJECTILES
     this.load.image("iceball-1", "assets/weapons/iceball_001.png");
-    this.load.image("iceball-2", "assets/weapons/iceball_002.png");
 
     this.load.image("fireball-1", "assets/weapons/improved_fireball_001.png");
     this.load.image("fireball-2", "assets/weapons/improved_fireball_002.png");
@@ -79,8 +78,8 @@ class Preload extends Phaser.Scene {
     );
 
     this.load.spritesheet("hit-sheet", "assets/weapons/hit_effect_sheet.png", {
-      frameWidth: 32,
-      frameHeight: 32,
+      frameWidth: 226,
+      frameHeight: 272,
     });
 
     this.load.spritesheet("sword-default", "assets/weapons/sword_sheet_1.png", {

@@ -43,7 +43,7 @@ export default (anims) => {
       { key: "coin-7" },
       { key: "coin-8" },
     ],
-    frameRate: 5,
+    frameRate: 8,
     repeat: -1,
   });
 };

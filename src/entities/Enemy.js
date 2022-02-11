@@ -22,7 +22,7 @@ class Enemy extends Phaser.Physics.Arcade.Sprite {
 
   init() {
     this.gravity = 500;
-    this.speed = 75;
+    this.speed = 150;
     this.timeFromLastTurn = 0;
     this.maxPatrolDistance = 1000;
     this.currentPatrolDistance = 0;
@@ -32,7 +32,7 @@ class Enemy extends Phaser.Physics.Arcade.Sprite {
 
     this.platformCollidersLayer = null;
     this.rayGraphics = this.scene.add.graphics({
-      lineStyle: { width: 5, color: 0xaa00aa },
+      lineStyle: { width: 2, color: 0xaa00aa },
     });
 
     this.body.setGravityY(this.gravity);
