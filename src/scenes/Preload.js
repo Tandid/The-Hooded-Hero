@@ -95,7 +95,7 @@ class Preload extends Phaser.Scene {
       // spacing: 32,
     });
 
-    this.load.spritesheet("snaky", "assets/enemy/enemy_sheet_2.png", {
+    this.load.spritesheet("archer", "assets/enemy/archer.png", {
       frameWidth: 233,
       frameHeight: 193,
       // spacing: 32,

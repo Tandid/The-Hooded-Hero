@@ -1,10 +1,10 @@
 import Enemy from "./Enemy";
-import initAnims from "./anims/snakyAnims";
+import initAnims from "./anims/archerAnims";
 import Projectiles from "../attacks/Projectiles";
 
-class Snaky extends Enemy {
+class Archer extends Enemy {
   constructor(scene, x, y) {
-    super(scene, x, y, "snaky");
+    super(scene, x, y, "archer");
     initAnims(scene.anims);
   }
 
@@ -44,11 +44,11 @@ class Snaky extends Enemy {
     if (!this.active) {
       return;
     }
-    if (this.isPlayingAnims("snaky-hurt")) {
+    if (this.isPlayingAnims("archer-hurt")) {
       return;
     }
 
-    this.play("snaky-walk", true);
+    this.play("archer-walk", true);
   }
 
   getAttackDelay() {
@@ -57,8 +57,8 @@ class Snaky extends Enemy {
 
   takesHit(source) {
     super.takesHit(source);
-    this.play("snaky-hurt", true);
+    this.play("archer-hurt", true);
   }
 }
 
-export default Snaky;
+export default Archer;

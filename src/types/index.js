@@ -1,7 +1,7 @@
 import Skeleton from "../entities/Skeleton";
-import Snaky from "../entities/Snaky";
+import Archer from "../entities/Archer";
 
 export const ENEMY_TYPES = {
   Skeleton,
-  Snaky,
+  Archer,
 };
