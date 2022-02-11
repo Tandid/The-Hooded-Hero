@@ -136,43 +136,7 @@
          "draworder":"topdown",
          "id":5,
          "name":"enemy_spawns",
-         "objects":[
-                {
-                 "height":0,
-                 "id":3,
-                 "name":"Spawn",
-                 "point":true,
-                 "rotation":0,
-                 "type":"Birdman",
-                 "visible":true,
-                 "width":0,
-                 "x":1362,
-                 "y":669.333333333333
-                }, 
-                {
-                 "height":0,
-                 "id":4,
-                 "name":"Spawn",
-                 "point":true,
-                 "rotation":0,
-                 "type":"Birdman",
-                 "visible":true,
-                 "width":0,
-                 "x":3306.66666666667,
-                 "y":652
-                }, 
-                {
-                 "height":0,
-                 "id":5,
-                 "name":"Spawn",
-                 "point":true,
-                 "rotation":0,
-                 "type":"Snaky",
-                 "visible":true,
-                 "width":0,
-                 "x":3582.66666666667,
-                 "y":661.333333333333
-                }],
+         "objects":[],
          "opacity":1,
          "type":"objectgroup",
          "visible":true,
@@ -343,9 +307,7 @@
          "tiles":[
                 {
                  "id":0,
-                 "image":"collectables\/diamond.png",
-                 "imageheight":14,
-                 "imagewidth":16
+                 "image":"collectables\/diamond.png"
                 }],
          "tilewidth":16
         }, 

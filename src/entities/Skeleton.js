@@ -1,9 +1,9 @@
 import Enemy from "./Enemy";
-import initAnims from "./anims/birdmanAnims";
+import initAnims from "./anims/skeletonAnims";
 
-class Birdman extends Enemy {
+class Skeleton extends Enemy {
   constructor(scene, x, y) {
-    super(scene, x, y, "birdman");
+    super(scene, x, y, "skeleton");
     initAnims(scene.anims);
   }
 
@@ -19,17 +19,17 @@ class Birdman extends Enemy {
     if (!this.active) {
       return;
     }
-    if (this.isPlayingAnims("birdman-hurt")) {
+    if (this.isPlayingAnims("skeleton-hurt")) {
       return;
     }
 
-    this.play("birdman-idle", true);
+    this.play("skeleton-idle", true);
   }
 
   takesHit(source) {
     super.takesHit(source);
-    this.play("birdman-hurt", true);
+    this.play("skeleton-hurt", true);
   }
 }
 
-export default Birdman;
+export default Skeleton;
