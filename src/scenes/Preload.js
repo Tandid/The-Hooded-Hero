@@ -141,9 +141,12 @@ class Preload extends Phaser.Scene {
       // spacing: 32,
     });
 
-    // SOUND EFFECTS
-    this.load.audio("theme", "assets/music/theme_music.wav");
+    // THEME MUSIC
+    this.load.audio("forest-theme", "assets/music/forest_theme.wav");
+    this.load.audio("cave-theme", "assets/music/cave_theme.wav");
+    this.load.audio("boss-theme", "assets/music/boss_theme.wav");
 
+    // SOUND EFFECTS
     this.load.audio("projectile-launch", "assets/music/projectile_launch.wav");
     this.load.audio("step", "assets/music/step_mud.wav");
     this.load.audio("jump", "assets/music/jump.wav");

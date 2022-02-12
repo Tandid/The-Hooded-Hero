@@ -5,8 +5,10 @@ class MenuScene extends BaseScene {
     super("MenuScene", config);
 
     this.menu = [
-      { scene: "PlayScene", text: "Play" },
+      { scene: "PlayScene", text: "Story Mode" },
+      { scene: "PlayScene", text: "Multiplayer" },
       { scene: "LevelScene", text: "Levels" },
+      { scene: "LevelScene", text: "How to Play" },
       { scene: null, text: "Exit" },
     ];
   }
