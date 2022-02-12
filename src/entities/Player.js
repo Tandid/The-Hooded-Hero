@@ -25,12 +25,12 @@ class Player extends Phaser.Physics.Arcade.Sprite {
 
   init() {
     this.gravity = 1000;
-    this.playerSpeed = 300;
+    this.playerSpeed = 400;
     this.jumpCount = 0;
     this.consecutiveJumps = 1;
     this.hasBeenHit = false;
     this.isSliding = false;
-    this.bounceVelocity = 500;
+    this.bounceVelocity = 200;
     this.cursors = this.scene.input.keyboard.createCursorKeys();
 
     this.jumpSound = this.scene.sound.add("jump", { volume: 0.2 });
@@ -87,7 +87,7 @@ class Player extends Phaser.Physics.Arcade.Sprite {
       return;
     }
 
-    if (this.getBounds().top > this.scene.config.height) {
+    if (this.getBounds().top > this.scene.config.height * 1.75) {
       EventEmitter.emit("PLAYER_LOSE");
       return;
     }
@@ -113,7 +113,7 @@ class Player extends Phaser.Physics.Arcade.Sprite {
       (onFloor || this.jumpCount < this.consecutiveJumps)
     ) {
       this.jumpSound.play();
-      this.setVelocityY(-this.playerSpeed * 2);
+      this.setVelocityY(-this.playerSpeed * 1.5);
       this.jumpCount++;
     }
 

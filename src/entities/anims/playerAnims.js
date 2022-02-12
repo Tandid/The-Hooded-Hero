@@ -2,14 +2,14 @@ export default (anims) => {
   anims.create({
     key: "idle",
     frames: anims.generateFrameNumbers("player", { start: 0, end: 8 }),
-    frameRate: 9,
+    frameRate: 18,
     repeat: -1,
   });
 
   anims.create({
     key: "run",
     frames: anims.generateFrameNumbers("player", { start: 9, end: 17 }),
-    frameRate: 15,
+    frameRate: 30,
     repeat: -1,
   });
 

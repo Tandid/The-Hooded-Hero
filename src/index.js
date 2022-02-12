@@ -10,15 +10,15 @@ import CreditsScene from "./scenes/Credits";
 const MAP_WIDTH = 16000;
 
 const WIDTH = document.body.offsetWidth;
-const HEIGHT = 1600;
-const ZOOM_FACTOR = 1;
+const HEIGHT = 800;
+const ZOOM_FACTOR = 0.5;
 
 const SHARED_CONFIG = {
   mapOffset: MAP_WIDTH > WIDTH ? MAP_WIDTH - WIDTH : 0,
   width: WIDTH,
   height: HEIGHT,
   zoomFactor: ZOOM_FACTOR,
-  debug: false,
+  debug: true,
   leftTopCorner: {
     x: (WIDTH - WIDTH / ZOOM_FACTOR) / 2,
     y: (HEIGHT - HEIGHT / ZOOM_FACTOR) / 2,
