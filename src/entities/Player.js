@@ -159,24 +159,6 @@ class Player extends Phaser.Physics.Arcade.Sprite {
     });
   }
 
-  // handleMovements() {
-  //   this.scene.input.keyboard.on("keydown-DOWN", () => {
-  //     // if (!this.body.onFloor()) { return; }
-
-  //     this.body.setSize(this.width, this.height / 2);
-  //     this.setOffset(0, this.height / 2);
-  //     this.setVelocityX(0);
-  //     this.play("slide", true);
-  //     this.isSliding = true;
-  //   });
-
-  //   this.scene.input.keyboard.on("keyup-DOWN", () => {
-  //     this.body.setSize(this.width, 38);
-  //     this.setOffset(0, 0);
-  //     this.isSliding = false;
-  //   });
-  // }
-
   playDamageTween() {
     return this.scene.tweens.add({
       targets: this,
