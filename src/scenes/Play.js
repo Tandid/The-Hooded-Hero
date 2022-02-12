@@ -95,7 +95,7 @@ class Play extends Phaser.Scene {
     map.addTilesetImage("tileset_1", "forest-tiles");
     map.addTilesetImage("tileset_2", "cave-tiles");
     map.addTilesetImage("environment", "environment-tiles");
-    map.addTilesetImage("bg_spikes_tileset", "bg-spikes-tileset");
+    // map.addTilesetImage("bg_spikes_tileset", "bg-spikes-tileset");
 
     console.log(this.make.tilemap);
     return map;
@@ -105,9 +105,9 @@ class Play extends Phaser.Scene {
     const tileset1 = map.getTileset("tileset_1");
     const tileset2 = map.getTileset("tileset_2");
     const tileset3 = map.getTileset("environment");
-    const tilesetBg = map.getTileset("bg_spikes_tileset");
+    // const tilesetBg = map.getTileset("bg_spikes_tileset");
 
-    map.createStaticLayer("distance", tilesetBg).setDepth(-12);
+    // map.createStaticLayer("distance", tilesetBg).setDepth(-12);
 
     const platformsColliders = map.createStaticLayer("platforms_colliders", [
       tileset1,

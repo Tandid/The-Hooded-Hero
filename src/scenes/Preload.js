@@ -18,7 +18,7 @@ class Preload extends Phaser.Scene {
     this.load.image("cave-tiles", "assets/tileset_2.png");
     this.load.image("environment-tiles", "assets/environment.png");
 
-    this.load.image("bg-spikes-tileset", "assets/bg_spikes_tileset.png");
+    // this.load.image("bg-spikes-tileset", "assets/bg_spikes_tileset.png");
 
     // FOREST BACKGROUNDS
 
@@ -67,16 +67,6 @@ class Preload extends Phaser.Scene {
       frameHeight: 190,
       // spacing: 50,
     });
-
-    this.load.spritesheet(
-      "player-slide-sheet",
-      "assets/player/slide_sheet_2.png",
-      {
-        frameWidth: 300,
-        frameHeight: 190,
-        // spacing: 32,
-      }
-    );
 
     this.load.spritesheet(
       "player-throw",
