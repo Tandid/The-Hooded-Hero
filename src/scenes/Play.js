@@ -179,7 +179,7 @@ class Play extends Phaser.Scene {
           bgObject.y,
           this.config.width,
           bgObject.height,
-          "bg-forest-1"
+          "bg-cave-1"
         )
         .setOrigin(0, 1)
         .setDepth(-10)
