@@ -153,40 +153,41 @@ class Play extends Phaser.Scene {
         .tileSprite(
           bgObject.x,
           bgObject.y,
-          this.config.width,
-          bgObject.height,
+          this.config.width * 3,
+          bgObject.height * 1.75,
           "bg-forest-1"
         )
-        .setOrigin(0, 1)
+        .setOrigin(0.5)
         .setDepth(-10)
+        .setScale(1)
         .setScrollFactor(0, 2);
 
       this.forestImageTwo = this.add
         .tileSprite(0, 0, this.config.width, this.config.height, "bg-forest-2")
-        .setOrigin(0, 0)
+        .setOrigin(0.5, 0)
         .setDepth(-11)
-        .setScale(1)
+        .setScale(3)
         .setScrollFactor(0, 1);
 
       this.forestImageThree = this.add
         .tileSprite(0, 0, this.config.width, this.config.height, "bg-forest-3")
-        .setOrigin(0, 0)
+        .setOrigin(0.5, 0)
         .setDepth(-12)
-        .setScale(1)
+        .setScale(3)
         .setScrollFactor(0, 1);
 
       this.mountainImage = this.add
         .tileSprite(0, 0, this.config.width, this.config.height, "mountain-bg")
-        .setOrigin(0, 0)
+        .setOrigin(0.5, 0)
         .setDepth(-13)
-        .setScale(1)
+        .setScale(3, 1.75)
         .setScrollFactor(0, 1);
 
       this.skyImage = this.add
         .tileSprite(0, 0, this.config.width, this.config.height, "sky-bg")
-        .setOrigin(0, 0)
+        .setOrigin(0.5, 0)
         .setDepth(-14)
-        .setScale(1)
+        .setScale(3, 1.75)
         .setScrollFactor(0, 1);
     }
 
@@ -195,11 +196,11 @@ class Play extends Phaser.Scene {
         .tileSprite(
           bgObject.x,
           bgObject.y,
-          this.config.width,
-          bgObject.height,
+          this.config.width * 3,
+          bgObject.height * 1.75,
           "bg-cave-1"
         )
-        .setOrigin(0, 1)
+        .setOrigin(0.5)
         .setDepth(-10)
         .setScrollFactor(0, 2);
 

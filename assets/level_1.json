@@ -9,15 +9,15 @@
          "objects":[
                 {
                  "gid":39447,
-                 "height":1285.0303030303,
-                 "id":44,
+                 "height":1182,
+                 "id":155,
                  "name":"",
                  "rotation":0,
                  "type":"",
                  "visible":true,
-                 "width":3714.39393939394,
-                 "x":2.33333333333326,
-                 "y":1604.36363636364
+                 "width":3575,
+                 "x":-5.32168873925548,
+                 "y":1594.08966585726
                 }],
          "opacity":1,
          "type":"objectgroup",
@@ -1042,7 +1042,7 @@
          "y":0
         }],
  "nextlayerid":14,
- "nextobjectid":155,
+ "nextobjectid":156,
  "orientation":"orthogonal",
  "renderorder":"right-down",
  "tiledversion":"1.7.2",
