@@ -9,8 +9,7 @@ class Bee extends Enemy {
 
   init() {
     super.init();
-    this.setSize(120, 155);
-    // this.setOffset(7, 20);
+    this.setSize(120, 140);
   }
 
   update(time, delta) {

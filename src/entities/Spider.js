@@ -9,8 +9,8 @@ class Spider extends Enemy {
 
   init() {
     super.init();
-    this.setSize(120, 126);
-    // this.setOffset(7, 20);
+    this.setSize(120, 90);
+    this.setOffset(30, 20);
   }
 
   update(time, delta) {

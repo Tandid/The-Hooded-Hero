@@ -9,8 +9,8 @@ class Slime extends Enemy {
 
   init() {
     super.init();
-    this.setSize(120, 153);
-    // this.setOffset(7, 20);
+    this.setSize(120, 100);
+    this.setOffset(65, 50);
   }
 
   update(time, delta) {
