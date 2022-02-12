@@ -1,10 +1,6 @@
-
-
-import Phaser from 'phaser';
-
+import Phaser from "phaser";
 
 class SpriteEffect extends Phaser.Physics.Arcade.Sprite {
-
   constructor(scene, x, y, effectName, impactPosition) {
     super(scene, x, y);
 
@@ -14,12 +10,17 @@ class SpriteEffect extends Phaser.Physics.Arcade.Sprite {
     this.target = null;
     this.effectName = effectName;
     this.impactPosition = impactPosition;
+    this.setScale(0.6);
 
-    this.on('animationcomplete', animation => {
-      if (animation.key === this.effectName) {
-        this.destroy();
-      }
-    }, this)
+    this.on(
+      "animationcomplete",
+      (animation) => {
+        if (animation.key === this.effectName) {
+          this.destroy();
+        }
+      },
+      this
+    );
   }
 
   preUpdate(time, delta) {
@@ -28,7 +29,9 @@ class SpriteEffect extends Phaser.Physics.Arcade.Sprite {
   }
 
   placeEffect() {
-    if (!this.target || !this.body) { return; }
+    if (!this.target || !this.body) {
+      return;
+    }
     const center = this.target.getCenter();
     this.body.reset(center.x, this.impactPosition.y);
   }
