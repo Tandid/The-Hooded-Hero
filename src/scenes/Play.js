@@ -71,52 +71,46 @@ class Play extends Phaser.Scene {
 
   createMap() {
     const map = this.make.tilemap({ key: `level_${this.getCurrentLevel()}` });
-    map.addTilesetImage("main_lev_build_1", "tiles-1");
-    map.addTilesetImage("tileset_1", "tiles-3");
+    map.addTilesetImage("tileset_1", "forest-tiles");
+    map.addTilesetImage("tileset_2", "cave-tiles");
+    map.addTilesetImage("environment", "environment-tiles");
     map.addTilesetImage("bg_spikes_tileset", "bg-spikes-tileset");
-    map.addTilesetImage("environment", "environment");
     return map;
   }
 
   createLayers(map) {
-    const tileset = map.getTileset("main_lev_build_1");
-    const tileset2 = map.getTileset("tileset_1");
+    const tileset1 = map.getTileset("tileset_1");
+    const tileset2 = map.getTileset("tileset_2");
     const tileset3 = map.getTileset("environment");
     const tilesetBg = map.getTileset("bg_spikes_tileset");
 
     map.createStaticLayer("distance", tilesetBg).setDepth(-12);
 
     const platformsColliders = map.createStaticLayer("platforms_colliders", [
-      tileset,
+      tileset1,
       tileset2,
       tileset3,
     ]);
 
-    const frontEnv = map.createStaticLayer("front_env", [tileset, tileset3]);
-    // .setDepth(-2);
     const environment = map
-      .createStaticLayer("environment", [tileset, tileset3])
+      .createStaticLayer("environment", [tileset3])
       .setDepth(-4);
-    const backEnv = map.createStaticLayer("back_env", [tileset, tileset3]);
-    // .setDepth(-5);
 
     const platforms = map.createStaticLayer("platforms", [
-      tileset,
+      tileset1,
       tileset2,
       tileset3,
     ]);
     const playerZones = map.getObjectLayer("player_zones");
     const enemySpawns = map.getObjectLayer("enemy_spawns");
     const collectables = map.getObjectLayer("collectables");
-    const traps = map.createStaticLayer("traps", tileset);
+    const traps = map.createStaticLayer("traps", tileset1);
 
     platformsColliders.setCollisionByProperty({ collides: true }).setAlpha(0);
     traps.setCollisionByExclusion(-1);
 
     return {
       environment,
-      backEnv,
-      frontEnv,
       platforms,
       platformsColliders,
       playerZones,
@@ -141,10 +135,10 @@ class Play extends Phaser.Scene {
       .setScrollFactor(0, 2);
 
     this.skyImage = this.add
-      .tileSprite(0, 0, this.config.width, 180, "sky-play")
+      .tileSprite(0, 0, this.config.width, this.config.height, "sky-play")
       .setOrigin(0, 0)
       .setDepth(-11)
-      .setScale(1.1)
+      .setScale(1)
       .setScrollFactor(0, 1);
   }
 
@@ -167,7 +161,7 @@ class Play extends Phaser.Scene {
 
   createGameEvents() {
     EventEmitter.on("PLAYER_LOSE", () => {
-      console.log("Hello!");
+      console.log("You lost!");
       this.scene.restart({ gameStatus: "PLAYER_LOSE" });
     });
   }
@@ -236,7 +230,7 @@ class Play extends Phaser.Scene {
 
   setupFollowupCameraOn(player) {
     const { height, width, mapOffset, zoomFactor } = this.config;
-    this.physics.world.setBounds(0, 0, width + mapOffset, height + 200);
+    this.physics.world.setBounds(0, 0, width + mapOffset, height + 800);
     this.cameras.main
       .setBounds(0, 0, width + mapOffset, height)
       .setZoom(zoomFactor);
