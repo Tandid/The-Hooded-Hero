@@ -13,7 +13,7 @@ class Projectile extends Phaser.Physics.Arcade.Sprite {
     this.traveledDistance = 0;
 
     this.damage = 20;
-    this.cooldown = 300;
+    this.cooldown = 250;
 
     // this.body.setSize(this.width - 13, this.height - 20);
 

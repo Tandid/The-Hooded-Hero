@@ -9,7 +9,7 @@ class MeleeWeapon extends Phaser.Physics.Arcade.Sprite {
     scene.physics.add.existing(this);
 
     this.damage = 50;
-    this.attackSpeed = 1000;
+    this.attackSpeed = 450;
     this.weaponAnim = weaponName + "-swing";
     this.wielder = null;
     this.body.setSize(this.width - 50, this.height);
