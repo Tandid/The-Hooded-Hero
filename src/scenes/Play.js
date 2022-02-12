@@ -21,6 +21,9 @@ class Play extends Phaser.Scene {
     this.collectSound = this.sound.add("coin-pickup", { volume: 0.2 });
 
     const map = this.createMap();
+    // const level = this.getCurrentLevel();
+    console.log(map);
+    // console.log(level);
 
     initAnims(this.anims);
 
@@ -75,6 +78,8 @@ class Play extends Phaser.Scene {
     map.addTilesetImage("tileset_2", "cave-tiles");
     map.addTilesetImage("environment", "environment-tiles");
     map.addTilesetImage("bg_spikes_tileset", "bg-spikes-tileset");
+
+    console.log(this.make.tilemap);
     return map;
   }
 
@@ -122,45 +127,92 @@ class Play extends Phaser.Scene {
 
   createBG(map) {
     const bgObject = map.getObjectLayer("distance_bg").objects[0];
-    this.forestImageOne = this.add
-      .tileSprite(
-        bgObject.x,
-        bgObject.y,
-        this.config.width,
-        bgObject.height,
-        "bg-forest-1"
-      )
-      .setOrigin(0, 1)
-      .setDepth(-10)
-      .setScrollFactor(0, 2);
+    const level = this.getCurrentLevel();
+    console.log(level);
 
-    this.forestImageTwo = this.add
-      .tileSprite(0, 0, this.config.width, this.config.height, "bg-forest-2")
-      .setOrigin(0, 0)
-      .setDepth(-11)
-      .setScale(1)
-      .setScrollFactor(0, 1);
+    if (level === 1) {
+      this.forestImageOne = this.add
+        .tileSprite(
+          bgObject.x,
+          bgObject.y,
+          this.config.width,
+          bgObject.height,
+          "bg-forest-1"
+        )
+        .setOrigin(0, 1)
+        .setDepth(-10)
+        .setScrollFactor(0, 2);
 
-    this.forestImageThree = this.add
-      .tileSprite(0, 0, this.config.width, this.config.height, "bg-forest-3")
-      .setOrigin(0, 0)
-      .setDepth(-12)
-      .setScale(1)
-      .setScrollFactor(0, 1);
+      this.forestImageTwo = this.add
+        .tileSprite(0, 0, this.config.width, this.config.height, "bg-forest-2")
+        .setOrigin(0, 0)
+        .setDepth(-11)
+        .setScale(1)
+        .setScrollFactor(0, 1);
 
-    this.mountainImage = this.add
-      .tileSprite(0, 0, this.config.width, this.config.height, "mountain-bg")
-      .setOrigin(0, 0)
-      .setDepth(-13)
-      .setScale(1)
-      .setScrollFactor(0, 1);
+      this.forestImageThree = this.add
+        .tileSprite(0, 0, this.config.width, this.config.height, "bg-forest-3")
+        .setOrigin(0, 0)
+        .setDepth(-12)
+        .setScale(1)
+        .setScrollFactor(0, 1);
 
-    this.skyImage = this.add
-      .tileSprite(0, 0, this.config.width, this.config.height, "sky-bg")
-      .setOrigin(0, 0)
-      .setDepth(-14)
-      .setScale(1)
-      .setScrollFactor(0, 1);
+      this.mountainImage = this.add
+        .tileSprite(0, 0, this.config.width, this.config.height, "mountain-bg")
+        .setOrigin(0, 0)
+        .setDepth(-13)
+        .setScale(1)
+        .setScrollFactor(0, 1);
+
+      this.skyImage = this.add
+        .tileSprite(0, 0, this.config.width, this.config.height, "sky-bg")
+        .setOrigin(0, 0)
+        .setDepth(-14)
+        .setScale(1)
+        .setScrollFactor(0, 1);
+    }
+
+    if (level > 1) {
+      this.caveImageOne = this.add
+        .tileSprite(
+          bgObject.x,
+          bgObject.y,
+          this.config.width,
+          bgObject.height,
+          "bg-forest-1"
+        )
+        .setOrigin(0, 1)
+        .setDepth(-10)
+        .setScrollFactor(0, 2);
+
+      this.caveImageTwo = this.add
+        .tileSprite(0, 0, this.config.width, this.config.height, "bg-cave-2")
+        .setOrigin(0, 0)
+        .setDepth(-11)
+        .setScale(1)
+        .setScrollFactor(0, 1);
+
+      this.caveImageThree = this.add
+        .tileSprite(0, 0, this.config.width, this.config.height, "bg-cave-3")
+        .setOrigin(0, 0)
+        .setDepth(-12)
+        .setScale(1)
+        .setScrollFactor(0, 1);
+
+      this.caveImageFour = this.add
+        .tileSprite(0, 0, this.config.width, this.config.height, "bg-cave-4")
+        .setOrigin(0, 0)
+        .setDepth(-13)
+        .setScale(1)
+        .setScrollFactor(0, 1);
+
+      this.caveImageFive = this.add
+        .tileSprite(0, 0, this.config.width, this.config.height, "bg-cave-5")
+        .setOrigin(0, 0)
+        .setDepth(-14)
+        .setScale(1)
+        .setScrollFactor(0, 1);
+    }
   }
 
   createBackButton() {
@@ -292,11 +344,21 @@ class Play extends Phaser.Scene {
   }
 
   update() {
-    this.forestImageOne.tilePositionX = this.cameras.main.scrollX * 0.4;
-    this.forestImageTwo.tilePositionX = this.cameras.main.scrollX * 0.3;
-    this.forestImageThree.tilePositionX = this.cameras.main.scrollX * 0.3;
-    this.mountainImage.tilePositionX = this.cameras.main.scrollX * 0.2;
-    this.skyImage.tilePositionX = this.cameras.main.scrollX * 0.1;
+    const level = this.getCurrentLevel();
+    if (level === 1) {
+      this.forestImageOne.tilePositionX = this.cameras.main.scrollX * 0.4;
+      this.forestImageTwo.tilePositionX = this.cameras.main.scrollX * 0.3;
+      this.forestImageThree.tilePositionX = this.cameras.main.scrollX * 0.3;
+      this.mountainImage.tilePositionX = this.cameras.main.scrollX * 0.2;
+      this.skyImage.tilePositionX = this.cameras.main.scrollX * 0.1;
+    }
+    // if (level > 1) {
+    //   this.caveImageOne.tilePositionX = this.cameras.main.scrollX * 0.4;
+    //   this.caveImageTwo.tilePositionX = this.cameras.main.scrollX * 0.3;
+    //   this.caveImageThree.tilePositionX = this.cameras.main.scrollX * 0.3;
+    //   this.caveImageFour.tilePositionX = this.cameras.main.scrollX * 0.2;
+    //   this.caveImageFive.tilePositionX = this.cameras.main.scrollX * 0.1;
+    // }
   }
 }
 
