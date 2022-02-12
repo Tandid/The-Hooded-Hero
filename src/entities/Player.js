@@ -35,10 +35,10 @@ class Player extends Phaser.Physics.Arcade.Sprite {
 
     this.jumpSound = this.scene.sound.add("jump", { volume: 0.2 });
     this.projectileSound = this.scene.sound.add("projectile-launch", {
-      volume: 0.2,
+      volume: 0.4,
     });
-    this.stepSound = this.scene.sound.add("step", { volume: 0.2 });
-    this.swipeSound = this.scene.sound.add("swipe", { volume: 0.2 });
+    this.stepSound = this.scene.sound.add("step", { volume: 0.1 });
+    this.swipeSound = this.scene.sound.add("swipe", { volume: 0.1 });
 
     this.lastDirection = Phaser.Physics.Arcade.FACING_RIGHT;
     this.projectiles = new Projectiles(this.scene, "arrow");
@@ -138,9 +138,10 @@ class Player extends Phaser.Physics.Arcade.Sprite {
 
   handleAttacks() {
     this.scene.input.keyboard.on("keydown-Q", () => {
-      this.projectileSound.play();
+      let delay = 300;
       this.play("throw", true);
-      setTimeout(() => this.projectiles.fireProjectile(this, "arrow"), 300);
+      setTimeout(() => this.projectileSound.play(), delay);
+      setTimeout(() => this.projectiles.fireProjectile(this, "arrow"), delay);
     });
 
     this.scene.input.keyboard.on("keydown-E", () => {
