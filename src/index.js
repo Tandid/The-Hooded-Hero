@@ -7,7 +7,7 @@ import LevelScene from "./scenes/Levels";
 import CreditsScene from "./scenes/Credits";
 // 1600px
 
-const MAP_WIDTH = 9600;
+const MAP_WIDTH = 16000;
 
 const WIDTH = document.body.offsetWidth;
 const HEIGHT = 900;
