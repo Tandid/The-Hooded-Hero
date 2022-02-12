@@ -6,28 +6,46 @@ class Preload extends Phaser.Scene {
   }
 
   preload() {
-    this.load.tilemapTiledJSON("level_1", "assets/level_1.json");
+    // MAPS
 
+    this.load.tilemapTiledJSON("level_1", "assets/level_1.json");
     this.load.tilemapTiledJSON("level_2", "assets/level_2.json");
+    // this.load.tilemapTiledJSON("level_2", "assets/level_3.json");
+
+    // TILESETS
 
     this.load.image("forest-tiles", "assets/tileset_1.png");
     this.load.image("cave-tiles", "assets/tileset_2.png");
     this.load.image("environment-tiles", "assets/environment.png");
 
     this.load.image("bg-spikes-tileset", "assets/bg_spikes_tileset.png");
-    this.load.image("bg-forest", "assets/bg_forest_1.png");
-    this.load.image("sky-play", "assets/sky_play.png");
+
+    // FOREST BACKGROUNDS
+
+    this.load.image("bg-forest-1", "assets/bg_forest_1.png");
+    this.load.image("bg-forest-2", "assets/bg_forest_2.png");
+    this.load.image("bg-forest-3", "assets/bg_forest_3.png");
+    this.load.image("mountain-bg", "assets/mountain_bg.png");
+    this.load.image("sky-bg", "assets/sky_bg.png");
+
+    // CAVE BACKGROUNDS
+
+    this.load.image("bg-cave-1", "assets/bg_cave_1.png");
+    this.load.image("bg-cave-2", "assets/bg_cave_2.png");
+    this.load.image("bg-cave-3", "assets/bg_cave_3.png");
+    this.load.image("bg-cave-4", "assets/bg_cave_4.png");
+    this.load.image("bg-cave-5", "assets/bg_cave_5.png");
+
+    // MENU BACKGROUND
 
     this.load.image("menu-bg", "assets/background01.png", {});
+
+    // BACK BUTTON
 
     this.load.image("back", "assets/back.png");
 
     // PROJECTILES
     this.load.image("arrow", "assets/weapons/arrow.png");
-
-    // this.load.image("fireball-1", "assets/weapons/improved_fireball_001.png");
-    // this.load.image("fireball-2", "assets/weapons/improved_fireball_002.png");
-    // this.load.image("fireball-3", "assets/weapons/improved_fireball_003.png");
 
     // COLLECTIBLES
 
