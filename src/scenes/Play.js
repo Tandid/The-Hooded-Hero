@@ -110,7 +110,7 @@ class Play extends Phaser.Scene {
     const collectables = map.getObjectLayer("collectables");
     const traps = map.createStaticLayer("traps", tileset);
 
-    platformsColliders.setCollisionByProperty({ collides: true });
+    platformsColliders.setCollisionByProperty({ collides: true }).setAlpha(0);
     traps.setCollisionByExclusion(-1);
 
     return {
