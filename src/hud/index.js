@@ -6,7 +6,7 @@ class Hud extends Phaser.GameObjects.Container {
 
     scene.add.existing(this);
 
-    const { rightTopCorner } = scene.config;
+    const { rightTopCorner, leftTopCorner } = scene.config;
 
     this.containerWidth = 100;
     this.setPosition(
@@ -18,6 +18,7 @@ class Hud extends Phaser.GameObjects.Container {
 
     this.fontSize = 50;
     this.setupList();
+    this.createPlayerIcon();
   }
 
   setupList() {
@@ -30,6 +31,28 @@ class Hud extends Phaser.GameObjects.Container {
       lineHeight += 20;
     });
   }
+
+  createPlayerIcon() {
+    // const btn = this.add
+    //   .image(leftTopCorner.x, leftTopCorner.y, "restart")
+    //   .setOrigin(1)
+    //   .setScrollFactor(0)
+    //   .setScale(0.8)
+    //   .setInteractive()
+    //   .setDepth(2);
+    // const btnbackground = this.add
+    //   .image(leftTopCorner.x, leftTopCorner.y, "small-red-button")
+    //   .setOrigin(1)
+    //   .setScrollFactor(0)
+    //   .setScale(1)
+    //   .setInteractive()
+    //   .setDepth(1);
+    // btn.on("pointerup", () => {
+    //   this.scene.restart();
+    // });
+  }
+
+  // createPlayerIcon() {}
 
   createScoreboard() {
     const scoreText = this.scene.add.text(0, 0, "0", {

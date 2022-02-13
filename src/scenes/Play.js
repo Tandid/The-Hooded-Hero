@@ -168,7 +168,7 @@ class Play extends Phaser.Scene {
       this.forestImageTwo = this.add
         .tileSprite(
           0,
-          400,
+          300,
           this.config.width + 3000,
           this.config.height + 800,
           "bg-forest-2"
@@ -194,7 +194,7 @@ class Play extends Phaser.Scene {
       this.mountainImage = this.add
         .tileSprite(
           0,
-          100,
+          200,
           this.config.width + 3000,
           this.config.height + 800,
           "mountain-bg"

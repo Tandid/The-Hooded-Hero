@@ -34,6 +34,7 @@ class Player extends Phaser.Physics.Arcade.Sprite {
     this.cursors = this.scene.input.keyboard.createCursorKeys();
 
     this.jumpSound = this.scene.sound.add("jump", { volume: 0.2 });
+    this.takeDamageSound = this.scene.sound.add("damage", { volume: 0.2 });
     this.projectileSound = this.scene.sound.add("projectile-launch", {
       volume: 0.4,
     });
@@ -183,6 +184,7 @@ class Player extends Phaser.Physics.Arcade.Sprite {
   }
 
   takesHit(source) {
+    this.takeDamageSound.play();
     if (this.hasBeenHit) {
       return;
     }
