@@ -134,6 +134,16 @@ class Preload extends Phaser.Scene {
     // DEATH ANIMATIONS
 
     this.load.spritesheet(
+      "player-death",
+      "assets/deathAnims/player_death.png",
+      {
+        frameWidth: 300,
+        frameHeight: 256,
+        // spacing: 32,
+      }
+    );
+
+    this.load.spritesheet(
       "archer-death",
       "assets/deathAnims/archer_death.png",
       {

@@ -83,7 +83,7 @@ class Player extends Phaser.Physics.Arcade.Sprite {
   }
 
   update() {
-    if (this.hasBeenHit || this.isSliding || !this.body) {
+    if (this.hasBeenHit || !this.body) {
       return;
     }
 
@@ -189,6 +189,7 @@ class Player extends Phaser.Physics.Arcade.Sprite {
 
     this.health -= source.damage || source.properties.damage || 0;
     if (this.health <= 0) {
+      // this.play("player-die", true);
       EventEmitter.emit("PLAYER_LOSE");
       return;
     }
@@ -200,7 +201,7 @@ class Player extends Phaser.Physics.Arcade.Sprite {
     this.hp.decrease(this.health);
     source.deliversHit && source.deliversHit(this);
 
-    this.scene.time.delayedCall(1000, () => {
+    this.scene.time.delayedCall(500, () => {
       this.hasBeenHit = false;
       hitAnim.stop();
       this.clearTint();

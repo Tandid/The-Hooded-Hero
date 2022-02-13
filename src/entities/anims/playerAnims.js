@@ -33,4 +33,11 @@ export default (anims) => {
     frameRate: 30,
     repeat: 0,
   });
+
+  anims.create({
+    key: "player-die",
+    frames: anims.generateFrameNumbers("player-death", { start: 0, end: 8 }),
+    frameRate: 10,
+    repeat: 0,
+  });
 };

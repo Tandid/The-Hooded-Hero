@@ -197,39 +197,40 @@ class Play extends Phaser.Scene {
           bgObject.x,
           bgObject.y,
           this.config.width * 3,
-          bgObject.height * 1.75,
+          bgObject.height * 2,
           "bg-cave-1"
         )
         .setOrigin(0.5)
         .setDepth(-10)
+        .setScale(1)
         .setScrollFactor(0, 2);
 
       this.caveImageTwo = this.add
         .tileSprite(0, 0, this.config.width, this.config.height, "bg-cave-2")
-        .setOrigin(0, 0)
+        .setOrigin(0.5, 0)
         .setDepth(-11)
-        .setScale(1)
+        .setScale(3, 2)
         .setScrollFactor(0, 1);
 
       this.caveImageThree = this.add
         .tileSprite(0, 0, this.config.width, this.config.height, "bg-cave-3")
-        .setOrigin(0, 0)
+        .setOrigin(0.5, 0)
         .setDepth(-12)
-        .setScale(1)
+        .setScale(3, 2)
         .setScrollFactor(0, 1);
 
       this.caveImageFour = this.add
         .tileSprite(0, 0, this.config.width, this.config.height, "bg-cave-4")
-        .setOrigin(0, 0)
+        .setOrigin(0.5, 0)
         .setDepth(-13)
-        .setScale(1)
+        .setScale(3, 2)
         .setScrollFactor(0, 1);
 
       this.caveImageFive = this.add
         .tileSprite(0, 0, this.config.width, this.config.height, "bg-cave-5")
-        .setOrigin(0, 0)
+        .setOrigin(0.5, 0)
         .setDepth(-14)
-        .setScale(1)
+        .setScale(3, 2)
         .setScrollFactor(0, 1);
     }
   }
