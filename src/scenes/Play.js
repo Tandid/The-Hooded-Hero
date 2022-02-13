@@ -53,7 +53,8 @@ class Play extends Phaser.Scene {
     });
 
     this.createBG(map);
-    this.createBackButton();
+    this.createSettingsButton();
+    this.createHomeButton();
     this.createEndOfLevel(playerZones.end, player);
     this.setupFollowupCameraOn(player);
 
@@ -235,12 +236,12 @@ class Play extends Phaser.Scene {
     }
   }
 
-  createBackButton() {
+  createSettingsButton() {
     const btn = this.add
       .image(
         this.config.rightBottomCorner.x,
         this.config.rightBottomCorner.y,
-        "back"
+        "settings-button"
       )
       .setOrigin(1)
       .setScrollFactor(0)
@@ -248,6 +249,36 @@ class Play extends Phaser.Scene {
       .setInteractive();
 
     btn.on("pointerup", () => {
+      this.scene.start("MenuScene");
+    });
+  }
+
+  createHomeButton() {
+    const home = this.add
+      .image(
+        this.config.rightBottomCorner.x - 15,
+        this.config.rightBottomCorner.y - 115,
+        "home"
+      )
+      .setOrigin(1)
+      .setScrollFactor(0)
+      .setScale(0.9)
+      .setInteractive()
+      .setDepth(2);
+
+    const btnbackground = this.add
+      .image(
+        this.config.rightBottomCorner.x - 5,
+        this.config.rightBottomCorner.y - 110,
+        "small-blue-button"
+      )
+      .setOrigin(1)
+      .setScrollFactor(0)
+      .setScale(1)
+      .setInteractive()
+      .setDepth(1);
+
+    home.on("pointerup", () => {
       this.scene.start("MenuScene");
     });
   }

@@ -45,7 +45,7 @@ class Preload extends Phaser.Scene {
 
     // UI
     this.load.image("coin", "assets/ui/Icons/icon_small_coin.png");
-    this.load.image("back", "assets/ui/Icons/icon_big_setting.png");
+    this.load.image("settings-button", "assets/ui/Icons/icon_big_setting.png");
     this.load.image("home", "assets/ui/Icons/icon_small_home.png");
 
     this.load.image("blue-button", "assets/ui/Buttons/button_blue.png");
