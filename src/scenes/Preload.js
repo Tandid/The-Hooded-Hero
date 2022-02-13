@@ -44,10 +44,25 @@ class Preload extends Phaser.Scene {
     this.load.image("arrow", "assets/weapons/arrow.png");
 
     // UI
+
+    this.load.image("header", "assets/ui/Panels/header.png");
+    this.load.image("header-shadow", "assets/ui/Panels/header_shadow.png");
+    this.load.image("panel-1", "assets/ui/Panels/panel_1.png");
+    this.load.image("panel-2", "assets/ui/Panels/panel_2.png");
+    this.load.image("panel-3", "assets/ui/Panels/panel_3.png");
+    this.load.image("panel-4", "assets/ui/Panels/panel_4.png");
+
     this.load.image("coin", "assets/ui/Icons/icon_small_coin.png");
     this.load.image("settings-button", "assets/ui/Icons/icon_big_setting.png");
     this.load.image("home", "assets/ui/Icons/icon_small_home.png");
     this.load.image("restart", "assets/ui/Icons/icon_small_restart.png");
+    this.load.image("small-close", "assets/ui/Icons/icon_small_close.png");
+
+    this.load.image("left-key", "assets/ui/Icons/arrow_left_icon.png");
+    this.load.image("right-key", "assets/ui/Icons/arrow_right_icon.png");
+    this.load.image("space-key", "assets/ui/Icons/spacebar_icon.png");
+    this.load.image("q-key", "assets/ui/Icons/Q_icon.png");
+    this.load.image("e-key", "assets/ui/Icons/E_icon.png");
 
     this.load.image("blue-button", "assets/ui/Buttons/button_blue.png");
     this.load.image("brown-button", "assets/ui/Buttons/button_brown.png");
@@ -86,7 +101,7 @@ class Preload extends Phaser.Scene {
     );
     this.load.image(
       "small-yellow-button",
-      "assets/ui/Icons/button_square_yellow.png"
+      "assets/ui/Buttons/button_square_yellow.png"
     );
 
     // COLLECTIBLES

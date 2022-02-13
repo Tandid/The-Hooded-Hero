@@ -3,8 +3,9 @@ import Phaser from "phaser";
 import PlayScene from "./scenes/Play";
 import PreloadScene from "./scenes/Preload";
 import MenuScene from "./scenes/Menu";
-import SettingsScene from "./scenes/Menu";
+import SettingsScene from "./scenes/Settings";
 import LevelScene from "./scenes/Levels";
+import ControlsScene from "./scenes/Controls";
 import CreditsScene from "./scenes/Credits";
 // 1600px
 
@@ -40,6 +41,7 @@ const Scenes = [
   MenuScene,
   SettingsScene,
   LevelScene,
+  ControlsScene,
   PlayScene,
   CreditsScene,
 ];

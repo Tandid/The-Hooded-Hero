@@ -494,14 +494,13 @@ class Play extends Phaser.Scene {
       this.forestImageThree.tilePositionX = this.cameras.main.scrollX * 0.3;
       this.mountainImage.tilePositionX = this.cameras.main.scrollX * 0.2;
       this.skyImage.tilePositionX = this.cameras.main.scrollX * 0.1;
+    } else {
+      this.caveImageOne.tilePositionX = this.cameras.main.scrollX * 0.4;
+      this.caveImageTwo.tilePositionX = this.cameras.main.scrollX * 0.3;
+      this.caveImageThree.tilePositionX = this.cameras.main.scrollX * 0.3;
+      this.caveImageFour.tilePositionX = this.cameras.main.scrollX * 0.2;
+      this.caveImageFive.tilePositionX = this.cameras.main.scrollX * 0.2;
     }
-    // if (level > 1) {
-    //   this.caveImageOne.tilePositionX = this.cameras.main.scrollX * 0.4;
-    //   this.caveImageTwo.tilePositionX = this.cameras.main.scrollX * 0.3;
-    //   this.caveImageThree.tilePositionX = this.cameras.main.scrollX * 0.3;
-    //   this.caveImageFour.tilePositionX = this.cameras.main.scrollX * 0.2;
-    //   this.caveImageFive.tilePositionX = this.cameras.main.scrollX * 0.2;
-    // }
   }
 }
 
