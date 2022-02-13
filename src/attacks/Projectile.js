@@ -15,8 +15,6 @@ class Projectile extends Phaser.Physics.Arcade.Sprite {
     this.damage = 20;
     this.cooldown = 250;
 
-    // this.body.setSize(this.width - 13, this.height - 20);
-
     this.effectManager = new EffectManager(this.scene);
   }
 

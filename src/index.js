@@ -10,7 +10,7 @@ import CreditsScene from "./scenes/Credits";
 const MAP_WIDTH = 16000;
 
 const WIDTH = document.body.offsetWidth;
-const HEIGHT = 800;
+const HEIGHT = 600;
 const ZOOM_FACTOR = 0.5;
 
 const SHARED_CONFIG = {
