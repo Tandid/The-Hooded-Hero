@@ -21,16 +21,12 @@ class Spider extends Enemy {
     if (!this.active) {
       return;
     }
-    if (this.isPlayingAnims("spider-hurt")) {
-      return;
+
+    if (this.health > 0) {
+      this.play("spider-run", true);
+    } else {
+      this.play("spider-die", true);
     }
-
-    this.play("spider-idle", true);
-  }
-
-  takesHit(source) {
-    super.takesHit(source);
-    this.play("spider-hurt", true);
   }
 }
 

@@ -47,24 +47,20 @@ class Archer extends Enemy {
     if (!this.active) {
       return;
     }
-    if (this.isPlayingAnims("archer-hurt")) {
-      return;
-    }
 
     if (this.isPlayingAnims("archer-attack")) {
       return;
     }
 
-    this.play("archer-walk", true);
+    if (this.health > 0) {
+      this.play("archer-run", true);
+    } else {
+      this.play("archer-die", true);
+    }
   }
 
   getAttackDelay() {
     return Phaser.Math.Between(1000, 4000);
-  }
-
-  takesHit(source) {
-    super.takesHit(source);
-    this.play("archer-hurt", true);
   }
 }
 

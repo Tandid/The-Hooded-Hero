@@ -21,16 +21,12 @@ class Skeleton extends Enemy {
     if (!this.active) {
       return;
     }
-    if (this.isPlayingAnims("skeleton-hurt")) {
-      return;
+
+    if (this.health > 0) {
+      this.play("skeleton-run", true);
+    } else {
+      this.play("skeleton-die", true);
     }
-
-    this.play("skeleton-idle", true);
-  }
-
-  takesHit(source) {
-    super.takesHit(source);
-    this.play("skeleton-hurt", true);
   }
 }
 

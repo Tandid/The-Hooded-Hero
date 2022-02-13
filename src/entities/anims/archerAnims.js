@@ -1,16 +1,9 @@
 export default (anims) => {
   anims.create({
-    key: "archer-walk",
+    key: "archer-run",
     frames: anims.generateFrameNumbers("archer", { start: 0, end: 10 }),
     frameRate: 15,
     repeat: -1,
-  });
-
-  anims.create({
-    key: "archer-hurt",
-    frames: anims.generateFrameNumbers("archer", { start: 9, end: 10 }),
-    frameRate: 10,
-    repeat: 0,
   });
 
   anims.create({
@@ -22,7 +15,7 @@ export default (anims) => {
 
   anims.create({
     key: "archer-die",
-    frames: anims.generateFrameNumbers("archer-death", { start: 13, end: 25 }),
+    frames: anims.generateFrameNumbers("archer-death", { start: 0, end: 5 }),
     frameRate: 60,
     repeat: 0,
   });

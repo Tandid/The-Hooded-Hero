@@ -1,16 +1,9 @@
 export default (anims) => {
   anims.create({
-    key: "slime-idle",
+    key: "slime-run",
     frames: anims.generateFrameNumbers("slime", { start: 0, end: 11 }),
     frameRate: 15,
     repeat: -1,
-  });
-
-  anims.create({
-    key: "slime-hurt",
-    frames: anims.generateFrameNumbers("slime", { start: 7, end: 8 }),
-    frameRate: 10,
-    repeat: 0,
   });
 
   anims.create({

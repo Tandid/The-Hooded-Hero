@@ -28,7 +28,6 @@ class Enemy extends Phaser.Physics.Arcade.Sprite {
     this.currentPatrolDistance = 0;
 
     this.health = 100;
-    console.log(this.health);
     this.damage = 10;
 
     this.platformCollidersLayer = null;
@@ -41,6 +40,7 @@ class Enemy extends Phaser.Physics.Arcade.Sprite {
     this.setImmovable(true);
     this.setOrigin(0.5, 1);
     this.setVelocityX(this.speed);
+    console.log(this);
   }
 
   initEvents() {
@@ -127,10 +127,10 @@ class Enemy extends Phaser.Physics.Arcade.Sprite {
     this.health -= source.damage;
 
     if (this.health <= 0) {
-      // this.play("slime-die", true);
-      this.setVelocity(0, -200);
+      this.setVelocity(50, -50);
       this.body.checkCollision.none = true;
       this.setCollideWorldBounds(false);
+      // setTimeout(() => this.destroy(), 1000);
     }
   }
 }

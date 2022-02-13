@@ -21,23 +21,12 @@ class Slime extends Enemy {
     if (!this.active) {
       return;
     }
-    if (this.isPlayingAnims("slime-hurt")) {
-      return;
+    if (this.health > 0) {
+      this.play("slime-run", true);
+    } else {
+      this.play("slime-die", true);
     }
-    if (this.isPlayingAnims("slime-idle")) {
-      return;
-    }
-    // if (this.isPlayingAnims("slime-die")) {
-    //   return;
-    // }
-
-    this.play("slime-idle", true);
-    // this.play("slime-die", true);
   }
-
-  // takesHit(source) {
-
-  // }
 }
 
 export default Slime;

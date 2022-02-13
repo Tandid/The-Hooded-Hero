@@ -9,7 +9,7 @@ class Bee extends Enemy {
 
   init() {
     super.init();
-    this.health = 150;
+    this.health = 120;
     this.damage = 20;
     this.setSize(120, 140);
   }
@@ -20,16 +20,12 @@ class Bee extends Enemy {
     if (!this.active) {
       return;
     }
-    if (this.isPlayingAnims("bee-hurt")) {
-      return;
+
+    if (this.health > 0) {
+      this.play("bee-fly", true);
+    } else {
+      this.play("bee-die", true);
     }
-
-    this.play("bee-idle", true);
-  }
-
-  takesHit(source) {
-    super.takesHit(source);
-    this.play("bee-hurt", true);
   }
 }
 
