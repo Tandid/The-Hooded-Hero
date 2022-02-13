@@ -20,6 +20,29 @@ class Play extends Phaser.Scene {
 
     this.playBgMusic();
     this.collectSound = this.sound.add("coin-pickup", { volume: 0.2 });
+    console.log(this.config.leftTopCorner);
+
+    this.add
+      .image(
+        this.config.leftTopCorner.x + 100,
+        this.config.leftTopCorner.y + 100,
+        "portrait"
+      )
+      .setOrigin(0.5)
+      .setScale(1)
+      .setDepth(1)
+      .setScrollFactor(0);
+
+    this.add
+      .image(
+        this.config.leftTopCorner.x + 100,
+        this.config.leftTopCorner.y + 100,
+        "player-icon"
+      )
+      .setOrigin(0.5)
+      .setScale(1.1)
+      .setDepth(2)
+      .setScrollFactor(0);
 
     const map = this.createMap();
     // const level = this.getCurrentLevel();
@@ -312,6 +335,20 @@ class Play extends Phaser.Scene {
         this.scene.resume();
       }, 1000);
     });
+  }
+
+  createPlayerIcon() {
+    const home = this.add
+      .image(
+        this.config.rightBottomCorner.x - 15,
+        this.config.rightBottomCorner.y - 115,
+        "player-icon"
+      )
+      .setOrigin(1)
+      .setScrollFactor(0)
+      .setScale(0.9)
+      .setInteractive()
+      .setDepth(2);
   }
 
   createHomeButton() {

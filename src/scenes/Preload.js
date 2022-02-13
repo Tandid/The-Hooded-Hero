@@ -58,6 +58,9 @@ class Preload extends Phaser.Scene {
     this.load.image("restart", "assets/ui/Icons/icon_small_restart.png");
     this.load.image("small-close", "assets/ui/Icons/icon_small_close.png");
 
+    this.load.image("player-icon", "assets/ui/Status/portrait_character.png");
+    this.load.image("portrait", "assets/ui/Status/portrait.png");
+
     this.load.image("left-key", "assets/ui/Icons/arrow_left_icon.png");
     this.load.image("right-key", "assets/ui/Icons/arrow_right_icon.png");
     this.load.image("space-key", "assets/ui/Icons/spacebar_icon.png");

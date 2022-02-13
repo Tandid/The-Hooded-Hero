@@ -34,7 +34,7 @@ class HealthBar {
     this.bar.clear();
     const { width, height } = this.size;
 
-    const margin = 2;
+    const margin = 3;
 
     this.bar.fillStyle(0x000);
     this.bar.fillRect(x, y, width + margin * 2, height + margin * 2);
