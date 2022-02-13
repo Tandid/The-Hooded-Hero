@@ -4,7 +4,7 @@ class BaseScene extends Phaser.Scene {
   constructor(key, config) {
     super(key);
     this.config = config;
-    this.screenCenter = [config.width / 2, config.height / 2];
+    this.screenCenter = [config.width / 2, config.height / 4];
     this.fontSize = 75;
     this.lineHeight = 82;
     this.fontOptions = { fontSize: `${this.fontSize}px`, fill: "#713E01" };
@@ -17,7 +17,7 @@ class BaseScene extends Phaser.Scene {
       const backButton = this.add
         .image(this.config.width - 10, this.config.height - 10, "back")
         .setOrigin(1)
-        .setScale(2)
+        .setScale(0.5)
         .setInteractive();
 
       backButton.on("pointerup", () => {

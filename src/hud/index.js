@@ -8,14 +8,15 @@ class Hud extends Phaser.GameObjects.Container {
 
     const { rightTopCorner } = scene.config;
 
-    this.containerWidth = 70;
+    this.containerWidth = 100;
     this.setPosition(
       rightTopCorner.x - this.containerWidth,
       rightTopCorner.y + 10
     );
+
     this.setScrollFactor(0);
 
-    this.fontSize = 20;
+    this.fontSize = 50;
     this.setupList();
   }
 
@@ -37,8 +38,8 @@ class Hud extends Phaser.GameObjects.Container {
     });
     const scoreImage = this.scene.add
       .image(scoreText.width + 5, 0, "coin")
-      .setOrigin(0)
-      .setScale(1.3);
+      .setOrigin(1.5, 0)
+      .setScale(1);
 
     const scoreBoard = this.scene.add.container(0, 0, [scoreText, scoreImage]);
     scoreBoard.setName("scoreBoard");

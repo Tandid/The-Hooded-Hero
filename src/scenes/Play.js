@@ -244,7 +244,7 @@ class Play extends Phaser.Scene {
       )
       .setOrigin(1)
       .setScrollFactor(0)
-      .setScale(2)
+      .setScale(1)
       .setInteractive();
 
     btn.on("pointerup", () => {
@@ -260,6 +260,7 @@ class Play extends Phaser.Scene {
   }
   createCollectables(collectableLayer) {
     const collectables = new Collectables(this).setDepth(-1);
+    console.log(collectables);
 
     collectables.addFromLayer(collectableLayer);
 

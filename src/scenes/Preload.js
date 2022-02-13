@@ -40,16 +40,55 @@ class Preload extends Phaser.Scene {
 
     this.load.image("menu-bg", "assets/background01.png", {});
 
-    // BACK BUTTON
-
-    this.load.image("back", "assets/back.png");
-
     // PROJECTILES
     this.load.image("arrow", "assets/weapons/arrow.png");
 
-    // COLLECTIBLES
+    // UI
+    this.load.image("coin", "assets/ui/Icons/icon_small_coin.png");
+    this.load.image("back", "assets/ui/Icons/icon_big_setting.png");
+    this.load.image("home", "assets/ui/Icons/icon_small_home.png");
 
-    this.load.image("coin", "assets/collectables/coin_2.png");
+    this.load.image("blue-button", "assets/ui/Buttons/button_blue.png");
+    this.load.image("brown-button", "assets/ui/Buttons/button_brown.png");
+    this.load.image("red-button", "assets/ui/Buttons/button_red.png");
+    this.load.image("green-button", "assets/ui/Buttons/button_green.png");
+    this.load.image("yellow-button", "assets/ui/Buttons/button_yellow.png");
+
+    this.load.image(
+      "blue-long-button",
+      "assets/ui/Buttons/button_color_blue.png"
+    );
+    this.load.image(
+      "brown-long-button",
+      "assets/ui/Buttons/button_color_brown.png"
+    );
+    this.load.image(
+      "red-long-button",
+      "assets/ui/Buttons/button_color_red.png"
+    );
+    this.load.image(
+      "green-long-button",
+      "assets/ui/Buttons/button_color_green.png"
+    );
+    this.load.image(
+      "yellow-long-button",
+      "assets/ui/Buttons/button_color_yellow.png"
+    );
+
+    this.load.image(
+      "small-blue-button",
+      "assets/ui/Buttons/button_small_blue.png"
+    );
+    this.load.image(
+      "small-red-button",
+      "assets/ui/Buttons/button_small_red.png"
+    );
+    this.load.image(
+      "small-yellow-button",
+      "assets/ui/Icons/button_square_yellow.png"
+    );
+
+    // COLLECTIBLES
 
     this.load.image("coin-1", "assets/collectables/coin_1.png");
     this.load.image("coin-2", "assets/collectables/coin_2.png");
