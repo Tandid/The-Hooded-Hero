@@ -3,6 +3,7 @@ import Phaser from "phaser";
 import PlayScene from "./scenes/Play";
 import PreloadScene from "./scenes/Preload";
 import MenuScene from "./scenes/Menu";
+import SettingsScene from "./scenes/Menu";
 import LevelScene from "./scenes/Levels";
 import CreditsScene from "./scenes/Credits";
 // 1600px
@@ -34,7 +35,14 @@ const SHARED_CONFIG = {
   lastLevel: 3,
 };
 
-const Scenes = [PreloadScene, MenuScene, LevelScene, PlayScene, CreditsScene];
+const Scenes = [
+  PreloadScene,
+  MenuScene,
+  SettingsScene,
+  LevelScene,
+  PlayScene,
+  CreditsScene,
+];
 const createScene = (Scene) => new Scene(SHARED_CONFIG);
 const initScenes = () => Scenes.map(createScene);
 

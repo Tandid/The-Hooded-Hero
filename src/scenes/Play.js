@@ -16,6 +16,7 @@ class Play extends Phaser.Scene {
   create({ gameStatus }) {
     this.score = 0;
     this.hud = new Hud(this, 0, 0);
+    this.isPaused = false;
 
     this.playBgMusic();
     this.collectSound = this.sound.add("coin-pickup", { volume: 0.2 });
@@ -162,34 +163,58 @@ class Play extends Phaser.Scene {
         .setOrigin(0.5)
         .setDepth(-10)
         .setScale(1)
-        .setScrollFactor(0, 2);
+        .setScrollFactor(0, 1);
 
       this.forestImageTwo = this.add
-        .tileSprite(0, 0, this.config.width, this.config.height, "bg-forest-2")
+        .tileSprite(
+          0,
+          400,
+          this.config.width + 3000,
+          this.config.height + 800,
+          "bg-forest-2"
+        )
         .setOrigin(0.5, 0)
         .setDepth(-11)
-        .setScale(3)
+        .setScale(1)
         .setScrollFactor(0, 1);
 
       this.forestImageThree = this.add
-        .tileSprite(0, 0, this.config.width, this.config.height, "bg-forest-3")
+        .tileSprite(
+          0,
+          300,
+          this.config.width + 3000,
+          this.config.height + 800,
+          "bg-forest-3"
+        )
         .setOrigin(0.5, 0)
         .setDepth(-12)
-        .setScale(3)
+        .setScale(1)
         .setScrollFactor(0, 1);
 
       this.mountainImage = this.add
-        .tileSprite(0, 0, this.config.width, this.config.height, "mountain-bg")
+        .tileSprite(
+          0,
+          100,
+          this.config.width + 3000,
+          this.config.height + 800,
+          "mountain-bg"
+        )
         .setOrigin(0.5, 0)
         .setDepth(-13)
-        .setScale(3, 1.75)
+        .setScale(1)
         .setScrollFactor(0, 1);
 
       this.skyImage = this.add
-        .tileSprite(0, 0, this.config.width, this.config.height, "sky-bg")
+        .tileSprite(
+          0,
+          0,
+          this.config.width + 3000,
+          this.config.height + 800,
+          "sky-bg"
+        )
         .setOrigin(0.5, 0)
         .setDepth(-14)
-        .setScale(3, 1.75)
+        .setScale(1)
         .setScrollFactor(0, 1);
     }
 
@@ -198,41 +223,65 @@ class Play extends Phaser.Scene {
         .tileSprite(
           bgObject.x,
           bgObject.y,
-          this.config.width * 3,
-          bgObject.height * 2,
+          this.config.width + 3000,
+          bgObject.height + 800,
           "bg-cave-1"
         )
         .setOrigin(0.5)
         .setDepth(-10)
-        .setScale(1)
-        .setScrollFactor(0, 2);
+        .setScale(1.6)
+        .setScrollFactor(0, 1);
 
       this.caveImageTwo = this.add
-        .tileSprite(0, 0, this.config.width, this.config.height, "bg-cave-2")
+        .tileSprite(
+          0,
+          0,
+          this.config.width + 3000,
+          this.config.height + 800,
+          "bg-cave-2"
+        )
         .setOrigin(0.5, 0)
         .setDepth(-11)
-        .setScale(3, 2)
+        .setScale(1.5)
         .setScrollFactor(0, 1);
 
       this.caveImageThree = this.add
-        .tileSprite(0, 0, this.config.width, this.config.height, "bg-cave-3")
+        .tileSprite(
+          0,
+          0,
+          this.config.width + 3000,
+          this.config.height + 800,
+          "bg-cave-3"
+        )
         .setOrigin(0.5, 0)
         .setDepth(-12)
-        .setScale(3, 2)
+        .setScale(1.5)
         .setScrollFactor(0, 1);
 
       this.caveImageFour = this.add
-        .tileSprite(0, 0, this.config.width, this.config.height, "bg-cave-4")
+        .tileSprite(
+          0,
+          0,
+          this.config.width + 3000,
+          this.config.height + 800,
+          "bg-cave-4"
+        )
         .setOrigin(0.5, 0)
         .setDepth(-13)
-        .setScale(3, 2)
+        .setScale(1.5)
         .setScrollFactor(0, 1);
 
       this.caveImageFive = this.add
-        .tileSprite(0, 0, this.config.width, this.config.height, "bg-cave-5")
+        .tileSprite(
+          0,
+          0,
+          this.config.width + 3000,
+          this.config.height + 800,
+          "bg-cave-5"
+        )
         .setOrigin(0.5, 0)
         .setDepth(-14)
-        .setScale(3, 2)
+        .setScale(1.5)
         .setScrollFactor(0, 1);
     }
   }
@@ -249,8 +298,19 @@ class Play extends Phaser.Scene {
       .setScale(1)
       .setInteractive();
 
-    btn.on("pointerup", () => {
-      this.scene.start("MenuScene");
+    // btn.on("pointerup", () => {
+    //   this.scene.start("SettingsScene");
+    // });
+
+    btn.on("pointerdown", () => {
+      this.isPaused = true;
+      this.physics.pause();
+      this.scene.pause();
+      this.scene.launch("SettingsScene");
+      this.scene.stop();
+      setTimeout(() => {
+        this.scene.resume();
+      }, 1000);
     });
   }
 
@@ -285,7 +345,7 @@ class Play extends Phaser.Scene {
   }
 
   createRestartButton() {
-    const home = this.add
+    const btn = this.add
       .image(
         this.config.rightBottomCorner.x - 20,
         this.config.rightBottomCorner.y - 225,
@@ -309,7 +369,7 @@ class Play extends Phaser.Scene {
       .setInteractive()
       .setDepth(1);
 
-    home.on("pointerup", () => {
+    btn.on("pointerup", () => {
       this.scene.restart();
     });
   }
@@ -429,8 +489,8 @@ class Play extends Phaser.Scene {
   update() {
     const level = this.getCurrentLevel();
     if (level === 1) {
-      this.forestImageOne.tilePositionX = this.cameras.main.scrollX * 0.4;
-      this.forestImageTwo.tilePositionX = this.cameras.main.scrollX * 0.3;
+      this.forestImageOne.tilePositionX = this.cameras.main.scrollX * 0.3;
+      this.forestImageTwo.tilePositionX = this.cameras.main.scrollX * 0.2;
       this.forestImageThree.tilePositionX = this.cameras.main.scrollX * 0.3;
       this.mountainImage.tilePositionX = this.cameras.main.scrollX * 0.2;
       this.skyImage.tilePositionX = this.cameras.main.scrollX * 0.1;
@@ -440,7 +500,7 @@ class Play extends Phaser.Scene {
     //   this.caveImageTwo.tilePositionX = this.cameras.main.scrollX * 0.3;
     //   this.caveImageThree.tilePositionX = this.cameras.main.scrollX * 0.3;
     //   this.caveImageFour.tilePositionX = this.cameras.main.scrollX * 0.2;
-    //   this.caveImageFive.tilePositionX = this.cameras.main.scrollX * 0.1;
+    //   this.caveImageFive.tilePositionX = this.cameras.main.scrollX * 0.2;
     // }
   }
 }
