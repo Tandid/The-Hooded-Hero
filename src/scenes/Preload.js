@@ -10,7 +10,7 @@ class Preload extends Phaser.Scene {
 
     this.load.tilemapTiledJSON("level_1", "assets/level_1.json");
     this.load.tilemapTiledJSON("level_2", "assets/level_2.json");
-    // this.load.tilemapTiledJSON("level_2", "assets/level_3.json");
+    this.load.tilemapTiledJSON("level_3", "assets/level_3.json");
 
     // TILESETS
 
@@ -201,8 +201,10 @@ class Preload extends Phaser.Scene {
   startGame() {
     this.registry.set("level", 1);
     this.registry.set("level", 2);
+    this.registry.set("level", 3);
     this.registry.set("unlocked-levels", 1);
     this.registry.set("unlocked-levels", 2);
+    this.registry.set("unlocked-levels", 3);
     this.scene.start("MenuScene");
   }
 }
