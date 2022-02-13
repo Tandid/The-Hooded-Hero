@@ -9,6 +9,8 @@ class Bee extends Enemy {
 
   init() {
     super.init();
+    this.health = 150;
+    this.damage = 20;
     this.setSize(120, 140);
   }
 

@@ -27,7 +27,8 @@ class Enemy extends Phaser.Physics.Arcade.Sprite {
     this.maxPatrolDistance = 1000;
     this.currentPatrolDistance = 0;
 
-    this.health = 200;
+    this.health = 100;
+    console.log(this.health);
     this.damage = 10;
 
     this.platformCollidersLayer = null;
@@ -101,12 +102,32 @@ class Enemy extends Phaser.Physics.Arcade.Sprite {
   // Enemy is source of the damage for the player
   deliversHit() {}
 
+  playDamageTween() {
+    return this.scene.tweens.add({
+      targets: this,
+      duration: 100,
+      repeat: -1,
+      tint: 0xffffff,
+    });
+  }
+
   takesHit(source) {
+    if (this.hasBeenHit) {
+      return;
+    }
+    this.hasBeenHit = true;
     source.deliversHit(this);
+    const hitAnim = this.playDamageTween();
+    this.scene.time.delayedCall(250, () => {
+      this.hasBeenHit = false;
+      hitAnim.stop();
+      this.clearTint();
+    });
+
     this.health -= source.damage;
 
     if (this.health <= 0) {
-      this.setTint(0xff0000);
+      // this.play("slime-die", true);
       this.setVelocity(0, -200);
       this.body.checkCollision.none = true;
       this.setCollideWorldBounds(false);

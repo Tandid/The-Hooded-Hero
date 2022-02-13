@@ -11,6 +11,8 @@ class Archer extends Enemy {
   init() {
     super.init();
     this.speed = 150;
+    this.health = 200;
+    this.damage = 20;
 
     this.projectiles = new Projectiles(this.scene, "arrow");
     this.timeFromLastAttack = 0;
