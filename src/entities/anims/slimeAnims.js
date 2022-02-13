@@ -12,4 +12,11 @@ export default (anims) => {
     frameRate: 10,
     repeat: 0,
   });
+
+  anims.create({
+    key: "slime-die",
+    frames: anims.generateFrameNumbers("slime-death", { start: 0, end: 12 }),
+    frameRate: 10,
+    repeat: 0,
+  });
 };

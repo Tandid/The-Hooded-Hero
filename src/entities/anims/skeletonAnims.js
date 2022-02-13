@@ -12,4 +12,14 @@ export default (anims) => {
     frameRate: 10,
     repeat: 0,
   });
+
+  anims.create({
+    key: "skeleton-die",
+    frames: anims.generateFrameNumbers("skeleton-death", {
+      start: 0,
+      end: 5,
+    }),
+    frameRate: 10,
+    repeat: 0,
+  });
 };

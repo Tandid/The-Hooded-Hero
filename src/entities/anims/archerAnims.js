@@ -19,4 +19,11 @@ export default (anims) => {
     frameRate: 60,
     repeat: 0,
   });
+
+  anims.create({
+    key: "archer-die",
+    frames: anims.generateFrameNumbers("archer-death", { start: 13, end: 25 }),
+    frameRate: 60,
+    repeat: 0,
+  });
 };

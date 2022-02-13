@@ -131,6 +131,56 @@ class Preload extends Phaser.Scene {
       // spacing: 32,
     });
 
+    // DEATH ANIMATIONS
+
+    this.load.spritesheet(
+      "archer-death",
+      "assets/deathAnims/archer_death.png",
+      {
+        frameWidth: 453,
+        frameHeight: 193,
+        // spacing: 32,
+      }
+    );
+
+    this.load.spritesheet("bee-death", "assets/deathAnims/bee_death.png", {
+      frameWidth: 370,
+      frameHeight: 305,
+      // spacing: 32,
+    });
+
+    this.load.spritesheet(
+      "skeleton-death",
+      "assets/deathAnims/skeleton_death.png",
+      {
+        frameWidth: 460,
+        frameHeight: 180,
+        // spacing: 32,
+      }
+    );
+
+    this.load.spritesheet("slime-death", "assets/deathAnims/slime_death.png", {
+      frameWidth: 258,
+      frameHeight: 153,
+      // spacing: 32,
+    });
+
+    this.load.spritesheet(
+      "spider-death",
+      "assets/deathAnims/spider_death.png",
+      {
+        frameWidth: 294,
+        frameHeight: 206,
+        // spacing: 32,
+      }
+    );
+
+    this.load.spritesheet("boss-death", "assets/deathAnims/archer_death.png", {
+      frameWidth: 184,
+      frameHeight: 126,
+      // spacing: 32,
+    });
+
     // THEME MUSIC
     this.load.audio("forest-theme", "assets/music/forest_theme.wav");
     this.load.audio("cave-theme", "assets/music/cave_theme.wav");
