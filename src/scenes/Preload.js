@@ -205,6 +205,11 @@ class Preload extends Phaser.Scene {
       frameHeight: 193,
       // spacing: 32,
     });
+    this.load.spritesheet("mage", "assets/enemy/mage.png", {
+      frameWidth: 300,
+      frameHeight: 215,
+      // spacing: 32,
+    });
 
     this.load.spritesheet("slime", "assets/enemy/slime.png", {
       frameWidth: 258,
@@ -251,6 +256,11 @@ class Preload extends Phaser.Scene {
         // spacing: 32,
       }
     );
+    this.load.spritesheet("mage-death", "assets/deathAnims/mage_death.png", {
+      frameWidth: 510,
+      frameHeight: 215,
+      // spacing: 32,
+    });
 
     this.load.spritesheet("bee-death", "assets/deathAnims/bee_death.png", {
       frameWidth: 370,

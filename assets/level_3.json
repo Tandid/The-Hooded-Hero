@@ -124,6 +124,30 @@
                  "width":0,
                  "x":7200,
                  "y":1096.9696969697
+                }, 
+                {
+                 "height":0,
+                 "id":165,
+                 "name":"Spawn",
+                 "point":true,
+                 "rotation":0,
+                 "type":"Mage",
+                 "visible":true,
+                 "width":0,
+                 "x":8181.81818181818,
+                 "y":566.666666666667
+                }, 
+                {
+                 "height":0,
+                 "id":166,
+                 "name":"Spawn",
+                 "point":true,
+                 "rotation":0,
+                 "type":"Mage",
+                 "visible":true,
+                 "width":0,
+                 "x":8433.33333333333,
+                 "y":863.636363636364
                 }],
          "opacity":1,
          "type":"objectgroup",
@@ -166,7 +190,7 @@
          "y":0
         }],
  "nextlayerid":14,
- "nextobjectid":165,
+ "nextobjectid":167,
  "orientation":"orthogonal",
  "renderorder":"right-down",
  "tiledversion":"1.7.2",
