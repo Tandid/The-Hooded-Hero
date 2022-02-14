@@ -18,7 +18,12 @@ class BaseScene extends Phaser.Scene {
   }
 
   create() {
-    this.add.image(0, 0, "sky-bg").setOrigin(0).setScale(1);
+    this.add.image(0, 0, "sky-bg").setOrigin(0).setScale(1).setDepth(-1);
+    this.add
+      .image(this.config.width / 30, this.config.height - 400, "tree-1")
+      .setOrigin(0.5)
+      .setScale(2)
+      .setDepth(-1);
 
     if (this.config.canGoBack) {
       const backBtn = this.add
@@ -64,7 +69,11 @@ class BaseScene extends Phaser.Scene {
       const x = Math.floor(Math.random() * this.scale.width);
       const y = Math.floor(Math.random() * this.scale.height);
       const angle = Math.floor(Math.random() * -10);
-      const leaf = this.add.image(x, y, "leaf").setScale(1.5).setAngle(angle);
+      const leaf = this.add
+        .image(x, y, "leaf")
+        .setScale(1.5)
+        .setAngle(angle)
+        .setDepth(-1);
       this.tweens.add({
         targets: leaf,
         // scale: { from: 1.5, to: 1.7 },
@@ -73,6 +82,27 @@ class BaseScene extends Phaser.Scene {
         yoyo: true,
       });
       this.leaves.push(leaf);
+    }
+
+    const totalArrowsNum = 5;
+    this.arrows = [];
+    for (let i = 0; i < totalArrowsNum; i++) {
+      const x = Math.floor(Math.random() * this.scale.width);
+      const y = Math.floor(Math.random() * this.scale.height);
+      const angle = Math.floor(Math.random() * -10);
+      const arrow = this.add
+        .image(x, y, "arrow")
+        .setScale(1.5)
+        .setAngle(angle)
+        .setDepth(-1);
+      this.tweens.add({
+        targets: arrow,
+        // scale: { from: 1.5, to: 1.7 },
+        delay: i * 100,
+        repeat: -1,
+        yoyo: true,
+      });
+      this.arrows.push(arrow);
     }
   }
 
@@ -99,6 +129,13 @@ class BaseScene extends Phaser.Scene {
       if (leaf.x < 0) {
         leaf.x = this.scale.width + 100;
         leaf.y = Math.floor(Math.random() * this.scale.height);
+      }
+    });
+    this.arrows.forEach((arrow) => {
+      arrow.x += 2;
+      if (arrow.x > 1600) {
+        arrow.x = this.scale.width - 1600;
+        arrow.y = Math.floor(Math.random() * this.scale.height);
       }
     });
   }

@@ -31,6 +31,8 @@ class Preload extends Phaser.Scene {
     this.load.image("mountain-bg", "assets/mountain_bg.png");
     this.load.image("sky-bg", "assets/sky_bg.png");
     this.load.image("leaf", "assets/leaf.png");
+    this.load.image("tree-1", "assets/tree1.png");
+    this.load.image("tree-2", "assets/tree2.png");
 
     // CAVE BACKGROUNDS
 

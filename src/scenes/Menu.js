@@ -17,6 +17,10 @@ class MenuScene extends BaseScene {
     super.create();
 
     this.add
+      .image(this.config.width / 2, this.config.height / 2, "panel-1")
+      .setOrigin(0.5)
+      .setScale(0.8);
+    this.add
       .image(this.config.width / 2 + 30, this.config.height / 3, "logo")
       .setOrigin(0.5)
       .setScale(0.4);
@@ -32,6 +36,12 @@ class MenuScene extends BaseScene {
       .setOrigin(0.5)
       .setScale(0.5)
       .setDepth(2);
+
+    // this.add
+    //   .image(this.config.width / 30, this.config.height - 30, "profile")
+    //   .setOrigin(0.5)
+    //   .setScale(0.5)
+    //   .setDepth(2);
 
     this.createMenu(this.menu, this.setupMenuEvents.bind(this));
     this.playBgMusic();
