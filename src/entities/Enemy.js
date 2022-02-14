@@ -29,6 +29,9 @@ class Enemy extends Phaser.Physics.Arcade.Sprite {
 
     this.health = 100;
     this.damage = 10;
+    this.takeDamageSound = this.scene.sound.add("enemy-damage", {
+      volume: 0.1,
+    });
 
     this.platformCollidersLayer = null;
     this.rayGraphics = this.scene.add.graphics({
@@ -112,6 +115,7 @@ class Enemy extends Phaser.Physics.Arcade.Sprite {
   }
 
   takesHit(source) {
+    this.takeDamageSound.play();
     if (this.hasBeenHit) {
       return;
     }

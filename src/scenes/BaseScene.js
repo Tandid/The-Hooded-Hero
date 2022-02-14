@@ -6,11 +6,12 @@ class BaseScene extends Phaser.Scene {
     this.config = config;
     this.screenCenter = [config.width / 2, config.height / 2];
     this.fontSize = 60;
+
     this.lineHeight = 75;
     this.fontOptions = {
       fontSize: `${this.fontSize}px`,
       fill: "#713E01",
-      fontWeight: `${this.fontWeight}px`,
+      fontWeight: "larger",
     };
   }
 
@@ -40,7 +41,7 @@ class BaseScene extends Phaser.Scene {
         this.scene.start("MenuScene");
       });
     } else {
-      this.add
+      const settingsBtn = this.add
         .image(
           this.config.width - 30,
           this.config.height - 30,
@@ -49,6 +50,10 @@ class BaseScene extends Phaser.Scene {
         .setOrigin(0.5)
         .setScale(0.5)
         .setInteractive();
+
+      settingsBtn.on("pointerup", () => {
+        this.scene.start("SettingsScene");
+      });
     }
   }
 

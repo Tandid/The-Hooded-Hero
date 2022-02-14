@@ -96,6 +96,9 @@ class Play extends Phaser.Scene {
     if (this.sound.get("forest-theme")) {
       return;
     }
+    if (this.sound.get("menu-theme")) {
+      this.sound.get("menu-theme").stop();
+    }
     if (this.sound.get("cave-theme")) {
       return;
     }

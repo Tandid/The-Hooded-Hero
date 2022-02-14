@@ -61,12 +61,33 @@ class Preload extends Phaser.Scene {
     this.load.image("textbox", "assets/ui/Textbox/textbox.png");
 
     this.load.image("coin", "assets/ui/Icons/icon_small_coin.png");
+    this.load.image("profile", "assets/ui/Icons/icon_small_profile.png");
     this.load.image("settings-button", "assets/ui/Icons/icon_big_setting.png");
     this.load.image("home", "assets/ui/Icons/icon_small_home.png");
     this.load.image("restart", "assets/ui/Icons/icon_small_restart.png");
     this.load.image("small-close", "assets/ui/Icons/icon_small_close.png");
     this.load.image("small-left", "assets/ui/Icons/icon_small_left.png");
-    this.load.image("profile", "assets/ui/Icons/icon_small_profile.png");
+
+    this.load.image("next-btn", "assets/ui/Icons/icon_small_next.png");
+    this.load.image("prev-btn", "assets/ui/Icons/icon_small_prev.png");
+    this.load.image("music-btn-on", "assets/ui/Icons/icon_small_music_on.png");
+    this.load.image(
+      "music-btn-off",
+      "assets/ui/Icons/icon_small_music_off.png"
+    );
+    this.load.image("sound-btn-on", "assets/ui/Icons/icon_small_sound_on.png");
+    this.load.image(
+      "sound-btn-off",
+      "assets/ui/Icons/icon_small_sound_off.png"
+    );
+    this.load.image(
+      "mute-btn-on",
+      "assets/ui/Icons/icon_small_notification.png"
+    );
+    this.load.image(
+      "mute-btn-off",
+      "assets/ui/Icons/icon_small_notificationoff.png"
+    );
 
     this.load.image("left-key", "assets/ui/Icons/arrow_left_icon.png");
     this.load.image("right-key", "assets/ui/Icons/arrow_right_icon.png");
@@ -257,6 +278,7 @@ class Preload extends Phaser.Scene {
     });
 
     // THEME MUSIC
+    this.load.audio("menu-theme", "assets/music/menu_music.wav");
     this.load.audio("forest-theme", "assets/music/forest_theme.wav");
     this.load.audio("cave-theme", "assets/music/cave_theme.wav");
     this.load.audio("boss-theme", "assets/music/boss_theme.wav");
@@ -267,6 +289,7 @@ class Preload extends Phaser.Scene {
     this.load.audio("jump", "assets/music/jump.wav");
     this.load.audio("swipe", "assets/music/swipe.wav");
     this.load.audio("damage", "assets/music/punch.wav");
+    this.load.audio("enemy-damage", "assets/music/enemyhit.wav");
     this.load.audio("coin-pickup", "assets/music/coin_pickup.wav");
 
     this.load.once("complete", () => {

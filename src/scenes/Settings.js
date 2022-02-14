@@ -2,19 +2,128 @@ import BaseScene from "./BaseScene";
 
 class SettingsScene extends BaseScene {
   constructor(config) {
-    super("PauseScene", config);
-
-    this.menu = [
-      { scene: "PlayScene", text: "Continue" },
-      { scene: "MenuScene", text: "Exit" },
-    ];
+    super("SettingsScene", { ...config, canGoBack: true });
   }
 
   create() {
     super.create();
-    this.createMenu(this.menu, this.setupMenuEvents.bind(this));
+    this.createCancelButton();
+
+    this.add
+      .image(this.config.width / 2, this.config.height / 2, "panel-2")
+      .setOrigin(0.5)
+      .setScale(0.7);
+    this.add
+      .image(this.config.width / 2, this.config.height / 2 - 50, "panel-4")
+      .setOrigin(0.5)
+      .setScale(1.3, 0.5);
+    this.add
+      .image(this.config.width / 2, this.config.height / 2 + 50, "panel-4")
+      .setOrigin(0.5)
+      .setScale(1.3, 0.5);
+    this.add
+      .image(this.config.width / 2, this.config.height / 2 + 150, "panel-4")
+      .setOrigin(0.5)
+      .setScale(0.75, 0.5);
+    this.add
+      .image(this.config.width / 2, this.config.height / 6, "header-shadow")
+      .setOrigin(0.5)
+      .setScale(0.9);
+    this.add
+      .image(this.config.width / 2, this.config.height / 6, "header")
+      .setOrigin(0.5)
+      .setScale(0.9);
+
+    this.add
+      .image(
+        this.config.width / 3 + 50,
+        this.config.height / 2 - 50,
+        "music-btn-on"
+      )
+      .setOrigin(0.5)
+      .setScale(0.8);
+    this.add
+      .image(
+        this.config.width / 3 + 50,
+        this.config.height / 2 + 50,
+        "sound-btn-on"
+      )
+      .setOrigin(0.5)
+      .setScale(0.8);
+    this.add
+      .image(
+        this.config.width / 2 - 100,
+        this.config.height / 2 + 150,
+        "mute-btn-on"
+      )
+      .setOrigin(0.5)
+      .setScale(0.8);
+
+    this.add
+      .image(
+        this.config.width / 2 - 100,
+        this.config.height / 2 - 50,
+        "prev-btn"
+      )
+      .setOrigin(0.5)
+      .setScale(0.5);
+
+    this.add
+      .image(
+        this.config.width / 2 + 200,
+        this.config.height / 2 - 50,
+        "next-btn"
+      )
+      .setOrigin(0.5)
+      .setScale(0.5);
+
+    this.add
+      .image(
+        this.config.width / 2 - 100,
+        this.config.height / 2 + 50,
+        "prev-btn"
+      )
+      .setOrigin(0.5)
+      .setScale(0.5);
+
+    this.add
+      .image(
+        this.config.width / 2 + 200,
+        this.config.height / 2 + 50,
+        "next-btn"
+      )
+      .setOrigin(0.5)
+      .setScale(0.5);
   }
 
+  createCancelButton() {
+    const cancelbtn =
+      // .image(
+      //   this.config.rightBottomCorner.x - 15,
+      //   this.config.rightBottomCorner.y - 115,
+      //   "home"
+      // )
+      this.add
+        .image(this.config.width * 0.75, this.config.height / 7, "small-close")
+        .setOrigin(0.5)
+        .setScale(0.7)
+        .setInteractive()
+        .setDepth(2);
+
+    const btnbackground = this.add
+      .image(
+        this.config.width * 0.75,
+        this.config.height / 7,
+        "small-red-button"
+      )
+      .setOrigin(0.5)
+      .setScale(0.7)
+      .setDepth(1);
+
+    cancelbtn.on("pointerup", () => {
+      this.scene.start("MenuScene");
+    });
+  }
   setupMenuEvents(menuItem) {
     const textGO = menuItem.textGO;
     textGO.setInteractive();
@@ -24,18 +133,17 @@ class SettingsScene extends BaseScene {
     });
 
     textGO.on("pointerout", () => {
-      textGO.setStyle({ fill: "#fff" });
+      textGO.setStyle({ fill: "#713E01" });
     });
 
     textGO.on("pointerup", () => {
-      if (menuItem.scene && menuItem.text === "Continue") {
-        // Shutting down the Pause Scene and resuming the Play Scene
-        this.scene.stop();
-        this.scene.resume(menuItem.scene);
-      } else {
-        // Shutting PlayScene, PauseScene and running Menu
-        this.scene.stop("PlayScene");
+      if (menuItem.scene) {
+        this.registry.set("level", menuItem.level);
         this.scene.start(menuItem.scene);
+      }
+
+      if (menuItem.text === "Exit") {
+        this.game.destroy(true);
       }
     });
   }

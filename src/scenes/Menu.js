@@ -9,7 +9,6 @@ class MenuScene extends BaseScene {
       { scene: "PlayScene", text: "Multiplayer" },
       { scene: "LevelScene", text: "Levels" },
       { scene: "ControlsScene", text: "Controls" },
-      // { scene: "SettingssScene", text: "Controls" },
       // { scene: null, text: "Exit" },
     ];
   }
@@ -35,6 +34,25 @@ class MenuScene extends BaseScene {
       .setDepth(2);
 
     this.createMenu(this.menu, this.setupMenuEvents.bind(this));
+    this.playBgMusic();
+  }
+
+  playBgMusic() {
+    // if (this.sound.get("forest-theme")) {
+    //   this.sound.get("forest-theme").stop();
+    //   this.sound.add("menu-theme", { loop: true, volume: 0.04 }).play();
+    // }
+    if (this.sound.get("menu-theme")) {
+      return;
+    }
+    // if (this.sound.get("cave-theme")) {
+    //   return;
+    // }
+    // if (this.sound.get("boss-theme")) {
+    //   return;
+    // }
+    this.sound.stopAll();
+    this.sound.add("menu-theme", { loop: true, volume: 0.04 }).play();
   }
 
   setupMenuEvents(menuItem) {
