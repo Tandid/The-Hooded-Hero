@@ -13,8 +13,9 @@ class Mage extends Enemy {
     this.speed = 150;
     this.health = 200;
     this.damage = 20;
+    this.maxPatrolDistance = 0;
 
-    this.projectiles = new Projectiles(this.scene, "arrow");
+    this.projectiles = new Projectiles(this.scene, "fire-1");
     this.timeFromLastAttack = 0;
     this.attackDelay = this.getAttackDelay();
     this.lastDirection = null;
@@ -38,7 +39,7 @@ class Mage extends Enemy {
 
     if (this.timeFromLastAttack + this.attackDelay <= time) {
       this.play("mage-attack", true);
-      this.projectiles.fireProjectile(this, "arrow");
+      this.projectiles.fireProjectile(this, "fire-1");
 
       this.timeFromLastAttack = time;
       this.attackDelay = this.getAttackDelay();
@@ -56,7 +57,7 @@ class Mage extends Enemy {
   }
 
   getAttackDelay() {
-    return Phaser.Math.Between(1000, 4000);
+    return Phaser.Math.Between(1000, 2000);
   }
 }
 

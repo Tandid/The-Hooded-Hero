@@ -49,6 +49,15 @@ class Preload extends Phaser.Scene {
     // PROJECTILES
     this.load.image("arrow", "assets/weapons/arrow.png");
 
+    this.load.image("fire-1", "assets/projectiles/fire_0.png");
+    this.load.image("fire-2", "assets/projectiles/fire_1.png");
+    this.load.image("fire-3", "assets/projectiles/fire_2.png");
+    this.load.image("fire-4", "assets/projectiles/fire_3.png");
+    this.load.image("fire-5", "assets/projectiles/fire_4.png");
+    this.load.image("fire-6", "assets/projectiles/fire_5.png");
+    this.load.image("fire-7", "assets/projectiles/fire_6.png");
+    this.load.image("fire-8", "assets/projectiles/fire_7.png");
+
     // UI
 
     this.load.image("header", "assets/ui/Panels/header.png");
