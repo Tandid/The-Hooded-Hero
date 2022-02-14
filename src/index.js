@@ -7,6 +7,7 @@ import SettingsScene from "./scenes/Settings";
 import LevelScene from "./scenes/Levels";
 import ControlsScene from "./scenes/Controls";
 import CreditsScene from "./scenes/Credits";
+import SettingsOverlayScene from "./scenes/SettingsOverlay";
 // 1600px
 
 const MAP_WIDTH = 16000;
@@ -40,6 +41,7 @@ const Scenes = [
   PreloadScene,
   MenuScene,
   SettingsScene,
+  SettingsOverlayScene,
   LevelScene,
   ControlsScene,
   PlayScene,

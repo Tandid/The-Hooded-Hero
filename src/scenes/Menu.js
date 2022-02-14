@@ -8,7 +8,7 @@ class MenuScene extends BaseScene {
       { scene: "PlayScene", text: "Story Mode" },
       { scene: "PlayScene", text: "Multiplayer" },
       { scene: "LevelScene", text: "Levels" },
-      // { scene: "ControlsScene", text: "Controls" },
+      // { scene: "SettingsOverlayScene", text: "Settings" },
       // { scene: null, text: "Exit" },
     ];
   }

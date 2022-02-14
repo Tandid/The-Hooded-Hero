@@ -324,20 +324,20 @@ class Play extends Phaser.Scene {
       .setScale(1)
       .setInteractive();
 
-    // btn.on("pointerup", () => {
-    //   this.scene.start("SettingsScene");
-    // });
-
-    btn.on("pointerdown", () => {
-      this.isPaused = true;
-      this.physics.pause();
-      this.scene.pause();
-      this.scene.launch("SettingsScene");
-      this.scene.stop();
-      setTimeout(() => {
-        this.scene.resume();
-      }, 1000);
+    btn.on("pointerup", () => {
+      this.scene.start("SettingsOverlayScene");
     });
+
+    // btn.on("pointerdown", () => {
+    //   this.isPaused = true;
+    //   this.physics.pause();
+    //   this.scene.pause();
+    //   this.scene.launch("SettingsScene");
+    //   this.scene.stop();
+    //   setTimeout(() => {
+    //     this.scene.resume();
+    //   }, 1000);
+    // });
   }
 
   createPlayerIcon() {
