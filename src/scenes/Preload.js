@@ -7,7 +7,7 @@ class Preload extends Phaser.Scene {
 
   preload() {
     // LOGO
-    this.load.image("logo", "assets/logo_3.png");
+    this.load.image("logo", "assets/logo.png");
 
     // MAPS
 
@@ -61,6 +61,8 @@ class Preload extends Phaser.Scene {
     this.load.image("player-icon", "assets/ui/Status/portrait_character.png");
     this.load.image("portrait", "assets/ui/Status/portrait.png");
 
+    this.load.image("stage-icon", "assets/ui/Stage/stage_default.png");
+
     this.load.image("textbox", "assets/ui/Textbox/textbox.png");
 
     this.load.image("coin", "assets/ui/Icons/icon_small_coin.png");
@@ -70,6 +72,8 @@ class Preload extends Phaser.Scene {
     this.load.image("restart", "assets/ui/Icons/icon_small_restart.png");
     this.load.image("small-close", "assets/ui/Icons/icon_small_close.png");
     this.load.image("small-left", "assets/ui/Icons/icon_small_left.png");
+    this.load.image("controls-btn", "assets/ui/Icons/icon_big_book.png");
+    this.load.image("contacts-btn", "assets/ui/Icons/icon_small_message.png");
 
     this.load.image("next-btn", "assets/ui/Icons/icon_small_next.png");
     this.load.image("prev-btn", "assets/ui/Icons/icon_small_prev.png");

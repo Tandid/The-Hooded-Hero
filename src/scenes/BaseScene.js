@@ -132,7 +132,7 @@ class BaseScene extends Phaser.Scene {
       }
     });
     this.arrows.forEach((arrow) => {
-      arrow.x += 2;
+      arrow.x += 5;
       if (arrow.x > 1600) {
         arrow.x = this.scale.width - 1600;
         arrow.y = Math.floor(Math.random() * this.scale.height);

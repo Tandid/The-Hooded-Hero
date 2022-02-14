@@ -5,10 +5,10 @@ class MenuScene extends BaseScene {
     super("MenuScene", config);
 
     this.menu = [
-      { scene: "PlayScene", text: "STORY MODE" },
-      { scene: "PlayScene", text: "MULTIPLAYER" },
-      { scene: "LevelScene", text: "LEVELS" },
-      { scene: "ControlsScene", text: "CONTROLS" },
+      { scene: "PlayScene", text: "Story Mode" },
+      { scene: "PlayScene", text: "Multiplayer" },
+      { scene: "LevelScene", text: "Levels" },
+      // { scene: "ControlsScene", text: "Controls" },
       // { scene: null, text: "Exit" },
     ];
   }
@@ -21,9 +21,9 @@ class MenuScene extends BaseScene {
       .setOrigin(0.5)
       .setScale(0.8);
     this.add
-      .image(this.config.width / 2 + 30, this.config.height / 3, "logo")
+      .image(this.config.width / 2, this.config.height / 4, "logo")
       .setOrigin(0.5)
-      .setScale(0.4);
+      .setScale(1.1);
 
     this.add
       .image(this.config.width / 9, this.config.height - 30, "textbox")
@@ -37,14 +37,47 @@ class MenuScene extends BaseScene {
       .setScale(0.5)
       .setDepth(2);
 
-    // this.add
-    //   .image(this.config.width / 30, this.config.height - 30, "profile")
-    //   .setOrigin(0.5)
-    //   .setScale(0.5)
-    //   .setDepth(2);
-
+    this.createControlsButton();
+    this.createContactsButton();
     this.createMenu(this.menu, this.setupMenuEvents.bind(this));
     this.playBgMusic();
+  }
+
+  createControlsButton() {
+    const contactsBtn = this.add
+      .image(this.config.width - 100, this.config.height - 30, "controls-btn")
+      .setOrigin(0.5)
+      .setScale(0.5)
+      .setDepth(2)
+      .setInteractive();
+
+    contactsBtn.on("pointerup", () => {
+      this.scene.start("ControlsScene");
+    });
+  }
+
+  createContactsButton() {
+    const contact = this.add
+      .image(this.config.width - 170, this.config.height - 30, "contacts-btn")
+      .setOrigin(0.5)
+      .setScale(0.5)
+      .setDepth(2)
+      .setInteractive();
+
+    const btnbackground = this.add
+      .image(
+        this.config.width - 170,
+        this.config.height - 30,
+        "small-yellow-button"
+      )
+      .setOrigin(0.5)
+      .setScale(0.5)
+      .setDepth(1)
+      .setInteractive();
+
+    contact.on("pointerup", () => {
+      this.scene.start("CreditsScene");
+    });
   }
 
   playBgMusic() {

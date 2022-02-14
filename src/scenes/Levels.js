@@ -3,6 +3,8 @@ import BaseScene from "./BaseScene";
 class LevelScene extends BaseScene {
   constructor(config) {
     super("LevelScene", { ...config, canGoBack: true });
+    this.screenCenter = [config.width / 2, config.height / 4 + 100];
+    this.lineHeight = 100;
   }
 
   create() {
@@ -15,6 +17,15 @@ class LevelScene extends BaseScene {
       .image(this.config.width / 2, this.config.height / 2, "panel-3")
       .setOrigin(0.5)
       .setScale(1.4);
+
+    // this.add
+    //   .image(this.config.width / 2, this.config.height / 2 + 50, "panel-4")
+    //   .setOrigin(0.5)
+    //   .setScale(1.3, 0.5);
+    // this.add
+    //   .image(this.config.width / 2, this.config.height / 2 + 150, "panel-4")
+    //   .setOrigin(0.5)
+    //   .setScale(1.3, 0.5);
 
     this.add
       .image(this.config.width / 2, this.config.height / 6, "header-shadow")
@@ -35,7 +46,24 @@ class LevelScene extends BaseScene {
 
     const levels = this.registry.get("unlocked-levels");
 
+    let row = 70;
     for (let i = 1; i <= levels; i++) {
+      this.add
+        .image(this.config.width / 2, this.config.height / 4 + row, "panel-4")
+        .setOrigin(0.5)
+        .setScale(1, 0.5);
+
+      this.add
+        .image(
+          this.config.width / 3,
+          this.config.height / 4 + row,
+          "stage-icon"
+        )
+        .setOrigin(0.5)
+        .setScale(0.5);
+
+      row += 100;
+
       this.menu.push({
         scene: "PlayScene",
         text: `Level ${i}`,
