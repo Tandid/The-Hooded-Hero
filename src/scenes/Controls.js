@@ -38,7 +38,7 @@ class ControlsScene extends BaseScene {
       .setOrigin(0.5)
       .setScale(0.5);
     this.add
-      .image(this.config.width / 3, 450, "space-key")
+      .image(this.config.width / 3 + 50, 450, "space-key")
       .setOrigin(0.5)
       .setScale(0.5);
 
@@ -51,6 +51,38 @@ class ControlsScene extends BaseScene {
       .image(this.config.width / 2, this.config.height / 6, "header")
       .setOrigin(0.5)
       .setScale(0.9);
+
+    this.add
+      .text(this.config.width / 2, this.config.height / 6, "CONTROLS", {
+        fontFamily: "customFont",
+        fontSize: "72px",
+      })
+      .setOrigin(0.5, 0.5)
+      .setColor("#D9B48FFF");
+
+    this.add
+      .text(this.config.width / 1.75, 250, "Move Left/Right", {
+        fontFamily: "customFont",
+        fontSize: "40px",
+      })
+      .setOrigin(0.5, 0.5)
+      .setColor("0x000");
+
+    this.add
+      .text(this.config.width / 1.75 + 20, 350, "Projectile/Sword Attack", {
+        fontFamily: "customFont",
+        fontSize: "40px",
+      })
+      .setOrigin(0.5, 0.5)
+      .setColor("0x000");
+
+    this.add
+      .text(this.config.width / 1.75, 450, "Space to Jump", {
+        fontFamily: "customFont",
+        fontSize: "40px",
+      })
+      .setOrigin(0.5, 0.5)
+      .setColor("0x000");
 
     // if (this.config.canGoBack) {
     //   const settingsButton = this.add

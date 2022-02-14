@@ -94,6 +94,13 @@ class SettingsScene extends BaseScene {
       )
       .setOrigin(0.5)
       .setScale(0.5);
+    this.add
+      .text(this.config.width / 2, this.config.height / 6, "SETTINGS", {
+        fontFamily: "customFont",
+        fontSize: "72px",
+      })
+      .setOrigin(0.5, 0.5)
+      .setColor("#D9B48FFF");
   }
 
   createCancelButton() {

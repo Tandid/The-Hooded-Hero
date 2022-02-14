@@ -25,6 +25,13 @@ class LevelScene extends BaseScene {
       .image(this.config.width / 2, this.config.height / 6, "header")
       .setOrigin(0.5)
       .setScale(0.9);
+    this.add
+      .text(this.config.width / 2, this.config.height / 6, "LEVELS", {
+        fontFamily: "customFont",
+        fontSize: "72px",
+      })
+      .setOrigin(0.5, 0.5)
+      .setColor("#D9B48FFF");
 
     const levels = this.registry.get("unlocked-levels");
 
