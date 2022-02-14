@@ -5,16 +5,34 @@ class MenuScene extends BaseScene {
     super("MenuScene", config);
 
     this.menu = [
-      { scene: "PlayScene", text: "Story Mode" },
+      { scene: "PlayScene", text: "Story" },
       { scene: "PlayScene", text: "Multiplayer" },
       { scene: "LevelScene", text: "Levels" },
       { scene: "ControlsScene", text: "Controls" },
+      // { scene: "SettingssScene", text: "Controls" },
       // { scene: null, text: "Exit" },
     ];
   }
 
   create() {
     super.create();
+
+    this.add
+      .image(this.config.width / 2 + 30, this.config.height / 3, "logo")
+      .setOrigin(0.5)
+      .setScale(0.4);
+
+    this.add
+      .image(this.config.width / 9, this.config.height - 30, "textbox")
+      .setOrigin(0.5)
+      .setScale(1, 0.5)
+      .setDepth(1);
+
+    this.add
+      .image(this.config.width / 30, this.config.height - 30, "profile")
+      .setOrigin(0.5)
+      .setScale(0.5)
+      .setDepth(2);
 
     this.createMenu(this.menu, this.setupMenuEvents.bind(this));
   }

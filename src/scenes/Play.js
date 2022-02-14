@@ -112,7 +112,7 @@ class Play extends Phaser.Scene {
     }
 
     if (level === 3) {
-      this.sound.add("forest-theme", { loop: true, volume: 0.04 }).play();
+      this.sound.add("boss-theme", { loop: true, volume: 0.04 }).play();
     }
   }
 
