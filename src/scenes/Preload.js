@@ -224,6 +224,12 @@ class Preload extends Phaser.Scene {
       // spacing: 32,
     });
 
+    this.load.spritesheet("boss", "assets/enemy/boss_run.png", {
+      frameWidth: 850,
+      frameHeight: 477,
+      // spacing: 32,
+    });
+
     // DEATH ANIMATIONS
 
     this.load.spritesheet(
@@ -278,9 +284,9 @@ class Preload extends Phaser.Scene {
       }
     );
 
-    this.load.spritesheet("boss-death", "assets/deathAnims/archer_death.png", {
-      frameWidth: 184,
-      frameHeight: 126,
+    this.load.spritesheet("boss-death", "assets/deathAnims/boss_death.png", {
+      frameWidth: 850,
+      frameHeight: 477,
       // spacing: 32,
     });
 

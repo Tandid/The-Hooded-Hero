@@ -87,8 +87,8 @@
                  "type":"",
                  "visible":true,
                  "width":0,
-                 "x":143.298523693893,
-                 "y":1179.82451174639
+                 "x":5588.75306914844,
+                 "y":407.097239019119
                 }, 
                 {
                  "height":0,
@@ -112,7 +112,19 @@
          "draworder":"topdown",
          "id":5,
          "name":"enemy_spawns",
-         "objects":[],
+         "objects":[
+                {
+                 "height":0,
+                 "id":164,
+                 "name":"Spawn",
+                 "point":true,
+                 "rotation":0,
+                 "type":"Boss",
+                 "visible":true,
+                 "width":0,
+                 "x":7200,
+                 "y":1096.9696969697
+                }],
          "opacity":1,
          "type":"objectgroup",
          "visible":true,
@@ -154,7 +166,7 @@
          "y":0
         }],
  "nextlayerid":14,
- "nextobjectid":164,
+ "nextobjectid":165,
  "orientation":"orthogonal",
  "renderorder":"right-down",
  "tiledversion":"1.7.2",
