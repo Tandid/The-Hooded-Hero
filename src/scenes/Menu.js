@@ -4,6 +4,7 @@ class MenuScene extends BaseScene {
   constructor(config) {
     super("MenuScene", config);
 
+    this.screenCenter = [config.width / 2, config.height / 1.8];
     this.menu = [
       { scene: "PlayScene", text: "Story Mode" },
       { scene: "PlayScene", text: "Multiplayer" },
@@ -21,9 +22,9 @@ class MenuScene extends BaseScene {
       .setOrigin(0.5)
       .setScale(0.8);
     this.add
-      .image(this.config.width / 2, this.config.height / 4, "logo")
+      .image(this.config.width / 2, this.config.height / 2, "logo")
       .setOrigin(0.5)
-      .setScale(1.1);
+      .setScale(0.6);
 
     this.add
       .image(this.config.width / 8, this.config.height - 30, "textbox")

@@ -7,14 +7,14 @@ class LoadingScene extends Phaser.Scene {
     this.fontFamily = "customFont";
     this.playerStart = this.config.width / 10;
     this.acceleration = 120;
-    this.num = 10;
+    this.num = 48;
   }
 
   create() {
     this.add
-      .image(this.config.width / 2, this.config.height / 4, "logo")
+      .image(this.config.width / 2, this.config.height / 2, "logo")
       .setOrigin(0.5)
-      .setScale(1.1);
+      .setScale(0.6);
 
     this.add
       .text(
@@ -41,14 +41,14 @@ class LoadingScene extends Phaser.Scene {
 
     this.generateRandomHint();
 
-    // setTimeout(() => {
-    //   this.scene.stop("LoadingScene");
-    //   this.scene.start("MenuScene");
-    // }, 3800);
     setTimeout(() => {
       this.scene.stop("LoadingScene");
       this.scene.start("MenuScene");
-    }, 100);
+    }, 3800);
+    // setTimeout(() => {
+    //   this.scene.stop("LoadingScene");
+    //   this.scene.start("MenuScene");
+    // }, 100);
   }
 
   generateRandomHint() {
