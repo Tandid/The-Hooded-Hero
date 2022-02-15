@@ -2,8 +2,9 @@
   "name": "phaser-webpack-boilerplate",
   "version": "1.0.0",
   "description": "",
-  "main": "index.js",
+  "main": "src/index.js",
   "scripts": {
+    "start": "node server",
     "test": "echo \"Error: no test specified\" && exit 1",
     "build": "webpack --config webpack.prod.js",
     "dev": "webpack-dev-server --config webpack.common.js --watch"
@@ -11,7 +12,11 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
+    "express": "^4.17.2",
+    "morgan": "^1.10.0",
     "phaser": "^3.24.1",
+    "socket.io": "^4.4.1",
+    "socket.io-client": "^4.4.1",
     "webpack-merge": "^5.1.4"
   },
   "devDependencies": {

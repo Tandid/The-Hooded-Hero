@@ -12,7 +12,7 @@ import SettingsOverlayScene from "./scenes/SettingsOverlay";
 
 const MAP_WIDTH = 16000;
 
-const WIDTH = document.body.offsetWidth;
+const WIDTH = 1280;
 const HEIGHT = 600;
 const ZOOM_FACTOR = 0.5;
 
@@ -61,6 +61,9 @@ const config = {
     },
   },
   scene: initScenes(),
+  scale: {
+    autoCenter: Phaser.Scale.CENTER_BOTH,
+  },
 };
 
 new Phaser.Game(config);
