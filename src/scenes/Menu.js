@@ -16,7 +16,7 @@ class MenuScene extends BaseScene {
 
   create() {
     super.create();
-
+    this.cameras.main.fadeIn(1000, 0, 0, 0);
     this.cursorOver = this.sound.add("cursorOver");
     this.cursorOver.volume = 0.4;
 
@@ -145,11 +145,15 @@ class MenuScene extends BaseScene {
     });
 
     textGO.on("pointerup", () => {
-      menuItem.scene && this.scene.start(menuItem.scene);
-
       if (menuItem.text === "Story Mode") {
+        this.cameras.main.fadeOut(500, 0, 0, 0);
+        setTimeout(
+          () => menuItem.scene && this.scene.start(menuItem.scene),
+          1000
+        );
         this.flute.play();
       } else {
+        menuItem.scene && this.scene.start(menuItem.scene);
         this.select.play();
       }
 

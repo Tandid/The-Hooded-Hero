@@ -53,11 +53,12 @@ class LoadingScene extends Phaser.Scene {
 
   generateRandomHint() {
     const messages = [
-      "The more coins you collect, the more health you get back!",
-      "Sometimes patience is your best friend..",
-      "Arrows do 20 damage per hit!",
-      "You can outrun all your enemies!",
-      "Your sword does more than double the damage of your arrows",
+      "Not all heroes wear capes, some wear hoods..",
+      "Hint: Yes, you can double jump!",
+      "The Hooded Hero's favorite show is Arrow, who would've guess right??",
+      "Hint: A little birdy said to stay away from Level 3, unless...",
+      "Hint: Does our hero ever need to restock on arrows?? Spam away!",
+      "Hint: Sword attacks do double the damage of arrows. You're welcome. ",
     ];
     const randomIndex = Math.floor(Math.random() * messages.length);
 
@@ -65,7 +66,7 @@ class LoadingScene extends Phaser.Scene {
       .text(
         this.config.width / 2,
         this.config.height / 1.1,
-        `Hint: ${messages[randomIndex]}`,
+        `${messages[randomIndex]}`,
         {
           fontFamily: "customFont",
           fontSize: "15px",
