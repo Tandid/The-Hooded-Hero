@@ -129,10 +129,15 @@ class LevelScene extends BaseScene {
     });
 
     textGO.on("pointerup", () => {
+      this.cameras.main.fadeOut(1000, 0, 0, 0);
+
+      setTimeout(() => this.scene.start("TransitionScene"), 1000);
+      setTimeout(() => this.scene.stop("TransitionScene"), 4000);
+
       if (menuItem.scene) {
         this.flute.play();
         this.registry.set("level", menuItem.level);
-        this.scene.start(menuItem.scene);
+        setTimeout(() => this.scene.start(menuItem.scene), 4000);
       }
     });
   }

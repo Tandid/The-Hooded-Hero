@@ -1,4 +1,5 @@
 import BaseScene from "./BaseScene";
+import TransitionScene from "./Transition";
 
 class MenuScene extends BaseScene {
   constructor(config) {
@@ -9,7 +10,7 @@ class MenuScene extends BaseScene {
       { scene: "PlayScene", text: "Story Mode" },
       { scene: "PlayScene", text: "Multiplayer" },
       { scene: "LevelScene", text: "Levels" },
-      { scene: "TransitionScene", text: "Transition" },
+      // { scene: "TransitionScene", text: "Transition" },
       // { scene: "SettingsOverlayScene", text: "Settings" },
       // { scene: null, text: "Exit" },
     ];
@@ -147,10 +148,14 @@ class MenuScene extends BaseScene {
 
     textGO.on("pointerup", () => {
       if (menuItem.text === "Story Mode") {
-        this.cameras.main.fadeOut(500, 0, 0, 0);
+        this.cameras.main.fadeOut(1000, 0, 0, 0);
+
+        setTimeout(() => this.scene.start("TransitionScene"), 1000);
+        setTimeout(() => this.scene.stop("TransitionScene"), 4000);
+
         setTimeout(
           () => menuItem.scene && this.scene.start(menuItem.scene),
-          1000
+          4000
         );
         this.flute.play();
       } else {
