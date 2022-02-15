@@ -383,6 +383,9 @@ class Play extends Phaser.Scene {
       this.scene.stop("PlayScene");
       this.scene.start("MenuScene");
     });
+    // home.on("pointerover", () => {
+    //   home.setScale(2);
+    // });
   }
 
   createRestartButton() {

@@ -10,6 +10,18 @@ class LevelScene extends BaseScene {
   create() {
     super.create();
 
+    this.cursorOver = this.sound.add("cursorOver");
+    this.cursorOver.volume = 0.4;
+
+    this.select = this.sound.add("select");
+    this.select.volume = 0.4;
+
+    this.pageFlip = this.sound.add("page-flip");
+    this.pageFlip.volume = 0.4;
+
+    this.flute = this.sound.add("flute");
+    this.flute.volume = 0.4;
+
     this.menu = [];
 
     this.createCancelButton();
@@ -108,6 +120,7 @@ class LevelScene extends BaseScene {
     textGO.setInteractive();
 
     textGO.on("pointerover", () => {
+      this.cursorOver.play();
       textGO.setStyle({ fill: "#fff" });
     });
 
@@ -117,12 +130,9 @@ class LevelScene extends BaseScene {
 
     textGO.on("pointerup", () => {
       if (menuItem.scene) {
+        this.flute.play();
         this.registry.set("level", menuItem.level);
         this.scene.start(menuItem.scene);
-      }
-
-      if (menuItem.text === "Exit") {
-        this.game.destroy(true);
       }
     });
   }

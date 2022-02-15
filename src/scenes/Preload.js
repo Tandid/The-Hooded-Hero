@@ -404,6 +404,10 @@ class Preload extends Phaser.Scene {
     this.load.audio("damage", "public/assets/music/punch.wav");
     this.load.audio("enemy-damage", "public/assets/music/enemyhit.wav");
     this.load.audio("coin-pickup", "public/assets/music/coin_pickup.wav");
+    this.load.audio("cursorOver", "public/assets/music/cursorOver.wav");
+    this.load.audio("flute", "public/assets/music/flute.wav");
+    this.load.audio("page-flip", "public/assets/music/page_flip.wav");
+    this.load.audio("select", "public/assets/music/select.wav");
 
     this.load.once("complete", () => {
       this.startGame();

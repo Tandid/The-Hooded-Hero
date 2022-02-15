@@ -17,6 +17,18 @@ class MenuScene extends BaseScene {
   create() {
     super.create();
 
+    this.cursorOver = this.sound.add("cursorOver");
+    this.cursorOver.volume = 0.4;
+
+    this.select = this.sound.add("select");
+    this.select.volume = 0.4;
+
+    this.pageFlip = this.sound.add("page-flip");
+    this.pageFlip.volume = 0.4;
+
+    this.flute = this.sound.add("flute");
+    this.flute.volume = 0.4;
+
     this.add
       .image(this.config.width / 2, this.config.height / 2, "panel-1")
       .setOrigin(0.5)
@@ -55,15 +67,25 @@ class MenuScene extends BaseScene {
   }
 
   createControlsButton() {
-    const contactsBtn = this.add
+    const controlsBtn = this.add
       .image(this.config.width - 100, this.config.height - 30, "controls-btn")
       .setOrigin(0.5)
       .setScale(0.5)
       .setDepth(2)
       .setInteractive();
 
-    contactsBtn.on("pointerup", () => {
+    controlsBtn.on("pointerup", () => {
+      this.pageFlip.play();
       this.scene.start("ControlsScene");
+    });
+
+    controlsBtn.on("pointerover", () => {
+      controlsBtn.setTint(0xc2c2c2);
+      this.cursorOver.play();
+    });
+
+    controlsBtn.on("pointerout", () => {
+      controlsBtn.clearTint();
     });
   }
 
@@ -114,6 +136,7 @@ class MenuScene extends BaseScene {
     textGO.setInteractive();
 
     textGO.on("pointerover", () => {
+      this.cursorOver.play();
       textGO.setStyle({ fill: "#fff" });
     });
 
@@ -123,6 +146,12 @@ class MenuScene extends BaseScene {
 
     textGO.on("pointerup", () => {
       menuItem.scene && this.scene.start(menuItem.scene);
+
+      if (menuItem.text === "Story Mode") {
+        this.flute.play();
+      } else {
+        this.select.play();
+      }
 
       if (menuItem.text === "Exit") {
         this.game.destroy(true);
