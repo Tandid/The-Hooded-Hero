@@ -1,5 +1,5 @@
 import Phaser from "phaser";
-import Player from "../entities/Player";
+// import Player from "../entities/Player";
 // import initAnimations from "./anims/playerAnims";
 
 class LoadingScene extends Phaser.Scene {
@@ -10,6 +10,8 @@ class LoadingScene extends Phaser.Scene {
     this.playerStart = this.config.width / 10;
     this.acceleration = 30;
   }
+
+  init() {}
 
   create() {
     this.add
@@ -31,8 +33,8 @@ class LoadingScene extends Phaser.Scene {
       .setOrigin(0.5, 0.5)
       .setColor("#FFF");
 
-    const player = this.createPlayer();
-    const flag = this.createFlag();
+    // const player = this.createPlayer();
+    // const flag = this.createFlag();
     this.generateRandomHint();
 
     // this.createPlayerColliders(player, {
@@ -80,15 +82,15 @@ class LoadingScene extends Phaser.Scene {
       .setScale(0.7);
   }
 
-  // createPlayer() {
-  //   return new Player(this, this.playerStart, this.config.height / 1.5);
-  // }
-
   createFlag() {
     this.physics.add
       .image(this.config.width / 1.1, this.config.height / 1.5 - 10, "banner")
       .setScale(0.5);
   }
+
+  // createPlayer() {
+  //   return new Player(this, this.playerStart, this.config.height / 1.5);
+  // }
 
   // update() {
   //   this.play("run", true);

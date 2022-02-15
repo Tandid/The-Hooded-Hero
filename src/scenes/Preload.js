@@ -241,6 +241,28 @@ class Preload extends Phaser.Scene {
       }
     );
 
+    // ONLINE PLAYER MOVEMENT
+    this.load.spritesheet("player-1", "public/assets/player/player_1.png", {
+      frameWidth: 300,
+      frameHeight: 256,
+      // spacing: 32,
+    });
+    this.load.spritesheet("player-2", "public/assets/player/player_2.png", {
+      frameWidth: 165,
+      frameHeight: 180,
+      // spacing: 32,
+    });
+    this.load.spritesheet("player-3", "public/assets/player/player_3.png", {
+      frameWidth: 300,
+      frameHeight: 190,
+      // spacing: 32,
+    });
+    this.load.spritesheet("player-4", "public/assets/player/player_4.png", {
+      frameWidth: 170,
+      frameHeight: 180,
+      // spacing: 32,
+    });
+
     // ENEMIES
 
     this.load.spritesheet("skeleton", "public/assets/enemy/skeleton.png", {
