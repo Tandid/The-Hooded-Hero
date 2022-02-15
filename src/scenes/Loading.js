@@ -1,6 +1,4 @@
 import Phaser from "phaser";
-// import Player from "../entities/Player";
-// import initAnimations from "./anims/playerAnims";
 
 class LoadingScene extends Phaser.Scene {
   constructor(config) {
@@ -8,10 +6,9 @@ class LoadingScene extends Phaser.Scene {
     this.config = config;
     this.fontFamily = "customFont";
     this.playerStart = this.config.width / 10;
-    this.acceleration = 30;
+    this.acceleration = 120;
+    this.num = 10;
   }
-
-  init() {}
 
   create() {
     this.add
@@ -23,7 +20,7 @@ class LoadingScene extends Phaser.Scene {
       .text(
         this.config.width / 2,
         this.config.height / 2,
-        "Loading Assets and Textures ... ",
+        `Loading Assets and Textures ... (${this.num}%)`,
         {
           fontFamily: "customFont",
           fontSize: "30px",
@@ -33,21 +30,21 @@ class LoadingScene extends Phaser.Scene {
       .setOrigin(0.5, 0.5)
       .setColor("#FFF");
 
-    // const player = this.createPlayer();
-    // const flag = this.createFlag();
+    this.add
+      .image(this.config.width / 1.1 + 50, this.config.height / 1.3, "dummy")
+      .setScale(1);
+
+    this.physics.add
+      .image(this.playerStart, this.config.height / 1.6, "arrow")
+      .setAccelerationX(this.acceleration)
+      .setScale(1.1);
+
     this.generateRandomHint();
 
-    // this.createPlayerColliders(player, {
-    //   colliders: {
-    //     platformsColliders: layers.platformsColliders,
-    //     player,
-    //   },
-    // });
-
-    // setTimeout(() => {
-    //   this.scene.stop("LoadingScene");
-    //   this.scene.start("MenuScene");
-    // }, 4000);
+    setTimeout(() => {
+      this.scene.stop("LoadingScene");
+      this.scene.start("MenuScene");
+    }, 3800);
   }
 
   generateRandomHint() {
@@ -74,27 +71,6 @@ class LoadingScene extends Phaser.Scene {
       .setOrigin(0.5, 0.5)
       .setColor("#FFF");
   }
-
-  createPlayer() {
-    this.physics.add
-      .sprite(this.playerStart, this.config.height / 1.5, "player")
-      .setAccelerationX(this.acceleration)
-      .setScale(0.7);
-  }
-
-  createFlag() {
-    this.physics.add
-      .image(this.config.width / 1.1, this.config.height / 1.5 - 10, "banner")
-      .setScale(0.5);
-  }
-
-  // createPlayer() {
-  //   return new Player(this, this.playerStart, this.config.height / 1.5);
-  // }
-
-  // update() {
-  //   this.play("run", true);
-  // }
 }
 
 export default LoadingScene;

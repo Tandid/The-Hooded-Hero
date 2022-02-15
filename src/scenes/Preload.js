@@ -21,7 +21,7 @@ class Preload extends Phaser.Scene {
     this.load.image("cave-tiles", "public/assets/tileset_2.png");
     this.load.image("environment-tiles", "public/assets/environment.png");
 
-    this.load.image("banner", "public/assets/banner.png");
+    this.load.image("dummy", "public/assets/dummy.png");
 
     // this.load.image("bg-spikes-tileset", "public/assets/bg_spikes_tileset.png");
 
