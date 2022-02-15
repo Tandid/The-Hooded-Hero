@@ -12,7 +12,7 @@ class BaseScene extends Phaser.Scene {
     this.fontOptions = {
       fontFamily: `${this.fontFamily}`,
       fontSize: `${this.fontSize}px`,
-      fill: "#713E01",
+      fill: "#000",
       fontWeight: "larger",
     };
   }

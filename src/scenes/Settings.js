@@ -111,7 +111,11 @@ class SettingsScene extends BaseScene {
       //   "home"
       // )
       this.add
-        .image(this.config.width * 0.75, this.config.height / 7, "small-close")
+        .image(
+          this.config.width * 0.75 + 20,
+          this.config.height / 7 - 10,
+          "small-close"
+        )
         .setOrigin(0.5)
         .setScale(0.7)
         .setInteractive()
@@ -119,8 +123,8 @@ class SettingsScene extends BaseScene {
 
     const btnbackground = this.add
       .image(
-        this.config.width * 0.75,
-        this.config.height / 7,
+        this.config.width * 0.75 + 20,
+        this.config.height / 7 - 10,
         "small-red-button"
       )
       .setOrigin(0.5)

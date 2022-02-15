@@ -26,15 +26,25 @@ class MenuScene extends BaseScene {
       .setScale(1.1);
 
     this.add
-      .image(this.config.width / 9, this.config.height - 30, "textbox")
+      .image(this.config.width / 8, this.config.height - 30, "textbox")
       .setOrigin(0.5)
       .setScale(1, 0.5)
       .setDepth(1);
 
     this.add
-      .image(this.config.width / 30, this.config.height - 30, "profile")
+      .image(this.config.width / 25, this.config.height - 30, "profile")
       .setOrigin(0.5)
       .setScale(0.5)
+      .setDepth(2);
+
+    this.add
+      .text(this.config.width / 10 - 10, this.config.height - 45, `Username`, {
+        fontFamily: "customFont",
+        fontSize: "30px",
+        fontWeight: "larger",
+      })
+      .setOrigin(0)
+      .setColor("#000")
       .setDepth(2);
 
     this.createControlsButton();
@@ -103,11 +113,11 @@ class MenuScene extends BaseScene {
     textGO.setInteractive();
 
     textGO.on("pointerover", () => {
-      textGO.setStyle({ fill: "#ff0" });
+      textGO.setStyle({ fill: "#fff" });
     });
 
     textGO.on("pointerout", () => {
-      textGO.setStyle({ fill: "#713E01" });
+      textGO.setStyle({ fill: "#000" });
     });
 
     textGO.on("pointerup", () => {

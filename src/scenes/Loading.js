@@ -41,10 +41,14 @@ class LoadingScene extends Phaser.Scene {
 
     this.generateRandomHint();
 
+    // setTimeout(() => {
+    //   this.scene.stop("LoadingScene");
+    //   this.scene.start("MenuScene");
+    // }, 3800);
     setTimeout(() => {
       this.scene.stop("LoadingScene");
       this.scene.start("MenuScene");
-    }, 3800);
+    }, 100);
   }
 
   generateRandomHint() {

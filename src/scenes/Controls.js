@@ -19,26 +19,26 @@ class ControlsScene extends BaseScene {
       .setScale(0.7);
 
     this.add
-      .image(this.config.width / 3, 250, "left-key")
+      .image(this.config.width / 3 - 20, 220, "left-key")
       .setOrigin(0.5)
       .setScale(0.5);
 
     this.add
-      .image(this.config.width / 3 + 100, 250, "right-key")
+      .image(this.config.width / 3 + 80, 220, "right-key")
       .setOrigin(0.5)
       .setScale(0.5);
 
     this.add
-      .image(this.config.width / 3, 350, "q-key")
+      .image(this.config.width / 3 - 20, 320, "q-key")
       .setOrigin(0.5)
       .setScale(0.5);
 
     this.add
-      .image(this.config.width / 3 + 100, 350, "e-key")
+      .image(this.config.width / 3 + 80, 320, "e-key")
       .setOrigin(0.5)
       .setScale(0.5);
     this.add
-      .image(this.config.width / 3 + 50, 450, "space-key")
+      .image(this.config.width / 3 + 30, 420, "space-key")
       .setOrigin(0.5)
       .setScale(0.5);
 
@@ -61,7 +61,7 @@ class ControlsScene extends BaseScene {
       .setColor("#D9B48FFF");
 
     this.add
-      .text(this.config.width / 1.75, 250, "Move Left/Right", {
+      .text(this.config.width / 1.75, 220, "Move Left/Right", {
         fontFamily: "customFont",
         fontSize: "40px",
       })
@@ -69,7 +69,7 @@ class ControlsScene extends BaseScene {
       .setColor("0x000");
 
     this.add
-      .text(this.config.width / 1.75 + 20, 350, "Projectile/Sword Attack", {
+      .text(this.config.width / 1.75 + 20, 320, "Projectile/Sword Attack", {
         fontFamily: "customFont",
         fontSize: "40px",
       })
@@ -77,7 +77,7 @@ class ControlsScene extends BaseScene {
       .setColor("0x000");
 
     this.add
-      .text(this.config.width / 1.75, 450, "Space to Jump", {
+      .text(this.config.width / 1.75, 420, "Space to Jump", {
         fontFamily: "customFont",
         fontSize: "40px",
       })
@@ -109,7 +109,11 @@ class ControlsScene extends BaseScene {
       //   "home"
       // )
       this.add
-        .image(this.config.width * 0.75, this.config.height / 7, "small-close")
+        .image(
+          this.config.width * 0.75 + 20,
+          this.config.height / 7 - 10,
+          "small-close"
+        )
         .setOrigin(0.5)
         .setScale(0.7)
         .setInteractive()
@@ -117,8 +121,8 @@ class ControlsScene extends BaseScene {
 
     const btnbackground = this.add
       .image(
-        this.config.width * 0.75,
-        this.config.height / 7,
+        this.config.width * 0.75 + 20,
+        this.config.height / 7 - 10,
         "small-red-button"
       )
       .setOrigin(0.5)
@@ -127,30 +131,6 @@ class ControlsScene extends BaseScene {
 
     cancelbtn.on("pointerup", () => {
       this.scene.start("MenuScene");
-    });
-  }
-
-  setupMenuEvents(menuItem) {
-    const textGO = menuItem.textGO;
-    textGO.setInteractive();
-
-    textGO.on("pointerover", () => {
-      textGO.setStyle({ fill: "#ff0" });
-    });
-
-    textGO.on("pointerout", () => {
-      textGO.setStyle({ fill: "#713E01" });
-    });
-
-    textGO.on("pointerup", () => {
-      if (menuItem.scene) {
-        this.registry.set("level", menuItem.level);
-        this.scene.start(menuItem.scene);
-      }
-
-      if (menuItem.text === "Exit") {
-        this.game.destroy(true);
-      }
     });
   }
 }

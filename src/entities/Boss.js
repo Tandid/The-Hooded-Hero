@@ -11,10 +11,11 @@ class Boss extends Enemy {
     super.init();
     this.health = 700;
     this.damage = 50;
-    this.setSize(300, 250);
-    this.setOffset(250, 200);
+    this.setScale(1.7);
+    this.setSize(250, 250);
+    this.setOffset(280, 200);
     this.speed = 400;
-    this.maxPatrolDistance = 1000;
+    this.maxPatrolDistance = 800;
   }
 
   update(time, delta) {

@@ -380,6 +380,7 @@ class Play extends Phaser.Scene {
       .setDepth(1);
 
     home.on("pointerup", () => {
+      this.scene.stop("PlayScene");
       this.scene.start("MenuScene");
     });
   }
