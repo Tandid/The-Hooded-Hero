@@ -108,11 +108,11 @@ class LevelScene extends BaseScene {
     textGO.setInteractive();
 
     textGO.on("pointerover", () => {
-      textGO.setStyle({ fill: "#ff0" });
+      textGO.setStyle({ fill: "#fff" });
     });
 
     textGO.on("pointerout", () => {
-      textGO.setStyle({ fill: "#713E01" });
+      textGO.setStyle({ fill: "#000" });
     });
 
     textGO.on("pointerup", () => {
