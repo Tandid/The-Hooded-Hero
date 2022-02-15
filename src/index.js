@@ -1,3 +1,8 @@
+// import UIPlugin from "phaser3-rex-plugins/templates/ui/ui-plugin";
+// import InputTextPlugin from "phaser3-rex-plugins/plugins/inputtext-plugin";
+// import BBCodeTextPlugin from "phaser3-rex-plugins/plugins/bbcodetext-plugin";
+// import TextEditPlugin from "phaser3-rex-plugins/plugins/textedit-plugin.js";
+
 import Phaser from "phaser";
 
 import PlayScene from "./scenes/Play";
@@ -8,6 +13,7 @@ import LevelScene from "./scenes/Levels";
 import ControlsScene from "./scenes/Controls";
 import CreditsScene from "./scenes/Credits";
 import SettingsOverlayScene from "./scenes/SettingsOverlay";
+import LoadingScene from "./scenes/Loading";
 // 1600px
 
 const MAP_WIDTH = 16000;
@@ -39,6 +45,7 @@ const SHARED_CONFIG = {
 
 const Scenes = [
   PreloadScene,
+  LoadingScene,
   MenuScene,
   SettingsScene,
   SettingsOverlayScene,
@@ -60,6 +67,32 @@ const config = {
       debug: SHARED_CONFIG.debug,
     },
   },
+  // plugins: {
+  //   scene: [
+  //     {
+  //       key: "rexUI",
+  //       plugin: UIPlugin,
+  //       mapping: "rexUI",
+  //     },
+  //   ],
+  //   global: [
+  //     {
+  //       key: "rexInputTextPlugin",
+  //       plugin: InputTextPlugin,
+  //       start: true,
+  //     },
+  //     {
+  //       key: "rexBBCodeTextPlugin",
+  //       plugin: BBCodeTextPlugin,
+  //       start: true,
+  //     },
+  //     {
+  //       key: "rexTextEdit",
+  //       plugin: TextEditPlugin,
+  //       start: true,
+  //     },
+  //   ],
+  // },
   scene: initScenes(),
   scale: {
     autoCenter: Phaser.Scale.CENTER_BOTH,
