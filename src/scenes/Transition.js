@@ -1,8 +1,8 @@
 import Phaser from "phaser";
 
-class LoadingScene extends Phaser.Scene {
+class TransitionScene extends Phaser.Scene {
   constructor(config) {
-    super("LoadingScene");
+    super("TransitionScene");
     this.config = config;
     this.fontFamily = "customFont";
     this.playerStart = this.config.width / 10;
@@ -12,43 +12,36 @@ class LoadingScene extends Phaser.Scene {
 
   create() {
     this.add
-      .image(this.config.width / 2, this.config.height / 2, "logo")
-      .setOrigin(0.5)
-      .setScale(0.6);
-
-    this.add
-      .text(
-        this.config.width / 2,
-        this.config.height / 2,
-        `Loading Assets and Textures ... (${this.num}%)`,
-        {
-          fontFamily: "customFont",
-          fontSize: "30px",
-          fontWeight: "larger",
-        }
-      )
+      .text(this.config.width / 2, this.config.height / 2, `Loading ...`, {
+        fontFamily: "customFont",
+        fontSize: "72px",
+        fontWeight: "larger",
+      })
       .setOrigin(0.5, 0.5)
       .setColor("#FFF");
 
-    this.add
-      .image(this.config.width / 1.1 + 50, this.config.height / 1.3, "dummy")
-      .setScale(1);
+    const player = this.add
+      .image(
+        this.config.width / 1.1 + 50,
+        this.config.height / 1.1,
+        "player-icon"
+      )
+      .setScale(0.5)
+      .setDepth(-1);
 
-    this.physics.add
-      .image(this.playerStart, this.config.height / 1.6, "arrow")
-      .setAccelerationX(this.acceleration)
-      .setScale(1.1);
+    this.tweens.add({
+      targets: player,
+      scale: { from: 0.5, to: 0.6 },
+      repeat: -1,
+      yoyo: true,
+    });
 
     this.generateRandomHint();
 
     // setTimeout(() => {
     //   this.scene.stop("LoadingScene");
     //   this.scene.start("MenuScene");
-    // }, 3800);
-    setTimeout(() => {
-      this.scene.stop("LoadingScene");
-      this.scene.start("MenuScene");
-    }, 100);
+    // }, 1000);
   }
 
   generateRandomHint() {
@@ -78,4 +71,4 @@ class LoadingScene extends Phaser.Scene {
   }
 }
 
-export default LoadingScene;
+export default TransitionScene;
