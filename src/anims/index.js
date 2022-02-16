@@ -14,7 +14,7 @@ export default (anims) => {
   });
 
   anims.create({
-    key: "fire-anim",
+    key: "fire",
     frames: [
       { key: "fire-1" },
       { key: "fire-2" },

@@ -33,7 +33,7 @@ class Mage extends Enemy {
 
     if (this.timeFromLastAttack + this.attackDelay <= time) {
       this.play("mage-attack", true);
-      this.projectiles.fireProjectile(this, "fire-1");
+      this.projectiles.fireProjectile(this, "fire");
 
       this.timeFromLastAttack = time;
       this.attackDelay = this.getAttackDelay();
@@ -51,7 +51,7 @@ class Mage extends Enemy {
   }
 
   getAttackDelay() {
-    return Phaser.Math.Between(1000, 2000);
+    return Phaser.Math.Between(1000, 4000);
   }
 
   patrol() {
@@ -68,9 +68,9 @@ class Mage extends Enemy {
       }
     );
 
-    if (!hasHit) {
-      this.setVelocityX((this.speed = 0));
-    }
+    // if (!hasHit) {
+    //   this.setVelocityX((this.speed = 0));
+    // }
 
     if (this.config.debug && ray) {
       this.rayGraphics.clear();
