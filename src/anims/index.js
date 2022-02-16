@@ -12,6 +12,13 @@ export default (anims) => {
     frameRate: 60,
     repeat: 0,
   });
+  anims.create({
+    key: "boss-default-swing",
+    frames: anims.generateFrameNumbers("boss-default", {
+      start: 0,
+      end: 60,
+    }),
+  });
 
   anims.create({
     key: "fire",
