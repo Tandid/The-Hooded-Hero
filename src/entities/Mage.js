@@ -51,7 +51,7 @@ class Mage extends Enemy {
   }
 
   getAttackDelay() {
-    return Phaser.Math.Between(1000, 4000);
+    return Phaser.Math.Between(1000, 3500);
   }
 
   patrol() {
