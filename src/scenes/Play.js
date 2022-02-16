@@ -92,30 +92,36 @@ class Play extends Phaser.Scene {
 
   playBgMusic() {
     const level = this.getCurrentLevel();
+    this.sound.stopAll();
 
-    if (this.sound.get("forest-theme")) {
-      return;
-    }
-    if (this.sound.get("menu-theme")) {
-      this.sound.get("menu-theme").stop();
-    }
-    if (this.sound.get("cave-theme")) {
-      return;
-    }
-    if (this.sound.get("boss-theme")) {
-      return;
-    }
+    const forestBg = this.sound.add("forest-theme", {
+      loop: true,
+      volume: 0.04,
+    });
+    const caveBg = this.sound.add("cave-theme", { loop: true, volume: 0.04 });
+    const bossBg = this.sound.add("boss-theme", { loop: true, volume: 0.04 });
+
+    // if (this.sound.get("forest-theme")) {
+    //   return;
+    // }
+
+    // if (this.sound.get("cave-theme")) {
+    //   return;
+    // }
+    // if (this.sound.get("boss-theme")) {
+    //   return;
+    // }
 
     if (level === 1) {
-      this.sound.add("forest-theme", { loop: true, volume: 0.04 }).play();
+      forestBg.play();
     }
 
     if (level === 2) {
-      this.sound.add("cave-theme", { loop: true, volume: 0.04 }).play();
+      caveBg.play();
     }
 
     if (level === 3) {
-      this.sound.add("boss-theme", { loop: true, volume: 0.04 }).play();
+      bossBg.play();
     }
   }
 

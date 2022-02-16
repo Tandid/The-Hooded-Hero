@@ -115,20 +115,22 @@ class MenuScene extends BaseScene {
   }
 
   playBgMusic() {
+    this.sound.stopAll();
     // if (this.sound.get("forest-theme")) {
     //   this.sound.get("forest-theme").stop();
-    //   this.sound.add("menu-theme", { loop: true, volume: 0.04 }).play();
+    //   this.sound.get("menu-theme", { loop: true, volume: 0.04 }).play();
     // }
-    if (this.sound.get("menu-theme")) {
-      return;
-    }
     // if (this.sound.get("cave-theme")) {
-    //   return;
+    //   this.sound.get("cave-theme").stop();
+    //   this.sound.get("menu-theme", { loop: true, volume: 0.04 }).play();
     // }
     // if (this.sound.get("boss-theme")) {
-    //   return;
+    //   this.sound.get("boss-theme").stop();
+    //   this.sound.get("menu-theme", { loop: true, volume: 0.04 }).play();
     // }
-    this.sound.stopAll();
+    if (this.sound.get("menu-theme")) {
+      this.sound.get("menu-theme", { loop: true, volume: 0.04 }).play();
+    }
     this.sound.add("menu-theme", { loop: true, volume: 0.04 }).play();
   }
 
@@ -149,6 +151,7 @@ class MenuScene extends BaseScene {
       if (menuItem.text === "Story Mode") {
         this.cameras.main.fadeOut(1000, 0, 0, 0);
 
+        setTimeout(() => this.scene.stop("MenuScene"), 1000);
         setTimeout(() => this.scene.start("TransitionScene"), 1000);
         setTimeout(() => this.scene.stop("TransitionScene"), 4000);
 
