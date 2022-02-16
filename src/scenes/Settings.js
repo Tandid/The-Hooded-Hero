@@ -7,7 +7,17 @@ class SettingsScene extends BaseScene {
 
   create() {
     super.create();
-    this.createCancelButton();
+
+    this.cursorOver = this.sound.add("cursorOver");
+    this.cursorOver.volume = 0.4;
+
+    this.select = this.sound.add("select");
+    this.select.volume = 0.4;
+
+    this.pageFlip = this.sound.add("page-flip");
+    this.pageFlip.volume = 0.4;
+
+    this.createCloseButton();
 
     this.add
       .image(this.config.width / 2, this.config.height / 2, "panel-2")
@@ -103,38 +113,33 @@ class SettingsScene extends BaseScene {
       .setColor("#D9B48FFF");
   }
 
-  createCancelButton() {
-    const cancelbtn =
-      // .image(
-      //   this.config.rightBottomCorner.x - 15,
-      //   this.config.rightBottomCorner.y - 115,
-      //   "home"
-      // )
-      this.add
-        .image(
-          this.config.width * 0.75 + 20,
-          this.config.height / 7 - 10,
-          "small-close"
-        )
-        .setOrigin(0.5)
-        .setScale(0.7)
-        .setInteractive()
-        .setDepth(2);
-
-    const btnbackground = this.add
+  createCloseButton() {
+    const closeBtn = this.add
       .image(
         this.config.width * 0.75 + 20,
         this.config.height / 7 - 10,
-        "small-red-button"
+        "close-btn"
       )
       .setOrigin(0.5)
       .setScale(0.7)
-      .setDepth(1);
+      .setInteractive()
+      .setDepth(2);
 
-    cancelbtn.on("pointerup", () => {
+    closeBtn.on("pointerup", () => {
+      this.select.play();
       this.scene.start("MenuScene");
     });
+
+    closeBtn.on("pointerover", () => {
+      this.cursorOver.play();
+      closeBtn.setTint(0xff6666);
+    });
+
+    closeBtn.on("pointerout", () => {
+      closeBtn.clearTint();
+    });
   }
+
   setupMenuEvents(menuItem) {
     const textGO = menuItem.textGO;
     textGO.setInteractive();
