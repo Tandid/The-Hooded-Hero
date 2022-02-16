@@ -16,6 +16,7 @@ import SettingsOverlayScene from "./scenes/SettingsOverlay";
 import LoadingScene from "./scenes/Loading";
 import TransitionScene from "./scenes/Transition";
 import ContactScene from "./scenes/Contact";
+import ComingSoonScene from "./scenes/ComingSoon";
 // 1600px
 
 const MAP_WIDTH = 16000;
@@ -57,6 +58,7 @@ const Scenes = [
   PlayScene,
   CreditsScene,
   ContactScene,
+  ComingSoonScene,
 ];
 const createScene = (Scene) => new Scene(SHARED_CONFIG);
 const initScenes = () => Scenes.map(createScene);
