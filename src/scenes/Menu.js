@@ -111,7 +111,7 @@ class MenuScene extends BaseScene {
       .setInteractive();
 
     contact.on("pointerup", () => {
-      this.scene.start("CreditsScene");
+      this.scene.start("ContactScene");
     });
   }
 

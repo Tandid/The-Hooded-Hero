@@ -8,6 +8,9 @@ class Preload extends Phaser.Scene {
   preload() {
     // LOGO
     this.load.image("logo", "public/assets/logo.png");
+    this.load.image("github", "public/assets/github.png");
+    this.load.image("linkedin", "public/assets/linkedin.png");
+    this.load.image("gmail", "public/assets/gmail.png");
 
     // MAPS
 
