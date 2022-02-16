@@ -91,45 +91,34 @@ class MenuScene extends BaseScene {
   }
 
   createContactsButton() {
-    const contact = this.add
-      .image(this.config.width - 170, this.config.height - 30, "contacts-btn")
+    const contactsBtn = this.add
+      .image(this.config.width - 50, this.config.height / 10, "page")
       .setOrigin(0.5)
-      .setScale(0.5)
+      .setScale(1)
       .setDepth(2)
       .setInteractive();
 
-    const btnbackground = this.add
-      .image(
-        this.config.width - 170,
-        this.config.height - 30,
-        "small-yellow-button"
-      )
-      .setOrigin(0.5)
-      .setScale(0.5)
-      .setDepth(1)
-      .setInteractive();
-
-    contact.on("pointerup", () => {
+    contactsBtn.on("pointerup", () => {
+      this.pageFlip.play();
       this.scene.start("ContactScene");
+    });
+
+    contactsBtn.on("pointerover", () => {
+      contactsBtn.setTint(0xc2c2c2);
+      this.cursorOver.play();
+    });
+
+    contactsBtn.on("pointerout", () => {
+      contactsBtn.clearTint();
     });
   }
 
   playBgMusic() {
     this.sound.stopAll();
-    // if (this.sound.get("forest-theme")) {
-    //   this.sound.get("forest-theme").stop();
-    //   this.sound.get("menu-theme", { loop: true, volume: 0.04 }).play();
-    // }
-    // if (this.sound.get("cave-theme")) {
-    //   this.sound.get("cave-theme").stop();
-    //   this.sound.get("menu-theme", { loop: true, volume: 0.04 }).play();
-    // }
-    // if (this.sound.get("boss-theme")) {
-    //   this.sound.get("boss-theme").stop();
-    //   this.sound.get("menu-theme", { loop: true, volume: 0.04 }).play();
-    // }
+
     if (this.sound.get("menu-theme")) {
       this.sound.get("menu-theme", { loop: true, volume: 0.04 }).play();
+      return;
     }
     this.sound.add("menu-theme", { loop: true, volume: 0.04 }).play();
   }

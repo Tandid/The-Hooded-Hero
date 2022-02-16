@@ -9,7 +9,21 @@ class ContactScene extends BaseScene {
 
   create() {
     super.create();
-    this.createCancelButton();
+
+    this.cursorOver = this.sound.add("cursorOver");
+    this.cursorOver.volume = 0.4;
+
+    this.select = this.sound.add("select");
+    this.select.volume = 0.4;
+
+    this.pageFlip = this.sound.add("page-flip");
+    this.pageFlip.volume = 0.4;
+
+    this.createCloseButton();
+    this.createGithubButton();
+    this.createLinkedInButton();
+    this.createEmailButton();
+
     this.add
       .image(this.config.width / 2, this.config.height / 2, "panel-2")
       .setOrigin(0.5)
@@ -42,11 +56,6 @@ class ContactScene extends BaseScene {
       .setColor("0x000");
 
     this.add
-      .image(this.config.width / 4, 220, "github")
-      .setOrigin(0.5)
-      .setScale(0.15);
-
-    this.add
       .text(
         this.config.width / 1.75 + 20,
         320,
@@ -60,70 +69,108 @@ class ContactScene extends BaseScene {
       .setColor("0x000");
 
     this.add
-      .image(this.config.width / 4, 320, "linkedin")
-      .setOrigin(0.5)
-      .setScale(0.15);
-
-    this.add
       .text(this.config.width / 1.75, 420, "tandid.alam@gmail.com", {
         fontFamily: "customFont",
         fontSize: "40px",
       })
       .setOrigin(0.5, 0.5)
       .setColor("0x000");
-
-    this.add
-      .image(this.config.width / 4, 420, "gmail")
-      .setOrigin(0.5)
-      .setScale(0.15);
-
-    // if (this.config.canGoBack) {
-    //   const settingsButton = this.add
-    //     .image(
-    //       this.config.width - 10,
-    //       this.config.height - 10,
-    //       "settings-button"
-    //     )
-    //     .setOrigin(1)
-    //     .setScale(0.5)
-    //     .setInteractive();
-
-    //   settingsButton.on("pointerup", () => {
-    //     this.scene.start("MenuScene");
-    //   });
-    // }
   }
 
-  createCancelButton() {
-    const cancelbtn =
-      // .image(
-      //   this.config.rightBottomCorner.x - 15,
-      //   this.config.rightBottomCorner.y - 115,
-      //   "home"
-      // )
-      this.add
-        .image(
-          this.config.width / 1.1 - 20,
-          this.config.height / 7 - 10,
-          "small-close"
-        )
-        .setOrigin(0.5)
-        .setScale(0.7)
-        .setInteractive()
-        .setDepth(2);
+  openLink(url) {
+    const s = window.open(url, "_blank");
+    if (s && s.focus) s.focus();
+    else if (!s) {
+      window.location.href = url;
+    }
+  }
 
-    const btnbackground = this.add
+  createCloseButton() {
+    const closeBtn = this.add
       .image(
         this.config.width / 1.1 - 20,
         this.config.height / 7 - 10,
-        "small-red-button"
+        "close-btn"
       )
       .setOrigin(0.5)
       .setScale(0.7)
-      .setDepth(1);
+      .setInteractive()
+      .setDepth(2);
 
-    cancelbtn.on("pointerup", () => {
+    closeBtn.on("pointerup", () => {
+      this.select.play();
       this.scene.start("MenuScene");
+    });
+
+    closeBtn.on("pointerover", () => {
+      this.cursorOver.play();
+      closeBtn.setTint(0xff6666);
+    });
+
+    closeBtn.on("pointerout", () => {
+      closeBtn.clearTint();
+    });
+  }
+
+  createGithubButton() {
+    const githubBtn = this.add
+      .image(this.config.width / 4, 220, "github")
+      .setOrigin(0.5)
+      .setScale(0.15)
+      .setDepth(2)
+      .setInteractive();
+
+    githubBtn.on("pointerup", () => {
+      this.openLink("https://github.com/tandid"), this;
+    });
+
+    githubBtn.on("pointerover", () => {
+      this.cursorOver.play();
+      githubBtn.setScale(0.17);
+    });
+
+    githubBtn.on("pointerout", () => {
+      githubBtn.setScale(0.15);
+    });
+  }
+
+  createLinkedInButton() {
+    const linkedinBtn = this.add
+      .image(this.config.width / 4, 320, "linkedin")
+      .setOrigin(0.5)
+      .setScale(0.15)
+      .setDepth(2)
+      .setInteractive();
+
+    linkedinBtn.on("pointerup", () => {
+      this.openLink("https://www.linkedin.com/in/tandidalam/"), this;
+    });
+
+    linkedinBtn.on("pointerover", () => {
+      this.cursorOver.play();
+      linkedinBtn.setScale(0.17);
+    });
+
+    linkedinBtn.on("pointerout", () => {
+      linkedinBtn.setScale(0.15);
+    });
+  }
+
+  createEmailButton() {
+    const emailBtn = this.add
+      .image(this.config.width / 4, 420, "gmail")
+      .setOrigin(0.5)
+      .setScale(0.15)
+      .setDepth(2)
+      .setInteractive();
+
+    emailBtn.on("pointerover", () => {
+      this.cursorOver.play();
+      emailBtn.setScale(0.17);
+    });
+
+    emailBtn.on("pointerout", () => {
+      emailBtn.setScale(0.15);
     });
   }
 }

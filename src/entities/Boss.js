@@ -46,8 +46,8 @@ class Boss extends EnemyBoss {
     }
 
     if (this.isPlayingAnims("boss-attack")) {
-      setTimeout(() => this.setSize(250, 250), 1000);
-      setTimeout(() => this.setOffset(280, 200), 1000);
+      setTimeout(() => this.setSize(250, 250), 2000);
+      setTimeout(() => this.setOffset(280, 200), 2000);
       return;
     }
 

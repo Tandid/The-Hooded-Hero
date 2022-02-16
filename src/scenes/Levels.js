@@ -24,20 +24,12 @@ class LevelScene extends BaseScene {
 
     this.menu = [];
 
-    this.createCancelButton();
+    this.createCloseButton();
+
     this.add
       .image(this.config.width / 2, this.config.height / 2, "panel-3")
       .setOrigin(0.5)
       .setScale(1.4);
-
-    // this.add
-    //   .image(this.config.width / 2, this.config.height / 2 + 50, "panel-4")
-    //   .setOrigin(0.5)
-    //   .setScale(1.3, 0.5);
-    // this.add
-    //   .image(this.config.width / 2, this.config.height / 2 + 150, "panel-4")
-    //   .setOrigin(0.5)
-    //   .setScale(1.3, 0.5);
 
     this.add
       .image(this.config.width / 2, this.config.height / 6, "header-shadow")
@@ -86,32 +78,26 @@ class LevelScene extends BaseScene {
     this.createMenu(this.menu, this.setupMenuEvents.bind(this));
   }
 
-  createCancelButton() {
-    const cancelbtn =
-      // .image(
-      //   this.config.rightBottomCorner.x - 15,
-      //   this.config.rightBottomCorner.y - 115,
-      //   "home"
-      // )
-      this.add
-        .image(this.config.width * 0.8, this.config.height / 7, "small-close")
-        .setOrigin(0.5)
-        .setScale(0.7)
-        .setInteractive()
-        .setDepth(2);
-
-    const btnbackground = this.add
-      .image(
-        this.config.width * 0.8,
-        this.config.height / 7,
-        "small-red-button"
-      )
+  createCloseButton() {
+    const closeBtn = this.add
+      .image(this.config.width * 0.8, this.config.height / 7, "close-btn")
       .setOrigin(0.5)
       .setScale(0.7)
-      .setDepth(1);
+      .setInteractive()
+      .setDepth(2);
 
-    cancelbtn.on("pointerup", () => {
+    closeBtn.on("pointerup", () => {
+      this.select.play();
       this.scene.start("MenuScene");
+    });
+
+    closeBtn.on("pointerover", () => {
+      this.cursorOver.play();
+      closeBtn.setTint(0xff6666);
+    });
+
+    closeBtn.on("pointerout", () => {
+      closeBtn.clearTint();
     });
   }
 
