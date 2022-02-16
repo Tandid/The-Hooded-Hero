@@ -1,7 +1,7 @@
-import Enemy from "./Enemy";
+import EnemyBoss from "./EnemyBoss";
 import initAnims from "./anims/bossAnims.js";
 
-class Boss extends Enemy {
+class Boss extends EnemyBoss {
   constructor(scene, x, y) {
     super(scene, x, y, "boss");
     initAnims(scene.anims);
@@ -22,6 +22,9 @@ class Boss extends Enemy {
     super.update(time, delta);
 
     if (!this.active) {
+      return;
+    }
+    if (this.isPlayingAnims("boss-attack")) {
       return;
     }
 

@@ -10,7 +10,7 @@ class Mage extends Enemy {
 
   init() {
     super.init();
-    this.speed = 150;
+    this.speed = 10;
     this.health = 200;
     this.damage = 20;
     this.maxPatrolDistance = 0;
@@ -19,9 +19,9 @@ class Mage extends Enemy {
     this.timeFromLastAttack = 0;
     this.attackDelay = this.getAttackDelay();
     this.lastDirection = null;
+    this.setFlipX(!this.flipX);
 
     this.setSize(120, 170);
-    // this.setOffset(10, 15);
   }
 
   update(time, delta) {
@@ -29,12 +29,6 @@ class Mage extends Enemy {
 
     if (!this.active) {
       return;
-    }
-
-    if (this.body.velocity.x > 0) {
-      this.lastDirection = Phaser.Physics.Arcade.FACING_RIGHT;
-    } else {
-      this.lastDirection = Phaser.Physics.Arcade.FACING_LEFT;
     }
 
     if (this.timeFromLastAttack + this.attackDelay <= time) {
@@ -58,6 +52,30 @@ class Mage extends Enemy {
 
   getAttackDelay() {
     return Phaser.Math.Between(1000, 2000);
+  }
+
+  patrol() {
+    if (!this.body || !this.body.onFloor()) {
+      return;
+    }
+
+    const { ray, hasHit } = this.raycast(
+      this.body,
+      this.platformCollidersLayer,
+      {
+        precision: 1,
+        steepnes: 0.2,
+      }
+    );
+
+    if (!hasHit) {
+      this.setVelocityX((this.speed = 0));
+    }
+
+    if (this.config.debug && ray) {
+      this.rayGraphics.clear();
+      this.rayGraphics.strokeLineShape(ray);
+    }
   }
 }
 
