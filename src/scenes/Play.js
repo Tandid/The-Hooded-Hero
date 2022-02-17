@@ -14,6 +14,15 @@ class Play extends Phaser.Scene {
   }
 
   create({ gameStatus }) {
+    this.cursorOver = this.sound.add("cursorOver");
+    this.cursorOver.volume = 0.4;
+
+    this.select = this.sound.add("select");
+    this.select.volume = 0.4;
+
+    this.pageFlip = this.sound.add("page-flip");
+    this.pageFlip.volume = 0.4;
+
     this.score = 0;
     this.hud = new Hud(this, 0, 0);
     this.isPaused = false;
@@ -77,9 +86,9 @@ class Play extends Phaser.Scene {
     });
 
     this.createBG(map);
-    this.createSettingsButton();
-    this.createHomeButton();
     this.createRestartButton();
+    this.createHomeButton();
+    this.createSettingsButton();
     this.createEndOfLevel(playerZones.end, player);
     this.setupFollowupCameraOn(player);
 
@@ -319,10 +328,10 @@ class Play extends Phaser.Scene {
   }
 
   createSettingsButton() {
-    const btn = this.add
+    const settingsBtn = this.add
       .image(
-        this.config.rightBottomCorner.x,
-        this.config.rightBottomCorner.y,
+        this.config.rightBottomCorner.x - 15,
+        this.config.rightBottomCorner.y - 10,
         "settings-button"
       )
       .setOrigin(1)
@@ -330,24 +339,21 @@ class Play extends Phaser.Scene {
       .setScale(1)
       .setInteractive();
 
-    btn.on("pointerup", () => {
+    settingsBtn.on("pointerup", () => {
       this.scene.start("SettingsOverlayScene");
     });
 
-    // btn.on("pointerdown", () => {
-    //   this.isPaused = true;
-    //   this.physics.pause();
-    //   this.scene.pause();
-    //   this.scene.launch("SettingsScene");
-    //   this.scene.stop();
-    //   setTimeout(() => {
-    //     this.scene.resume();
-    //   }, 1000);
-    // });
+    settingsBtn.on("pointerover", () => {
+      settingsBtn.setTint(0xc2c2c2);
+      this.cursorOver.play();
+    });
+    settingsBtn.on("pointerout", () => {
+      settingsBtn.clearTint();
+    });
   }
 
   createPlayerIcon() {
-    const home = this.add
+    this.add
       .image(
         this.config.rightBottomCorner.x - 15,
         this.config.rightBottomCorner.y - 115,
@@ -361,11 +367,11 @@ class Play extends Phaser.Scene {
   }
 
   createHomeButton() {
-    const home = this.add
+    const homeBtn = this.add
       .image(
         this.config.rightBottomCorner.x - 15,
         this.config.rightBottomCorner.y - 115,
-        "home"
+        "home-btn"
       )
       .setOrigin(1)
       .setScrollFactor(0)
@@ -373,54 +379,43 @@ class Play extends Phaser.Scene {
       .setInteractive()
       .setDepth(2);
 
-    const btnbackground = this.add
-      .image(
-        this.config.rightBottomCorner.x - 5,
-        this.config.rightBottomCorner.y - 110,
-        "small-blue-button"
-      )
-      .setOrigin(1)
-      .setScrollFactor(0)
-      .setScale(1)
-      .setInteractive()
-      .setDepth(1);
-
-    home.on("pointerup", () => {
+    homeBtn.on("pointerup", () => {
+      this.select.play();
       this.scene.stop("PlayScene");
       this.scene.start("MenuScene");
     });
-    // home.on("pointerover", () => {
-    //   home.setScale(2);
-    // });
+    homeBtn.on("pointerover", () => {
+      homeBtn.setTint(0xc2c2c2);
+      this.cursorOver.play();
+    });
+    homeBtn.on("pointerout", () => {
+      homeBtn.clearTint();
+    });
   }
 
   createRestartButton() {
-    const btn = this.add
+    const restartBtn = this.add
       .image(
-        this.config.rightBottomCorner.x - 20,
-        this.config.rightBottomCorner.y - 225,
-        "restart"
+        this.config.rightBottomCorner.x - 15,
+        this.config.rightBottomCorner.y - 210,
+        "restart-btn"
       )
       .setOrigin(1)
       .setScrollFactor(0)
-      .setScale(0.8)
+      .setScale(0.9)
       .setInteractive()
       .setDepth(2);
 
-    const btnbackground = this.add
-      .image(
-        this.config.rightBottomCorner.x - 5,
-        this.config.rightBottomCorner.y - 210,
-        "small-red-button"
-      )
-      .setOrigin(1)
-      .setScrollFactor(0)
-      .setScale(1)
-      .setInteractive()
-      .setDepth(1);
-
-    btn.on("pointerup", () => {
+    restartBtn.on("pointerup", () => {
+      this.select.play();
       this.scene.restart();
+    });
+    restartBtn.on("pointerover", () => {
+      restartBtn.setTint(0xc2c2c2);
+      this.cursorOver.play();
+    });
+    restartBtn.on("pointerout", () => {
+      restartBtn.clearTint();
     });
   }
 

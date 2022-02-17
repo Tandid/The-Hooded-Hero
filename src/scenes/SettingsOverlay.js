@@ -7,33 +7,71 @@ class SettingsOverlayScene extends Phaser.Scene {
   }
 
   create() {
-    // super.create();
-    this.createCancelButton();
+    this.toggleMute = false;
 
+    this.currentMusicBars = [1, 1, 1, 1, 1];
+    this.currentSFXBars = [1, 1, 1];
+    this.maxVolumeBars = 10;
+    this.minVolumeBars = 0;
+
+    this.cursorOver = this.sound.add("cursorOver");
+    this.cursorOver.volume = 0.4;
+
+    this.select = this.sound.add("select");
+    this.select.volume = 0.4;
+
+    this.pageFlip = this.sound.add("page-flip");
+    this.pageFlip.volume = 0.4;
+
+    this.createPage();
+    this.createCloseButton();
+
+    this.createMusicSetting();
+    this.createSFXSetting();
+    this.createMuteButton();
+
+    this.createMusicBars();
+    this.createSFXBars();
+  }
+
+  createPage() {
     this.add
       .image(this.config.width / 2, this.config.height / 2, "panel-2")
       .setOrigin(0.5)
       .setScale(0.7);
+
     this.add
       .image(this.config.width / 2, this.config.height / 2 - 50, "panel-4")
       .setOrigin(0.5)
       .setScale(1.3, 0.5);
+
     this.add
       .image(this.config.width / 2, this.config.height / 2 + 50, "panel-4")
       .setOrigin(0.5)
       .setScale(1.3, 0.5);
+
     this.add
       .image(this.config.width / 2, this.config.height / 2 + 150, "panel-4")
       .setOrigin(0.5)
       .setScale(0.75, 0.5);
+
     this.add
       .image(this.config.width / 2, this.config.height / 6, "header-shadow")
       .setOrigin(0.5)
       .setScale(0.9);
+
     this.add
       .image(this.config.width / 2, this.config.height / 6, "header")
       .setOrigin(0.5)
       .setScale(0.9);
+
+    this.add
+      .text(this.config.width / 2, this.config.height / 6, "SETTINGS", {
+        fontFamily: "customFont",
+        fontSize: "72px",
+      })
+      .setOrigin(0.5, 0.5)
+      .setColor("#D9B48FFF");
 
     this.add
       .image(
@@ -51,6 +89,7 @@ class SettingsOverlayScene extends Phaser.Scene {
       )
       .setOrigin(0.5)
       .setScale(0.8);
+
     this.add
       .image(
         this.config.width / 2 - 100,
@@ -59,102 +98,186 @@ class SettingsOverlayScene extends Phaser.Scene {
       )
       .setOrigin(0.5)
       .setScale(0.8);
-
-    this.add
-      .image(
-        this.config.width / 2 - 100,
-        this.config.height / 2 - 50,
-        "prev-btn"
-      )
-      .setOrigin(0.5)
-      .setScale(0.5);
-
-    this.add
-      .image(
-        this.config.width / 2 + 200,
-        this.config.height / 2 - 50,
-        "next-btn"
-      )
-      .setOrigin(0.5)
-      .setScale(0.5);
-
-    this.add
-      .image(
-        this.config.width / 2 - 100,
-        this.config.height / 2 + 50,
-        "prev-btn"
-      )
-      .setOrigin(0.5)
-      .setScale(0.5);
-
-    this.add
-      .image(
-        this.config.width / 2 + 200,
-        this.config.height / 2 + 50,
-        "next-btn"
-      )
-      .setOrigin(0.5)
-      .setScale(0.5);
-    this.add
-      .text(this.config.width / 2, this.config.height / 6, "SETTINGS", {
-        fontFamily: "customFont",
-        fontSize: "72px",
-      })
-      .setOrigin(0.5, 0.5)
-      .setColor("#D9B48FFF");
   }
 
-  createCancelButton() {
-    const cancelbtn =
-      // .image(
-      //   this.config.rightBottomCorner.x - 15,
-      //   this.config.rightBottomCorner.y - 115,
-      //   "home"
-      // )
-      this.add
-        .image(this.config.width * 0.75, this.config.height / 7, "small-close")
-        .setOrigin(0.5)
-        .setScale(0.7)
-        .setInteractive()
-        .setDepth(2);
-
-    const btnbackground = this.add
+  createMuteButton() {
+    const muteBtn = this.add
       .image(
-        this.config.width * 0.75,
-        this.config.height / 7,
-        "small-red-button"
+        this.config.width / 2 + 50,
+        this.config.height / 2 + 150,
+        "switch-off-bg"
+      )
+      .setOrigin(0.5)
+      .setScale(1.3, 0.9)
+      .setInteractive();
+
+    if (this.toggleMute === false) {
+      const switchOn = this.add
+        .image(
+          this.config.width / 2 + 100,
+          this.config.height / 2 + 150,
+          "switch-on"
+        )
+        .setOrigin(0.5)
+        .setScale(0.8);
+    } else {
+      const switchOn = this.add
+        .image(
+          this.config.width / 2 + 100,
+          this.config.height / 2 + 150,
+          "switch-off"
+        )
+        .setOrigin(0.5)
+        .setScale(0.8);
+    }
+
+    muteBtn.on("pointerup", () => {
+      this.select.play();
+      this.toggleMute(!this.toggleMute);
+    });
+    muteBtn.on("pointerover", () => {
+      muteBtn.setTint(0xc2c2c2);
+      this.cursorOver.play();
+    });
+    muteBtn.on("pointerout", () => {
+      muteBtn.clearTint();
+    });
+  }
+
+  createCloseButton() {
+    const closeBtn = this.add
+      .image(
+        this.config.width * 0.75 + 20,
+        this.config.height / 7 - 10,
+        "close-btn"
       )
       .setOrigin(0.5)
       .setScale(0.7)
-      .setDepth(1);
+      .setInteractive()
+      .setDepth(2);
 
-    cancelbtn.on("pointerup", () => {
+    closeBtn.on("pointerup", () => {
+      this.select.play();
       this.scene.start("MenuScene");
     });
+
+    closeBtn.on("pointerover", () => {
+      this.cursorOver.play();
+      closeBtn.setTint(0xff6666);
+    });
+
+    closeBtn.on("pointerout", () => {
+      closeBtn.clearTint();
+    });
   }
-  // setupMenuEvents(menuItem) {
-  //   const textGO = menuItem.textGO;
-  //   textGO.setInteractive();
 
-  //   textGO.on("pointerover", () => {
-  //     textGO.setStyle({ fill: "#ff0" });
-  //   });
+  createVolumeBar(width, height) {
+    this.add.image(width, height, "yellow-bar").setOrigin(0.5).setScale(0.7);
+  }
 
-  //   textGO.on("pointerout", () => {
-  //     textGO.setStyle({ fill: "#713E01" });
-  //   });
+  createMusicSetting() {
+    this.createAddButton(
+      this.config.width / 2 + 200,
+      this.config.height / 2 - 50
+    );
+    this.createSubtractButton(
+      this.config.width / 2 - 100,
+      this.config.height / 2 - 50
+    );
 
-  //   textGO.on("pointerup", () => {
-  //     if (menuItem.scene) {
-  //       this.registry.set("level", menuItem.level);
-  //       this.scene.start(menuItem.scene);
-  //     }
+    // this.createVolumeBar(
+    //   this.config.width / 2 - 65,
+    //   this.config.height / 2 - 50
+    // );
+  }
 
-  //     if (menuItem.text === "Exit") {
-  //       this.game.destroy(true);
-  //     }
-  //   });
-  // }
+  createSFXSetting() {
+    this.createAddButton(
+      this.config.width / 2 + 200,
+      this.config.height / 2 + 50
+    );
+    this.createSubtractButton(
+      this.config.width / 2 - 100,
+      this.config.height / 2 + 50
+    );
+  }
+
+  createSubtractButton(width, height) {
+    const subtractBtn = this.add
+      .image(width, height, "prev-btn")
+      .setOrigin(0.5)
+      .setScale(0.5)
+      .setInteractive();
+
+    subtractBtn.on("pointerup", () => {
+      this.select.play();
+      if (this.currentMusicBars.length > this.minVolumeBars) {
+        this.currentMusicBars.pop();
+      }
+    });
+    subtractBtn.on("pointerover", () => {
+      subtractBtn.setTintFill(0xc2c2c2);
+      this.cursorOver.play();
+    });
+    subtractBtn.on("pointerout", () => {
+      subtractBtn.clearTint();
+    });
+  }
+
+  createMusicBars() {
+    const barWidth = 25;
+    let width = this.config.width / 2 - 65;
+    let height = this.config.height / 2 - 50;
+    this.currentMusicBars.map((MusicBar) => {
+      this.createVolumeBar(width, height);
+      width += barWidth;
+    });
+  }
+
+  createSFXBars() {
+    const barWidth = 25;
+    let width = this.config.width / 2 - 65;
+    let height = this.config.height / 2 + 50;
+    this.currentSFXBars.map((sfxBar) => {
+      this.createVolumeBar(width, height);
+      width += barWidth;
+    });
+  }
+
+  createAddButton(width, height) {
+    let barWidth = 25;
+
+    const addBtn = this.add
+      .image(width, height, "next-btn")
+      .setOrigin(0.5)
+      .setScale(0.5)
+      .setInteractive();
+
+    addBtn.on("pointerup", () => {
+      this.select.play();
+
+      if (this.currentMusicBars.length < this.maxVolumeBars) {
+        this.currentMusicBars.push(1);
+        console.log(this.currentMusicBars);
+      }
+    });
+
+    // createSFXBars(){}
+
+    addBtn.on("pointerover", () => {
+      addBtn.setTintFill(0xc2c2c2);
+      this.cursorOver.play();
+    });
+
+    addBtn.on("pointerout", () => {
+      addBtn.clearTint();
+    });
+  }
+
+  update() {
+    this.createMusicBars();
+    // this.createSFXBars();
+  }
 }
 
 export default SettingsOverlayScene;
