@@ -459,6 +459,7 @@ class Preload extends Phaser.Scene {
     this.load.audio("flute", "public/assets/music/flute.wav");
     this.load.audio("page-flip", "public/assets/music/page_flip.wav");
     this.load.audio("select", "public/assets/music/select.wav");
+    this.load.audio("lose", "public/assets/music/lose.wav");
 
     this.load.once("complete", () => {
       this.startGame();

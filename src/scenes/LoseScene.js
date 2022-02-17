@@ -8,6 +8,8 @@ class LoseScene extends Phaser.Scene {
   }
 
   create({ gameStatus }) {
+    this.cameras.main.fadeIn(500, 0, 0, 0);
+    this.gameOver = this.sound.add("lose", { volume: 0.1 }).play();
     this.cursorOver = this.sound.add("cursorOver");
     this.cursorOver.volume = 0.4;
 
