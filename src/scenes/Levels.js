@@ -88,7 +88,8 @@ class LevelScene extends BaseScene {
 
     closeBtn.on("pointerup", () => {
       this.select.play();
-      this.scene.start("MenuScene");
+      this.scene.wake("MenuScene");
+      this.scene.stop("LevelScene");
     });
 
     closeBtn.on("pointerover", () => {

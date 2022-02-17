@@ -70,7 +70,7 @@ class BaseScene extends Phaser.Scene {
 
       settingsBtn.on("pointerup", () => {
         this.select.play();
-        this.scene.start("SettingsScene");
+        this.scene.launch("SettingsOverlayScene");
       });
       settingsBtn.on("pointerover", () => {
         settingsBtn.setTint(0xc2c2c2);

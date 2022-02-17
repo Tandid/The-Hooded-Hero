@@ -340,7 +340,7 @@ class Play extends Phaser.Scene {
       .setInteractive();
 
     settingsBtn.on("pointerup", () => {
-      this.scene.start("SettingsOverlayScene");
+      this.scene.launch("SettingsOverlayScene");
     });
 
     settingsBtn.on("pointerover", () => {

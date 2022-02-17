@@ -77,7 +77,8 @@ class MenuScene extends BaseScene {
 
     controlsBtn.on("pointerup", () => {
       this.pageFlip.play();
-      this.scene.start("ControlsScene");
+      this.scene.sleep("MenuScene");
+      this.scene.launch("ControlsScene");
     });
 
     controlsBtn.on("pointerover", () => {
@@ -100,7 +101,8 @@ class MenuScene extends BaseScene {
 
     contactsBtn.on("pointerup", () => {
       this.pageFlip.play();
-      this.scene.start("ContactScene");
+      this.scene.sleep("MenuScene");
+      this.scene.launch("ContactScene");
     });
 
     contactsBtn.on("pointerover", () => {
@@ -150,7 +152,8 @@ class MenuScene extends BaseScene {
         );
         this.flute.play();
       } else {
-        menuItem.scene && this.scene.start(menuItem.scene);
+        this.scene.sleep("MenuScene");
+        this.scene.launch(menuItem.scene);
         this.select.play();
       }
 
