@@ -86,6 +86,7 @@ class Preload extends Phaser.Scene {
     this.load.image("textbox", "public/assets/ui/Textbox/textbox.png");
 
     this.load.image("coin", "public/assets/ui/Icons/icon_small_coin.png");
+    this.load.image("star", "public/assets/ui/Icons/icon_big_star.png");
     this.load.image("profile", "public/assets/ui/Icons/icon_small_profile.png");
     this.load.image(
       "settings-button",
@@ -169,6 +170,7 @@ class Preload extends Phaser.Scene {
     );
     this.load.image("yes-btn", "public/assets/ui/Buttons/yes_btn.png");
     this.load.image("no-btn", "public/assets/ui/Buttons/no_btn.png");
+    this.load.image("play-btn", "public/assets/ui/Buttons/play_btn.png");
 
     this.load.image("blue-button", "public/assets/ui/Buttons/button_blue.png");
     this.load.image(
@@ -460,6 +462,7 @@ class Preload extends Phaser.Scene {
     this.load.audio("page-flip", "public/assets/music/page_flip.wav");
     this.load.audio("select", "public/assets/music/select.wav");
     this.load.audio("lose", "public/assets/music/lose.wav");
+    this.load.audio("win", "public/assets/music/win.wav");
 
     this.load.once("complete", () => {
       this.startGame();

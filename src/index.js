@@ -18,6 +18,7 @@ import ContactScene from "./scenes/Contact";
 import ComingSoonScene from "./scenes/ComingSoon";
 import PauseScene from "./scenes/Pause";
 import LoseScene from "./scenes/LoseScene";
+import WinScene from "./scenes/WinScene";
 // 1600px
 
 const MAP_WIDTH = 16000;
@@ -61,6 +62,7 @@ const Scenes = [
   ComingSoonScene,
   PauseScene,
   LoseScene,
+  WinScene,
 ];
 const createScene = (Scene) => new Scene(SHARED_CONFIG);
 const initScenes = () => Scenes.map(createScene);
