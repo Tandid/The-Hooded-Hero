@@ -51,7 +51,7 @@ class LevelScene extends BaseScene {
     const levels = this.registry.get("unlocked-levels");
 
     let row = 70;
-    for (let i = 1; i <= levels; i++) {
+    for (let i = 1; i <= 3; i++) {
       this.add
         .image(this.config.width / 2, this.config.height / 4 + row, "panel-4")
         .setOrigin(0.5)

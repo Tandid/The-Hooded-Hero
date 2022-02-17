@@ -9,7 +9,6 @@ class MenuScene extends BaseScene {
       { scene: "PlayScene", text: "Story Mode" },
       { scene: "ComingSoonScene", text: "Multiplayer" },
       { scene: "LevelScene", text: "Levels" },
-      { scene: "WinScene", text: "Winner" },
       // { scene: null, text: "Exit" },
     ];
   }
