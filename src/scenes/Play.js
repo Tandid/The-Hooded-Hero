@@ -389,8 +389,9 @@ class Play extends Phaser.Scene {
 
     homeBtn.on("pointerup", () => {
       this.select.play();
-      this.scene.stop("PlayScene");
-      this.scene.start("MenuScene");
+      this.scene.pause("PlayScene");
+      this.scene.sendToBack("PlayScene");
+      this.scene.launch("PauseScene");
     });
     homeBtn.on("pointerover", () => {
       homeBtn.setTint(0xc2c2c2);

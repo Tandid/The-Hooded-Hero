@@ -8,7 +8,6 @@ import Phaser from "phaser";
 import PlayScene from "./scenes/Play";
 import PreloadScene from "./scenes/Preload";
 import MenuScene from "./scenes/Menu";
-import SettingsScene from "./scenes/Settings";
 import LevelScene from "./scenes/Levels";
 import ControlsScene from "./scenes/Controls";
 import CreditsScene from "./scenes/Credits";
@@ -17,6 +16,8 @@ import LoadingScene from "./scenes/Loading";
 import TransitionScene from "./scenes/Transition";
 import ContactScene from "./scenes/Contact";
 import ComingSoonScene from "./scenes/ComingSoon";
+import PauseScene from "./scenes/Pause";
+import LoseScene from "./scenes/LoseScene";
 // 1600px
 
 const MAP_WIDTH = 16000;
@@ -51,7 +52,6 @@ const Scenes = [
   LoadingScene,
   TransitionScene,
   MenuScene,
-  SettingsScene,
   SettingsOverlayScene,
   LevelScene,
   ControlsScene,
@@ -59,6 +59,8 @@ const Scenes = [
   CreditsScene,
   ContactScene,
   ComingSoonScene,
+  PauseScene,
+  LoseScene,
 ];
 const createScene = (Scene) => new Scene(SHARED_CONFIG);
 const initScenes = () => Scenes.map(createScene);

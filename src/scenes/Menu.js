@@ -1,5 +1,4 @@
 import BaseScene from "./BaseScene";
-import TransitionScene from "./Transition";
 
 class MenuScene extends BaseScene {
   constructor(config) {
@@ -10,7 +9,7 @@ class MenuScene extends BaseScene {
       { scene: "PlayScene", text: "Story Mode" },
       { scene: "ComingSoonScene", text: "Multiplayer" },
       { scene: "LevelScene", text: "Levels" },
-      // { scene: "SettingsOverlayScene", text: "Settings" },
+      { scene: "LoseScene", text: "Lose" },
       // { scene: null, text: "Exit" },
     ];
   }

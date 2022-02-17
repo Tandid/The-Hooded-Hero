@@ -158,6 +158,8 @@ class Preload extends Phaser.Scene {
     this.load.image("restart-btn", "public/assets/ui/Buttons/restart_btn.png");
     this.load.image("email-btn", "public/assets/ui/Buttons/email_btn.png");
     this.load.image("home-btn", "public/assets/ui/Buttons/home_btn.png");
+    this.load.image("yes-btn", "public/assets/ui/Buttons/yes_btn.png");
+    this.load.image("no-btn", "public/assets/ui/Buttons/no_btn.png");
 
     this.load.image("blue-button", "public/assets/ui/Buttons/button_blue.png");
     this.load.image(
