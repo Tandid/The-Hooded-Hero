@@ -8,6 +8,13 @@ class SettingsScene extends BaseScene {
   create() {
     super.create();
 
+    this.toggleMute = false;
+
+    this.currentMusicBars = [1, 1, 1, 1, 1];
+    this.currentSFXBars = [1, 1, 1];
+    this.maxVolumeBars = 10;
+    this.minVolumeBars = 0;
+
     this.cursorOver = this.sound.add("cursorOver");
     this.cursorOver.volume = 0.4;
 
@@ -19,52 +26,13 @@ class SettingsScene extends BaseScene {
 
     this.createPage();
     this.createCloseButton();
-    this.createAddButton();
-    this.createSubtractButton();
-    this.createVolumeBar();
 
-    this.add
-      .image(
-        this.config.width / 2 + 50,
-        this.config.height / 2 + 150,
-        "switch-off-bg"
-      )
-      .setOrigin(0.5)
-      .setScale(1.3, 0.9);
+    this.createMusicSetting();
+    this.createSFXSetting();
+    this.createMuteButton();
 
-    this.add
-      .image(
-        this.config.width / 2 + 100,
-        this.config.height / 2 + 150,
-        "switch-on"
-      )
-      .setOrigin(0.5)
-      .setScale(0.8);
-
-    this.add
-      .image(
-        this.config.width / 3 + 50,
-        this.config.height / 2 - 50,
-        "music-btn-on"
-      )
-      .setOrigin(0.5)
-      .setScale(0.8);
-    this.add
-      .image(
-        this.config.width / 3 + 50,
-        this.config.height / 2 + 50,
-        "sound-btn-on"
-      )
-      .setOrigin(0.5)
-      .setScale(0.8);
-    this.add
-      .image(
-        this.config.width / 2 - 100,
-        this.config.height / 2 + 150,
-        "mute-btn-on"
-      )
-      .setOrigin(0.5)
-      .setScale(0.8);
+    this.createMusicBars();
+    this.createSFXBars();
   }
 
   createPage() {
@@ -105,6 +73,76 @@ class SettingsScene extends BaseScene {
       })
       .setOrigin(0.5, 0.5)
       .setColor("#D9B48FFF");
+
+    this.add
+      .image(
+        this.config.width / 3 + 50,
+        this.config.height / 2 - 50,
+        "music-btn-on"
+      )
+      .setOrigin(0.5)
+      .setScale(0.8);
+    this.add
+      .image(
+        this.config.width / 3 + 50,
+        this.config.height / 2 + 50,
+        "sound-btn-on"
+      )
+      .setOrigin(0.5)
+      .setScale(0.8);
+
+    this.add
+      .image(
+        this.config.width / 2 - 100,
+        this.config.height / 2 + 150,
+        "mute-btn-on"
+      )
+      .setOrigin(0.5)
+      .setScale(0.8);
+  }
+
+  createMuteButton() {
+    const muteBtn = this.add
+      .image(
+        this.config.width / 2 + 50,
+        this.config.height / 2 + 150,
+        "switch-off-bg"
+      )
+      .setOrigin(0.5)
+      .setScale(1.3, 0.9)
+      .setInteractive();
+
+    if (this.toggleMute === false) {
+      const switchOn = this.add
+        .image(
+          this.config.width / 2 + 100,
+          this.config.height / 2 + 150,
+          "switch-on"
+        )
+        .setOrigin(0.5)
+        .setScale(0.8);
+    } else {
+      const switchOn = this.add
+        .image(
+          this.config.width / 2 + 100,
+          this.config.height / 2 + 150,
+          "switch-off"
+        )
+        .setOrigin(0.5)
+        .setScale(0.8);
+    }
+
+    muteBtn.on("pointerup", () => {
+      this.select.play();
+      this.toggleMute(!this.toggleMute);
+    });
+    muteBtn.on("pointerover", () => {
+      muteBtn.setTint(0xc2c2c2);
+      this.cursorOver.play();
+    });
+    muteBtn.on("pointerout", () => {
+      muteBtn.clearTint();
+    });
   }
 
   createCloseButton() {
@@ -134,30 +172,49 @@ class SettingsScene extends BaseScene {
     });
   }
 
-  createVolumeBar() {}
+  createVolumeBar(width, height) {
+    this.add.image(width, height, "yellow-bar").setOrigin(0.5).setScale(0.7);
+  }
 
-  createSubtractButton() {
+  createMusicSetting() {
+    this.createAddButton(
+      this.config.width / 2 + 200,
+      this.config.height / 2 - 50
+    );
+    this.createSubtractButton(
+      this.config.width / 2 - 100,
+      this.config.height / 2 - 50
+    );
+
+    // this.createVolumeBar(
+    //   this.config.width / 2 - 65,
+    //   this.config.height / 2 - 50
+    // );
+  }
+
+  createSFXSetting() {
+    this.createAddButton(
+      this.config.width / 2 + 200,
+      this.config.height / 2 + 50
+    );
+    this.createSubtractButton(
+      this.config.width / 2 - 100,
+      this.config.height / 2 + 50
+    );
+  }
+
+  createSubtractButton(width, height) {
     const subtractBtn = this.add
-      .image(
-        this.config.width / 2 - 100,
-        this.config.height / 2 - 50,
-        "prev-btn"
-      )
+      .image(width, height, "prev-btn")
       .setOrigin(0.5)
       .setScale(0.5)
       .setInteractive();
 
-    this.add
-      .image(
-        this.config.width / 2 - 100,
-        this.config.height / 2 + 50,
-        "prev-btn"
-      )
-      .setOrigin(0.5)
-      .setScale(0.5);
-
     subtractBtn.on("pointerup", () => {
       this.select.play();
+      if (this.currentMusicBars.length > this.minVolumeBars) {
+        this.currentMusicBars.pop();
+      }
     });
     subtractBtn.on("pointerover", () => {
       subtractBtn.setTintFill(0xc2c2c2);
@@ -168,38 +225,60 @@ class SettingsScene extends BaseScene {
     });
   }
 
-  createAddButton() {
-    const addBtn = this.add
-      .image(
-        this.config.width / 2 + 200,
-        this.config.height / 2 - 50,
-        "next-btn"
-      )
-      .setOrigin(0.5)
-      .setScale(0.5)
-      .setInteractive();
+  createMusicBars() {
+    const barWidth = 25;
+    let width = this.config.width / 2 - 65;
+    let height = this.config.height / 2 - 50;
+    this.currentMusicBars.map((MusicBar) => {
+      this.createVolumeBar(width, height);
+      width += barWidth;
+    });
+  }
 
-    this.add
-      .image(
-        this.config.width / 2 + 200,
-        this.config.height / 2 + 50,
-        "next-btn"
-      )
+  createSFXBars() {
+    const barWidth = 25;
+    let width = this.config.width / 2 - 65;
+    let height = this.config.height / 2 + 50;
+    this.currentSFXBars.map((sfxBar) => {
+      this.createVolumeBar(width, height);
+      width += barWidth;
+    });
+  }
+
+  createAddButton(width, height) {
+    let barWidth = 25;
+
+    const addBtn = this.add
+      .image(width, height, "next-btn")
       .setOrigin(0.5)
       .setScale(0.5)
       .setInteractive();
 
     addBtn.on("pointerup", () => {
       this.select.play();
+
+      if (this.currentMusicBars.length < this.maxVolumeBars) {
+        this.currentMusicBars.push(1);
+        console.log(this.currentMusicBars);
+      }
     });
+
+    // createSFXBars(){}
+
     addBtn.on("pointerover", () => {
       addBtn.setTintFill(0xc2c2c2);
       this.cursorOver.play();
     });
+
     addBtn.on("pointerout", () => {
       addBtn.clearTint();
     });
   }
+
+  // update() {
+  //   this.createMusicBars();
+  //   // this.createSFXBars();
+  // }
 }
 
 export default SettingsScene;
