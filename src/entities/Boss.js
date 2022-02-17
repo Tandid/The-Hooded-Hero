@@ -1,6 +1,6 @@
 import EnemyBoss from "./EnemyBoss";
 import initAnims from "./anims/bossAnims.js";
-import MeleeWeapon from "../attacks/MeleeWeapon";
+import BossMeleeWeapon from "../attacks/BossMeleeWeapon";
 
 class Boss extends EnemyBoss {
   constructor(scene, x, y) {
@@ -19,7 +19,7 @@ class Boss extends EnemyBoss {
     this.maxPatrolDistance = 600;
     this.timeFromLastAttack = 0;
     this.attackDelay = this.getAttackDelay();
-    this.meleeWeapon = new MeleeWeapon(this.scene, 0, 0, "boss-attack-hitbox");
+    this.meleeWeapon = new BossMeleeWeapon(this.scene, 500, 500, "axe-default");
   }
 
   getAttackDelay() {
@@ -34,10 +34,12 @@ class Boss extends EnemyBoss {
     }
 
     if (this.timeFromLastAttack + this.attackDelay <= time) {
-      this.play("boss-attack", true);
+      this.play("boss-melee", true);
       this.meleeWeapon.swing(this);
-      setTimeout(() => this.setSize(400, 250), 500);
-      setTimeout(() => this.setOffset(150, 200), 500);
+      console.log(this.meleeWeapon.body.width);
+      console.log(this.meleeWeapon.body.height);
+      // setTimeout(() => this.setSize(400, 250), 500);
+      // setTimeout(() => this.setOffset(150, 200), 500);
 
       // this.projectiles.fireProjectile(this, "fire");
 
@@ -45,9 +47,9 @@ class Boss extends EnemyBoss {
       this.attackDelay = this.getAttackDelay();
     }
 
-    if (this.isPlayingAnims("boss-attack")) {
-      setTimeout(() => this.setSize(250, 250), 2000);
-      setTimeout(() => this.setOffset(280, 200), 2000);
+    if (this.isPlayingAnims("boss-melee")) {
+      //   // setTimeout(() => this.setSize(250, 250), 2000);
+      //   // setTimeout(() => this.setOffset(280, 200), 2000);
       return;
     }
 

@@ -7,9 +7,9 @@ export default (anims) => {
   });
 
   anims.create({
-    key: "boss-attack",
-    frames: anims.generateFrameNumbers("boss-atk", { start: 0, end: 19 }),
-    frameRate: 19,
+    key: "boss-melee",
+    frames: anims.generateFrameNumbers("boss-default", { start: 0, end: 19 }),
+    frameRate: 20,
     repeat: 0,
   });
 

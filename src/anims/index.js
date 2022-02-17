@@ -13,11 +13,13 @@ export default (anims) => {
     repeat: 0,
   });
   anims.create({
-    key: "boss-default-swing",
+    key: "axe-default-swing",
     frames: anims.generateFrameNumbers("boss-default", {
       start: 0,
-      end: 60,
+      end: 20,
     }),
+    frameRate: 20,
+    repeat: 0,
   });
 
   anims.create({

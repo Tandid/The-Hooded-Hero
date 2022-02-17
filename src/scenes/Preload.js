@@ -343,21 +343,25 @@ class Preload extends Phaser.Scene {
       frameHeight: 477,
       // spacing: 32,
     });
-    this.load.spritesheet("boss-atk", "public/assets/enemy/boss_attack.png", {
-      frameWidth: 850,
-      frameHeight: 477,
-      // spacing: 32,
-    });
-
     this.load.spritesheet(
       "boss-default",
-      "public/assets/weapons/boss_attack.png",
+      "public/assets/enemy/boss_attack.png",
       {
         frameWidth: 850,
         frameHeight: 477,
         // spacing: 32,
       }
     );
+
+    // this.load.spritesheet(
+    //   "boss-default",
+    //   "public/assets/enemy/boss_attack.png",
+    //   {
+    //     frameWidth: 850,
+    //     frameHeight: 477,
+    //     // spacing: 32,
+    //   }
+    // );
 
     // DEATH ANIMATIONS
 

@@ -10,6 +10,7 @@ class Projectile extends Phaser.Physics.Arcade.Sprite {
 
     this.speed = key === "arrow" ? 800 : 500;
     this.maxDistance = key === "arrow" ? 2000 : 4000;
+    key !== "arrow" && this.body.setSize(30, 30);
     this.traveledDistance = 0;
 
     this.damage = key === "arrow" ? 20 : 30;

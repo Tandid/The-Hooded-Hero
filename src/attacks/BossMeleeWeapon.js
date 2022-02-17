@@ -1,7 +1,7 @@
 import Phaser from "phaser";
 import EffectManager from "../effects/EffectManager";
 
-class MeleeWeapon extends Phaser.Physics.Arcade.Sprite {
+class BossMeleeWeapon extends Phaser.Physics.Arcade.Sprite {
   constructor(scene, x, y, weaponName) {
     super(scene, x, y, weaponName);
 
@@ -12,11 +12,10 @@ class MeleeWeapon extends Phaser.Physics.Arcade.Sprite {
     this.attackSpeed = 450;
     this.weaponAnim = weaponName + "-swing";
     this.wielder = null;
-    this.body.setSize(this.width - 50, this.height);
-
+    this.body.setSize(1000, 500);
     this.effectManager = new EffectManager(this.scene);
 
-    this.setOrigin(0, 1);
+    this.setOrigin(0, 0.5);
     this.setAlpha(0);
     this.setDepth(10);
 
@@ -25,6 +24,7 @@ class MeleeWeapon extends Phaser.Physics.Arcade.Sprite {
     this.on("animationcomplete", (animation) => {
       if (animation.key === this.weaponAnim) {
         this.activateWeapon(false);
+        console.log(this.body.checkCollision);
         this.body.checkCollision.none = false;
         this.body.reset(0, 0);
       }
@@ -63,6 +63,10 @@ class MeleeWeapon extends Phaser.Physics.Arcade.Sprite {
     this.setActive(isActive);
     this.setVisible(isActive);
   }
+
+  update() {
+    game.physics.arcade.collide(ball, paddle);
+  }
 }
 
-export default MeleeWeapon;
+export default BossMeleeWeapon;
