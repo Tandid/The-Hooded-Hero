@@ -3,11 +3,6 @@ import BaseScene from "./BaseScene";
 class ControlsScene extends BaseScene {
   constructor(config) {
     super("ControlsScene", { ...config, canGoBack: true });
-    // this.config = config;
-    // this.screenCenter = [config.width / 2, config.height / 4];
-    // this.fontSize = 75;
-    // this.lineHeight = 82;
-    // this.fontOptions = { fontSize: `${this.fontSize}px`, fill: "#713E01" };
   }
 
   create() {

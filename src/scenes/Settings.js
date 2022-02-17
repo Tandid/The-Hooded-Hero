@@ -17,32 +17,29 @@ class SettingsScene extends BaseScene {
     this.pageFlip = this.sound.add("page-flip");
     this.pageFlip.volume = 0.4;
 
+    this.createPage();
     this.createCloseButton();
+    this.createAddButton();
+    this.createSubtractButton();
+    this.createVolumeBar();
 
     this.add
-      .image(this.config.width / 2, this.config.height / 2, "panel-2")
+      .image(
+        this.config.width / 2 + 50,
+        this.config.height / 2 + 150,
+        "switch-off-bg"
+      )
       .setOrigin(0.5)
-      .setScale(0.7);
+      .setScale(1.3, 0.9);
+
     this.add
-      .image(this.config.width / 2, this.config.height / 2 - 50, "panel-4")
+      .image(
+        this.config.width / 2 + 100,
+        this.config.height / 2 + 150,
+        "switch-on"
+      )
       .setOrigin(0.5)
-      .setScale(1.3, 0.5);
-    this.add
-      .image(this.config.width / 2, this.config.height / 2 + 50, "panel-4")
-      .setOrigin(0.5)
-      .setScale(1.3, 0.5);
-    this.add
-      .image(this.config.width / 2, this.config.height / 2 + 150, "panel-4")
-      .setOrigin(0.5)
-      .setScale(0.75, 0.5);
-    this.add
-      .image(this.config.width / 2, this.config.height / 6, "header-shadow")
-      .setOrigin(0.5)
-      .setScale(0.9);
-    this.add
-      .image(this.config.width / 2, this.config.height / 6, "header")
-      .setOrigin(0.5)
-      .setScale(0.9);
+      .setScale(0.8);
 
     this.add
       .image(
@@ -68,42 +65,39 @@ class SettingsScene extends BaseScene {
       )
       .setOrigin(0.5)
       .setScale(0.8);
+  }
+
+  createPage() {
+    this.add
+      .image(this.config.width / 2, this.config.height / 2, "panel-2")
+      .setOrigin(0.5)
+      .setScale(0.7);
 
     this.add
-      .image(
-        this.config.width / 2 - 100,
-        this.config.height / 2 - 50,
-        "prev-btn"
-      )
+      .image(this.config.width / 2, this.config.height / 2 - 50, "panel-4")
       .setOrigin(0.5)
-      .setScale(0.5);
+      .setScale(1.3, 0.5);
 
     this.add
-      .image(
-        this.config.width / 2 + 200,
-        this.config.height / 2 - 50,
-        "next-btn"
-      )
+      .image(this.config.width / 2, this.config.height / 2 + 50, "panel-4")
       .setOrigin(0.5)
-      .setScale(0.5);
+      .setScale(1.3, 0.5);
 
     this.add
-      .image(
-        this.config.width / 2 - 100,
-        this.config.height / 2 + 50,
-        "prev-btn"
-      )
+      .image(this.config.width / 2, this.config.height / 2 + 150, "panel-4")
       .setOrigin(0.5)
-      .setScale(0.5);
+      .setScale(0.75, 0.5);
 
     this.add
-      .image(
-        this.config.width / 2 + 200,
-        this.config.height / 2 + 50,
-        "next-btn"
-      )
+      .image(this.config.width / 2, this.config.height / 6, "header-shadow")
       .setOrigin(0.5)
-      .setScale(0.5);
+      .setScale(0.9);
+
+    this.add
+      .image(this.config.width / 2, this.config.height / 6, "header")
+      .setOrigin(0.5)
+      .setScale(0.9);
+
     this.add
       .text(this.config.width / 2, this.config.height / 6, "SETTINGS", {
         fontFamily: "customFont",
@@ -140,27 +134,70 @@ class SettingsScene extends BaseScene {
     });
   }
 
-  setupMenuEvents(menuItem) {
-    const textGO = menuItem.textGO;
-    textGO.setInteractive();
+  createVolumeBar() {}
 
-    textGO.on("pointerover", () => {
-      textGO.setStyle({ fill: "#ff0" });
+  createSubtractButton() {
+    const subtractBtn = this.add
+      .image(
+        this.config.width / 2 - 100,
+        this.config.height / 2 - 50,
+        "prev-btn"
+      )
+      .setOrigin(0.5)
+      .setScale(0.5)
+      .setInteractive();
+
+    this.add
+      .image(
+        this.config.width / 2 - 100,
+        this.config.height / 2 + 50,
+        "prev-btn"
+      )
+      .setOrigin(0.5)
+      .setScale(0.5);
+
+    subtractBtn.on("pointerup", () => {
+      this.select.play();
     });
-
-    textGO.on("pointerout", () => {
-      textGO.setStyle({ fill: "#713E01" });
+    subtractBtn.on("pointerover", () => {
+      subtractBtn.setTintFill(0xc2c2c2);
+      this.cursorOver.play();
     });
+    subtractBtn.on("pointerout", () => {
+      subtractBtn.clearTint();
+    });
+  }
 
-    textGO.on("pointerup", () => {
-      if (menuItem.scene) {
-        this.registry.set("level", menuItem.level);
-        this.scene.start(menuItem.scene);
-      }
+  createAddButton() {
+    const addBtn = this.add
+      .image(
+        this.config.width / 2 + 200,
+        this.config.height / 2 - 50,
+        "next-btn"
+      )
+      .setOrigin(0.5)
+      .setScale(0.5)
+      .setInteractive();
 
-      if (menuItem.text === "Exit") {
-        this.game.destroy(true);
-      }
+    this.add
+      .image(
+        this.config.width / 2 + 200,
+        this.config.height / 2 + 50,
+        "next-btn"
+      )
+      .setOrigin(0.5)
+      .setScale(0.5)
+      .setInteractive();
+
+    addBtn.on("pointerup", () => {
+      this.select.play();
+    });
+    addBtn.on("pointerover", () => {
+      addBtn.setTintFill(0xc2c2c2);
+      this.cursorOver.play();
+    });
+    addBtn.on("pointerout", () => {
+      addBtn.clearTint();
     });
   }
 }
