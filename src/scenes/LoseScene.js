@@ -1,4 +1,5 @@
 import Phaser from "phaser";
+import EventEmitter from "../events/Emitter";
 
 class LoseScene extends Phaser.Scene {
   constructor(config) {
@@ -6,7 +7,7 @@ class LoseScene extends Phaser.Scene {
     this.config = config;
   }
 
-  create() {
+  create({ gameStatus }) {
     this.cursorOver = this.sound.add("cursorOver");
     this.cursorOver.volume = 0.4;
 
@@ -62,6 +63,7 @@ class LoseScene extends Phaser.Scene {
 
     homeBtn.on("pointerup", () => {
       this.select.play();
+      this.scene.stop("PlayScene");
       this.scene.start("MenuScene");
     });
 
@@ -89,7 +91,8 @@ class LoseScene extends Phaser.Scene {
 
     restartBtn.on("pointerup", () => {
       this.select.play();
-      this.scene.restart("PlayScene");
+      this.scene.stop("LoseScene");
+      EventEmitter.emit("RESTART_GAME");
     });
 
     restartBtn.on("pointerover", () => {

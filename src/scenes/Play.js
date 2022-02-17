@@ -29,7 +29,6 @@ class Play extends Phaser.Scene {
 
     this.playBgMusic();
     this.collectSound = this.sound.add("coin-pickup", { volume: 0.2 });
-    console.log(this.config.leftTopCorner);
 
     this.add
       .image(
@@ -54,9 +53,6 @@ class Play extends Phaser.Scene {
       .setScrollFactor(0);
 
     const map = this.createMap();
-    // const level = this.getCurrentLevel();
-    console.log(map);
-    // console.log(level);
 
     initAnims(this.anims);
 
@@ -187,10 +183,6 @@ class Play extends Phaser.Scene {
     };
   }
 
-  // createBg(map) {
-  //   const bgObject = map.getObjectLayer("distance_bg").objects[0];
-  //   const level = this.getCurrentLevel();
-  // }
   createBG(map) {
     const bgObject = map.getObjectLayer("distance_bg").objects[0];
     const level = this.getCurrentLevel();
@@ -430,7 +422,11 @@ class Play extends Phaser.Scene {
 
   createGameEvents() {
     EventEmitter.on("PLAYER_LOSE", () => {
-      console.log("You lost!");
+      this.scene.pause("PlayScene");
+      this.scene.launch("LoseScene");
+      // this.scene.restart({ gameStatus: "PLAYER_LOSE" });
+    });
+    EventEmitter.on("RESTART_GAME", () => {
       this.scene.restart({ gameStatus: "PLAYER_LOSE" });
     });
   }
