@@ -78,6 +78,8 @@ class MenuScene extends BaseScene {
     settingsBtn.on("pointerup", () => {
       this.select.play();
       this.scene.launch("SettingsOverlayScene");
+      console.log(this.scene.isActive("MenuScene"));
+      console.log(this.scene.isActive("SettingsOverlayScene"));
     });
     settingsBtn.on("pointerover", () => {
       settingsBtn.setTint(0xc2c2c2);
@@ -147,10 +149,14 @@ class MenuScene extends BaseScene {
   }
 
   setupMenuEvents(menuItem) {
+    // if (this.scene.isActive("SettingsOverlayScene") === false) {
+    //   return;
+    // }
     const textGO = menuItem.textGO;
     textGO.setInteractive();
 
     textGO.on("pointerover", () => {
+      this.scene.is;
       this.cursorOver.play();
       textGO.setStyle({ fill: "#fff" });
     });

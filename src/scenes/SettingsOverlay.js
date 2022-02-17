@@ -157,6 +157,9 @@ class SettingsOverlayScene extends Phaser.Scene {
       .setDepth(2);
 
     closeBtn.on("pointerup", () => {
+      console.log(this.scene.isActive("MenuScene"));
+      console.log(this.scene.isActive("SettingsOverlayScene"));
+
       this.select.play();
       this.scene.stop("SettingsOverlayScene");
       this.scene.isPaused("PlayScene") === true

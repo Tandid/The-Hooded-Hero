@@ -187,6 +187,10 @@ class Play extends Phaser.Scene {
     };
   }
 
+  // createBg(map) {
+  //   const bgObject = map.getObjectLayer("distance_bg").objects[0];
+  //   const level = this.getCurrentLevel();
+  // }
   createBG(map) {
     const bgObject = map.getObjectLayer("distance_bg").objects[0];
     const level = this.getCurrentLevel();
@@ -538,17 +542,21 @@ class Play extends Phaser.Scene {
   update() {
     const level = this.getCurrentLevel();
     if (level === 1) {
-      this.forestImageOne.tilePositionX = this.cameras.main.scrollX * 0.3;
-      this.forestImageTwo.tilePositionX = this.cameras.main.scrollX * 0.2;
-      this.forestImageThree.tilePositionX = this.cameras.main.scrollX * 0.3;
-      this.mountainImage.tilePositionX = this.cameras.main.scrollX * 0.2;
-      this.skyImage.tilePositionX = this.cameras.main.scrollX * 0.1;
+      if (this.caveImageOne) {
+        this.forestImageOne.tilePositionX = this.cameras.main.scrollX * 0.3;
+        this.forestImageTwo.tilePositionX = this.cameras.main.scrollX * 0.2;
+        this.forestImageThree.tilePositionX = this.cameras.main.scrollX * 0.3;
+        this.mountainImage.tilePositionX = this.cameras.main.scrollX * 0.2;
+        this.skyImage.tilePositionX = this.cameras.main.scrollX * 0.1;
+      }
     } else {
-      this.caveImageOne.tilePositionX = this.cameras.main.scrollX * 0.4;
-      this.caveImageTwo.tilePositionX = this.cameras.main.scrollX * 0.3;
-      this.caveImageThree.tilePositionX = this.cameras.main.scrollX * 0.3;
-      this.caveImageFour.tilePositionX = this.cameras.main.scrollX * 0.2;
-      this.caveImageFive.tilePositionX = this.cameras.main.scrollX * 0.2;
+      if (this.caveImageOne) {
+        this.caveImageOne.tilePositionX = this.cameras.main.scrollX * 0.4;
+        this.caveImageTwo.tilePositionX = this.cameras.main.scrollX * 0.3;
+        this.caveImageThree.tilePositionX = this.cameras.main.scrollX * 0.3;
+        this.caveImageFour.tilePositionX = this.cameras.main.scrollX * 0.2;
+        this.caveImageFive.tilePositionX = this.cameras.main.scrollX * 0.2;
+      }
     }
   }
 }
