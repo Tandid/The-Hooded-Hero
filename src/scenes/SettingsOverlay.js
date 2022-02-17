@@ -2,7 +2,7 @@ import Phaser from "phaser";
 
 class SettingsOverlayScene extends Phaser.Scene {
   constructor(config) {
-    super("SettingsOverlayScene", { ...config, canGoBack: true });
+    super("SettingsOverlayScene", { ...config, canGoBack: false });
     this.config = config;
   }
 
@@ -158,7 +158,10 @@ class SettingsOverlayScene extends Phaser.Scene {
 
     closeBtn.on("pointerup", () => {
       this.select.play();
-      this.scene.start("MenuScene");
+      this.scene.stop("SettingsOverlayScene");
+      this.scene.isPaused("PlayScene") === true
+        ? this.scene.resume("PlayScene")
+        : "";
     });
 
     closeBtn.on("pointerover", () => {

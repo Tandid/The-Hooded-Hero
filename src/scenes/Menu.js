@@ -63,8 +63,29 @@ class MenuScene extends BaseScene {
 
     this.createControlsButton();
     this.createContactsButton();
+    this.createSettingsButton();
     this.createMenu(this.menu, this.setupMenuEvents.bind(this));
     this.playBgMusic();
+  }
+
+  createSettingsButton() {
+    const settingsBtn = this.add
+      .image(this.config.width - 30, this.config.height - 30, "settings-button")
+      .setOrigin(0.5)
+      .setScale(0.5)
+      .setInteractive();
+
+    settingsBtn.on("pointerup", () => {
+      this.select.play();
+      this.scene.launch("SettingsOverlayScene");
+    });
+    settingsBtn.on("pointerover", () => {
+      settingsBtn.setTint(0xc2c2c2);
+      this.cursorOver.play();
+    });
+    settingsBtn.on("pointerout", () => {
+      settingsBtn.clearTint();
+    });
   }
 
   createControlsButton() {
@@ -155,10 +176,6 @@ class MenuScene extends BaseScene {
         this.scene.sleep("MenuScene");
         this.scene.launch(menuItem.scene);
         this.select.play();
-      }
-
-      if (menuItem.text === "Exit") {
-        this.game.destroy(true);
       }
     });
   }
