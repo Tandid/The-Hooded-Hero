@@ -78,6 +78,7 @@ class Play extends Phaser.Scene {
         projectiles: enemies.getProjectiles(),
         collectables,
         traps: layers.traps,
+        enemies,
       },
     });
 
@@ -487,11 +488,13 @@ class Play extends Phaser.Scene {
   }
 
   createPlayerColliders(player, { colliders }) {
+    console.log({ colliders });
     player
       .addCollider(colliders.platformsColliders)
       .addCollider(colliders.projectiles, this.onHit)
-      .addCollider(colliders.traps, this.onHit)
-      .addOverlap(colliders.collectables, this.onCollect, this);
+      // .addCollider(colliders.traps, this.onHit)
+      .addOverlap(colliders.collectables, this.onCollect, this)
+      .addOverlap(colliders.enemies, this.onHit);
   }
 
   setupFollowupCameraOn(player) {

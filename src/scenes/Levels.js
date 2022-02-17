@@ -66,6 +66,14 @@ class LevelScene extends BaseScene {
         .setOrigin(0.5)
         .setScale(0.5);
 
+      this.add
+        .text(this.config.width / 3, this.config.height / 4 + row, `${i}`, {
+          fontFamily: "customFont",
+          fontSize: "50px",
+        })
+        .setOrigin(0.5, 0.5)
+        .setColor("#000000");
+
       row += 100;
 
       this.menu.push({

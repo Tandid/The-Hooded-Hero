@@ -34,12 +34,16 @@ class Boss extends EnemyBoss {
     }
 
     if (this.timeFromLastAttack + this.attackDelay <= time) {
+      console.log(this.flipX);
       this.play("boss-melee", true);
-      this.meleeWeapon.swing(this);
-      console.log(this.meleeWeapon.body.width);
-      console.log(this.meleeWeapon.body.height);
-      // setTimeout(() => this.setSize(400, 250), 500);
-      // setTimeout(() => this.setOffset(150, 200), 500);
+      // this.meleeWeapon.swing(this);
+      if (this.flipX === true) {
+        setTimeout(() => this.setSize(500, 250), 700);
+        setTimeout(() => this.setOffset(100, 200), 700);
+      } else {
+        setTimeout(() => this.setSize(500, 250), 700);
+        setTimeout(() => this.setOffset(300, 200), 700);
+      }
 
       // this.projectiles.fireProjectile(this, "fire");
 
@@ -48,8 +52,8 @@ class Boss extends EnemyBoss {
     }
 
     if (this.isPlayingAnims("boss-melee")) {
-      //   // setTimeout(() => this.setSize(250, 250), 2000);
-      //   // setTimeout(() => this.setOffset(280, 200), 2000);
+      setTimeout(() => this.setSize(250, 250), 800);
+      setTimeout(() => this.setOffset(280, 200), 800);
       return;
     }
 
