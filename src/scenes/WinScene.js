@@ -139,6 +139,8 @@ class WinScene extends Phaser.Scene {
     playBtn.on("pointerup", () => {
       this.select.play();
       this.scene.stop("WinScene");
+      this.registry.inc("level", 1);
+      this.registry.inc("unlocked-levels", 1);
       EventEmitter.emit("RESTART_GAME");
     });
 

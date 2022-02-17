@@ -530,9 +530,8 @@ class Play extends Phaser.Scene {
         return;
       }
 
-      this.registry.inc("level", 1);
-      this.registry.inc("unlocked-levels", 1);
-      this.scene.restart({ gameStatus: "LEVEL_COMPLETED" });
+      this.scene.sleep("PlayScene");
+      this.scene.launch("WinScene");
     });
   }
 
