@@ -13,74 +13,92 @@ class LoseScene extends Phaser.Scene {
     this.select = this.sound.add("select");
     this.select.volume = 0.4;
 
+    this.createPage();
+    this.createHomeButton();
+    this.createRestartButton();
+  }
+
+  createPage() {
     this.add
-      .image(this.config.width / 2, this.config.height / 2, "panel-3")
+      .image(this.config.width / 2, this.config.height / 2, "panel-1")
       .setOrigin(0.5)
       .setScale(0.7);
 
     this.add
-      .text(
-        this.config.width / 2,
-        this.config.height / 2 - 50,
-        "Return to Menu?",
-        {
-          fontFamily: "customFont",
-          fontSize: "50px",
-        }
-      )
-      .setOrigin(0.5, 0.5)
-      .setColor("#000");
+      .image(this.config.width / 2, this.config.height / 6, "header-shadow")
+      .setOrigin(0.5)
+      .setScale(0.7);
 
-    this.createYesButton();
-    this.createNoButton();
+    this.add
+      .image(this.config.width / 2, this.config.height / 6, "header")
+      .setOrigin(0.5)
+      .setScale(0.7);
+
+    this.add
+      .image(this.config.width / 2, this.config.height / 2 - 50, "skull")
+      .setOrigin(0.5)
+      .setScale(0.7);
+
+    this.add
+      .text(this.config.width / 2, this.config.height / 6, "DEFEAT!", {
+        fontFamily: "customFont",
+        fontSize: "60px",
+      })
+      .setOrigin(0.5, 0.5)
+      .setColor("#D9B48FFF");
   }
 
-  createYesButton() {
-    const yesBtn = this.add
-      .image(this.config.width / 2 - 75, this.config.height / 2 + 50, "yes-btn")
+  createHomeButton() {
+    const homeBtn = this.add
+      .image(
+        this.config.width / 2 - 75,
+        this.config.height / 2 + 150,
+        "home-btn-big"
+      )
       .setOrigin(0.5)
       .setScale(0.7)
       .setInteractive()
       .setDepth(2);
 
-    yesBtn.on("pointerup", () => {
+    homeBtn.on("pointerup", () => {
       this.select.play();
       this.scene.start("MenuScene");
     });
 
-    yesBtn.on("pointerover", () => {
+    homeBtn.on("pointerover", () => {
       this.cursorOver.play();
-      yesBtn.setTint(0x3fbf3f);
+      homeBtn.setTint(0xc2c2c2);
     });
 
-    yesBtn.on("pointerout", () => {
-      yesBtn.clearTint();
+    homeBtn.on("pointerout", () => {
+      homeBtn.clearTint();
     });
   }
 
-  createNoButton() {
-    const noBtn = this.add
-      .image(this.config.width / 2 + 75, this.config.height / 2 + 50, "no-btn")
+  createRestartButton() {
+    const restartBtn = this.add
+      .image(
+        this.config.width / 2 + 75,
+        this.config.height / 2 + 150,
+        "restart-btn-big"
+      )
       .setOrigin(0.5)
       .setScale(0.7)
       .setInteractive()
       .setDepth(2);
 
-    noBtn.on("pointerup", () => {
+    restartBtn.on("pointerup", () => {
       this.select.play();
-      this.scene.stop("PauseScene");
-      this.scene.isPaused("PlayScene") === true
-        ? this.scene.resume("PlayScene")
-        : "";
+      this.scene.restart("PlayScene");
     });
 
-    noBtn.on("pointerover", () => {
+    restartBtn.on("pointerover", () => {
       this.cursorOver.play();
-      noBtn.setTint(0xff6666);
+      restartBtn.setTint(0xc2c2c2);
     });
 
-    noBtn.on("pointerout", () => {
-      noBtn.clearTint();
+    restartBtn.on("pointerout", () => {
+      restartBtn.clearTint();
     });
   }
 }

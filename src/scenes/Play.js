@@ -390,7 +390,7 @@ class Play extends Phaser.Scene {
     homeBtn.on("pointerup", () => {
       this.select.play();
       this.scene.pause("PlayScene");
-      this.scene.sendToBack("PlayScene");
+      // this.scene.sendToBack("PlayScene");
       this.scene.launch("PauseScene");
     });
     homeBtn.on("pointerover", () => {

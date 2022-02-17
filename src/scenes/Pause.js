@@ -45,6 +45,7 @@ class PauseScene extends Phaser.Scene {
 
     yesBtn.on("pointerup", () => {
       this.select.play();
+      this.scene.stop("PlayScene");
       this.scene.start("MenuScene");
     });
 
