@@ -6,6 +6,13 @@ class Preload extends Phaser.Scene {
   }
 
   preload() {
+    this.load.scenePlugin(
+      "rexuiplugin",
+      "https://raw.githubusercontent.com/rexrainbow/phaser3-rex-notes/master/dist/rexuiplugin.min.js",
+      "rexUI",
+      "rexUI"
+    );
+
     // LOGO
     this.load.image("logo", "public/assets/logo.png");
     this.load.image("github", "public/assets/github.png");
