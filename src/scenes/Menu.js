@@ -9,7 +9,6 @@ class MenuScene extends BaseScene {
       { scene: "PlayScene", text: "Story Mode" },
       { scene: "ComingSoonScene", text: "Multiplayer" },
       { scene: "LevelScene", text: "Levels" },
-      { scene: "UsernameScene", text: "Username" },
       // { scene: null, text: "Exit" },
     ];
   }
@@ -51,11 +50,16 @@ class MenuScene extends BaseScene {
       .setDepth(2);
 
     this.add
-      .text(this.config.width / 10 - 10, this.config.height - 45, `Username`, {
-        fontFamily: "customFont",
-        fontSize: "30px",
-        fontWeight: "larger",
-      })
+      .text(
+        this.config.width / 10 - 10,
+        this.config.height - 45,
+        `${this.username}`,
+        {
+          fontFamily: "customFont",
+          fontSize: "30px",
+          fontWeight: "larger",
+        }
+      )
       .setOrigin(0)
       .setColor("#000")
       .setDepth(2);

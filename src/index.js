@@ -26,6 +26,7 @@ import PauseScene from "./scenes/Pause";
 import LoseScene from "./scenes/LoseScene";
 import WinScene from "./scenes/WinScene";
 import UsernameScene from "./scenes/UsernameScene";
+import UserConfirmationScene from "./scenes/UserConfirmation";
 
 const MAP_WIDTH = 16000;
 
@@ -71,6 +72,7 @@ const Scenes = [
   LoseScene,
   WinScene,
   UsernameScene,
+  UserConfirmationScene,
 ];
 const createScene = (Scene) => new Scene(SHARED_CONFIG);
 const initScenes = () => Scenes.map(createScene);

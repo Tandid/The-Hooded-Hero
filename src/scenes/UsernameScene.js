@@ -1,6 +1,6 @@
 import UsernameConfig from "../utils/UsernameSceneConfig";
 
-export default class UsernameScene extends Phaser.Scene {
+class UsernameScene extends Phaser.Scene {
   constructor(config) {
     super("UsernameScene");
     this.config = config;
@@ -19,9 +19,8 @@ export default class UsernameScene extends Phaser.Scene {
     this.add
       .image(this.config.width / 2, this.config.height / 2, "panel-2")
       .setOrigin(0.5)
-      .setScale(0.7);
+      .setScale(0.6);
 
-    // creates the title box with type effect
     this.add
       .text(
         this.config.width / 2,
@@ -49,3 +48,5 @@ export default class UsernameScene extends Phaser.Scene {
     );
   }
 }
+
+export default UsernameScene;

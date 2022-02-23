@@ -17,6 +17,11 @@ class BaseScene extends Phaser.Scene {
     };
   }
 
+  init(data) {
+    this.socket = data.socket;
+    this.username = data.username;
+  }
+
   create() {
     this.add.image(0, 0, "sky-bg").setOrigin(0).setScale(1).setDepth(-1);
     this.add.image(0, 0, "mountain-bg").setOrigin(0).setScale(1).setDepth(-1);
