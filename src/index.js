@@ -12,6 +12,7 @@ every new release of Phaser. Make sure it's up-to-date!*/
 import Phaser from "phaser";
 
 import PlayScene from "./scenes/Play";
+import InitialLoadScene from "./scenes/InitialLoadScene";
 import PreloadScene from "./scenes/Preload";
 import MenuScene from "./scenes/Menu";
 import LevelScene from "./scenes/Levels";
@@ -56,8 +57,9 @@ const SHARED_CONFIG = {
 };
 
 const Scenes = [
-  PreloadScene,
+  InitialLoadScene,
   LoadingScene,
+  PreloadScene,
   TransitionScene,
   MenuScene,
   SettingsOverlayScene,

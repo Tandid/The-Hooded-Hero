@@ -5,9 +5,7 @@ class LoadingScene extends Phaser.Scene {
     super("LoadingScene");
     this.config = config;
     this.fontFamily = "customFont";
-    this.playerStart = this.config.width / 10;
-    this.acceleration = 120;
-    // this.num = 48;
+    this.start = this.config.width / 10;
   }
 
   create() {
@@ -34,21 +32,18 @@ class LoadingScene extends Phaser.Scene {
       .image(this.config.width / 1.1 + 50, this.config.height / 1.3, "dummy")
       .setScale(1);
 
-    this.physics.add
-      .image(this.playerStart, this.config.height / 1.6, "arrow")
-      .setAccelerationX(this.acceleration)
-      .setScale(1.1);
+    const x = this.start;
+    this.arrow = this.physics.add
+      .image(x, this.config.height / 1.6, "arrow")
+      .setScale(1.1)
+      .setDepth(2);
 
     this.generateRandomHint();
 
-    // setTimeout(() => {
-    //   this.scene.stop("LoadingScene");
-    //   this.scene.start("MenuScene");
-    // }, 3800);
     setTimeout(() => {
       this.scene.stop("LoadingScene");
       this.scene.start("MenuScene");
-    }, 100);
+    }, 5000);
   }
 
   generateRandomHint() {
@@ -57,7 +52,7 @@ class LoadingScene extends Phaser.Scene {
       "Hint: Yes, you can double jump!",
       "The Hooded Hero's favorite show is Arrow, who would've guess right??",
       "Hint: A little birdy said to stay away from Level 3, unless...",
-      "Hint: Does our hero ever need to restock on arrows?? Spam away!",
+      "Hint: You can spam arrows!",
       "Hint: Sword attacks do double the damage of arrows. You're welcome. ",
     ];
     const randomIndex = Math.floor(Math.random() * messages.length);
@@ -75,6 +70,13 @@ class LoadingScene extends Phaser.Scene {
       )
       .setOrigin(0.5, 0.5)
       .setColor("#FFF");
+  }
+
+  update() {
+    this.arrow.x += 5;
+    if (this.arrow.x > 1000) {
+      this.arrow.x = 1000;
+    }
   }
 }
 
