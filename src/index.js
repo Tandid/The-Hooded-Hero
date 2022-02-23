@@ -85,6 +85,10 @@ const config = {
       debug: SHARED_CONFIG.debug,
     },
   },
+  parent: "phaser-container",
+  dom: {
+    createContainer: true,
+  },
   plugins: {
     scene: [
       {

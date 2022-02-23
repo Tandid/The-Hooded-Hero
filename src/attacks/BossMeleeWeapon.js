@@ -63,10 +63,6 @@ class BossMeleeWeapon extends Phaser.Physics.Arcade.Sprite {
     this.setActive(isActive);
     this.setVisible(isActive);
   }
-
-  update() {
-    game.physics.arcade.collide(ball, paddle);
-  }
 }
 
 export default BossMeleeWeapon;
