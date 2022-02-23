@@ -27,6 +27,7 @@ import LoseScene from "./scenes/LoseScene";
 import WinScene from "./scenes/WinScene";
 import UsernameScene from "./scenes/UsernameScene";
 import UserConfirmationScene from "./scenes/UserConfirmation";
+import CharSelection from "./scenes/CharSelection";
 
 const MAP_WIDTH = 16000;
 
@@ -60,19 +61,20 @@ const Scenes = [
   LoadingScene,
   PreloadScene,
   TransitionScene,
+  UsernameScene,
+  UserConfirmationScene,
   MenuScene,
-  SettingsOverlayScene,
-  LevelScene,
-  ControlsScene,
   PlayScene,
+  ComingSoonScene,
+  CharSelection,
+  LevelScene,
+  SettingsOverlayScene,
+  ControlsScene,
   CreditsScene,
   ContactScene,
-  ComingSoonScene,
   PauseScene,
   LoseScene,
   WinScene,
-  UsernameScene,
-  UserConfirmationScene,
 ];
 const createScene = (Scene) => new Scene(SHARED_CONFIG);
 const initScenes = () => Scenes.map(createScene);

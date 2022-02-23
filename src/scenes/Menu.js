@@ -7,9 +7,8 @@ class MenuScene extends BaseScene {
     this.screenCenter = [config.width / 2, config.height / 1.8];
     this.menu = [
       { scene: "PlayScene", text: "Story Mode" },
-      { scene: "ComingSoonScene", text: "Multiplayer" },
+      { scene: "CharSelection", text: "Multiplayer" },
       { scene: "LevelScene", text: "Levels" },
-      // { scene: null, text: "Exit" },
     ];
   }
 
