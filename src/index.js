@@ -4,12 +4,11 @@ If you experience problems with autocomplete, try opening the phaser.d.ts file a
 That may fix the problem -- some weird quirk with VSCode. A new typing file is released with
 every new release of Phaser. Make sure it's up-to-date!*/
 
-// import UIPlugin from "phaser3-rex-plugins/templates/ui/ui-plugin";
-// import InputTextPlugin from "phaser3-rex-plugins/plugins/inputtext-plugin";
-// import BBCodeTextPlugin from "phaser3-rex-plugins/plugins/bbcodetext-plugin";
-// import TextEditPlugin from "phaser3-rex-plugins/plugins/textedit-plugin.js";
-
 import Phaser from "phaser";
+import UIPlugin from "phaser3-rex-plugins/templates/ui/ui-plugin";
+import InputTextPlugin from "phaser3-rex-plugins/plugins/inputtext-plugin";
+import BBCodeTextPlugin from "phaser3-rex-plugins/plugins/bbcodetext-plugin";
+import TextEditPlugin from "phaser3-rex-plugins/plugins/textedit-plugin.js";
 
 import PlayScene from "./scenes/Play";
 import InitialLoadScene from "./scenes/InitialLoadScene";
@@ -27,7 +26,6 @@ import PauseScene from "./scenes/Pause";
 import LoseScene from "./scenes/LoseScene";
 import WinScene from "./scenes/WinScene";
 import UsernameScene from "./scenes/UsernameScene";
-// 1600px
 
 const MAP_WIDTH = 16000;
 
@@ -87,32 +85,32 @@ const config = {
       debug: SHARED_CONFIG.debug,
     },
   },
-  // plugins: {
-  //   scene: [
-  //     {
-  //       key: "rexUI",
-  //       plugin: UIPlugin,
-  //       mapping: "rexUI",
-  //     },
-  //   ],
-  //   global: [
-  //     {
-  //       key: "rexInputTextPlugin",
-  //       plugin: InputTextPlugin,
-  //       start: true,
-  //     },
-  //     {
-  //       key: "rexBBCodeTextPlugin",
-  //       plugin: BBCodeTextPlugin,
-  //       start: true,
-  //     },
-  //     {
-  //       key: "rexTextEdit",
-  //       plugin: TextEditPlugin,
-  //       start: true,
-  //     },
-  //   ],
-  // },
+  plugins: {
+    scene: [
+      {
+        key: "rexUI",
+        plugin: UIPlugin,
+        mapping: "rexUI",
+      },
+    ],
+    global: [
+      {
+        key: "rexInputTextPlugin",
+        plugin: InputTextPlugin,
+        start: true,
+      },
+      {
+        key: "rexBBCodeTextPlugin",
+        plugin: BBCodeTextPlugin,
+        start: true,
+      },
+      {
+        key: "rexTextEdit",
+        plugin: TextEditPlugin,
+        start: true,
+      },
+    ],
+  },
   scene: initScenes(),
   scale: {
     autoCenter: Phaser.Scale.CENTER_BOTH,

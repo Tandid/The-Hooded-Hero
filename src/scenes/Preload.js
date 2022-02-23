@@ -6,13 +6,6 @@ class Preload extends Phaser.Scene {
   }
 
   preload() {
-    this.load.scenePlugin(
-      "rexuiplugin",
-      "https://raw.githubusercontent.com/rexrainbow/phaser3-rex-notes/master/dist/rexuiplugin.min.js",
-      "rexUI",
-      "rexUI"
-    );
-
     // LOGO
     this.load.image("logo", "public/assets/logo.png");
     this.load.image("github", "public/assets/github.png");
@@ -53,10 +46,6 @@ class Preload extends Phaser.Scene {
     this.load.image("bg-cave-3", "public/assets/bg_cave_3.png");
     this.load.image("bg-cave-4", "public/assets/bg_cave_4.png");
     this.load.image("bg-cave-5", "public/assets/bg_cave_5.png");
-
-    // MENU BACKGROUND
-
-    this.load.image("menu-bg", "public/assets/background01.png", {});
 
     // PROJECTILES
     this.load.image("arrow", "public/assets/weapons/arrow.png");
