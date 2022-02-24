@@ -70,7 +70,7 @@ class CharSelection extends BaseScene {
 
       player.on("pointerup", () => {
         this.scene.stop("CharSelection");
-        this.scene.start("MenuScene", {
+        this.scene.start("LobbyScene", {
           socket: this.socket,
           charSpriteKey: key,
           username: this.username,

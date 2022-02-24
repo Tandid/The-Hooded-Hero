@@ -93,7 +93,7 @@ class Player extends Phaser.Physics.Arcade.Sprite {
       return;
     }
 
-    const { left, right, space } = this.cursors;
+    const { left, right, space, shift } = this.cursors;
     const isSpaceJustDown = Phaser.Input.Keyboard.JustDown(space);
     const onFloor = this.body.onFloor();
 
@@ -114,8 +114,14 @@ class Player extends Phaser.Physics.Arcade.Sprite {
       (onFloor || this.jumpCount < this.consecutiveJumps)
     ) {
       this.jumpSound.play();
-      this.setVelocityY(-this.playerSpeed * 1.5);
+      this.setVelocityY(-this.playerSpeed * 1.4);
       this.jumpCount++;
+    }
+
+    if (shift.isDown && onFloor) {
+      this.playerSpeed = 500;
+    } else {
+      this.playerSpeed = 400;
     }
 
     if (onFloor) {

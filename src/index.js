@@ -5,6 +5,7 @@ That may fix the problem -- some weird quirk with VSCode. A new typing file is r
 every new release of Phaser. Make sure it's up-to-date!*/
 
 import Phaser from "phaser";
+import io from "socket.io-client";
 import UIPlugin from "phaser3-rex-plugins/templates/ui/ui-plugin";
 import InputTextPlugin from "phaser3-rex-plugins/plugins/inputtext-plugin";
 import BBCodeTextPlugin from "phaser3-rex-plugins/plugins/bbcodetext-plugin";
@@ -28,6 +29,7 @@ import WinScene from "./scenes/WinScene";
 import UsernameScene from "./scenes/UsernameScene";
 import UserConfirmationScene from "./scenes/UserConfirmation";
 import CharSelection from "./scenes/CharSelection";
+import LobbyScene from "./scenes/LobbyScene";
 
 const MAP_WIDTH = 16000;
 
@@ -67,6 +69,7 @@ const Scenes = [
   PlayScene,
   ComingSoonScene,
   CharSelection,
+  LobbyScene,
   LevelScene,
   SettingsOverlayScene,
   ControlsScene,
@@ -119,7 +122,7 @@ const config = {
       },
     ],
   },
-  scene: initScenes(),
+  scene: initScenes({ socket: io() }),
   scale: {
     autoCenter: Phaser.Scale.CENTER_BOTH,
   },
