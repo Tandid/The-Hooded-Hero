@@ -41,51 +41,6 @@ class BaseScene extends Phaser.Scene {
       .setScale(2)
       .setDepth(-1);
 
-    // if (this.config.canGoBack) {
-    //   const backBtn = this.add
-    //     .image(this.config.width - 30, this.config.height - 30, "back-btn")
-    //     .setOrigin(0.5)
-    //     .setScale(0.5)
-    //     .setInteractive()
-    //     .setDepth(2);
-
-    //   backBtn.on("pointerup", () => {
-    //     this.select.play();
-    //     this.scene.start("MenuScene");
-    //   });
-
-    //   backBtn.on("pointerover", () => {
-    //     backBtn.setTint(0x7cb9e8);
-    //     this.cursorOver.play();
-    //   });
-
-    //   backBtn.on("pointerout", () => {
-    //     backBtn.clearTint();
-    //   });
-    // } else {
-    //   const settingsBtn = this.add
-    //     .image(
-    //       this.config.width - 30,
-    //       this.config.height - 30,
-    //       "settings-button"
-    //     )
-    //     .setOrigin(0.5)
-    //     .setScale(0.5)
-    //     .setInteractive();
-
-    //   settingsBtn.on("pointerup", () => {
-    //     this.select.play();
-    //     this.scene.launch("SettingsOverlayScene");
-    //   });
-    //   settingsBtn.on("pointerover", () => {
-    //     settingsBtn.setTint(0xc2c2c2);
-    //     this.cursorOver.play();
-    //   });
-    //   settingsBtn.on("pointerout", () => {
-    //     settingsBtn.clearTint();
-    //   });
-    // }
-
     const totalLeavesNum = 20;
     this.leaves = [];
     for (let i = 0; i < totalLeavesNum; i++) {
@@ -99,7 +54,6 @@ class BaseScene extends Phaser.Scene {
         .setDepth(-1);
       this.tweens.add({
         targets: leaf,
-        // scale: { from: 1.5, to: 1.7 },
         delay: i * 100,
         repeat: -1,
         yoyo: true,
@@ -120,7 +74,6 @@ class BaseScene extends Phaser.Scene {
         .setDepth(-1);
       this.tweens.add({
         targets: arrow,
-        // scale: { from: 1.5, to: 1.7 },
         delay: i * 100,
         repeat: -1,
         yoyo: true,

@@ -8,6 +8,11 @@ class LoadingScene extends Phaser.Scene {
     this.start = this.config.width / 10;
   }
 
+  init(data) {
+    this.socket = data.socket;
+    console.log({ Loading: data });
+  }
+
   create() {
     this.add
       .image(this.config.width / 2, this.config.height / 2, "logo")
@@ -42,7 +47,7 @@ class LoadingScene extends Phaser.Scene {
 
     setTimeout(() => {
       this.scene.stop("LoadingScene");
-      this.scene.start("PlayScene");
+      this.scene.start("UsernameScene", { socket: this.socket });
     }, 5000);
   }
 

@@ -12,6 +12,12 @@ class MenuScene extends BaseScene {
     ];
   }
 
+  init(data) {
+    this.socket = data.socket;
+    this.username = data.username;
+    console.log({ Menu: data });
+  }
+
   create() {
     super.create();
     this.cameras.main.fadeIn(1000, 0, 0, 0);
@@ -179,9 +185,12 @@ class MenuScene extends BaseScene {
         );
         this.flute.play();
       } else {
-        this.scene.sleep("MenuScene");
-        this.scene.launch(menuItem.scene);
         this.select.play();
+        this.scene.sleep("MenuScene");
+        this.scene.launch(menuItem.scene, {
+          socket: this.socket,
+          username: this.username,
+        });
       }
     });
   }

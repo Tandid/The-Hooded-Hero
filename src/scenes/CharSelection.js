@@ -8,6 +8,7 @@ class CharSelection extends BaseScene {
   init(data) {
     this.socket = data.socket;
     this.username = data.username;
+    console.log({ CharSelection: data });
   }
 
   create() {
@@ -72,8 +73,8 @@ class CharSelection extends BaseScene {
         this.scene.stop("CharSelection");
         this.scene.start("LobbyScene", {
           socket: this.socket,
-          charSpriteKey: key,
           username: this.username,
+          charSpriteKey: key,
         });
       });
     });

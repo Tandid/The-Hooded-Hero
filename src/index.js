@@ -122,7 +122,7 @@ const config = {
       },
     ],
   },
-  scene: initScenes({ socket: io() }),
+  scene: initScenes(),
   scale: {
     autoCenter: Phaser.Scale.CENTER_BOTH,
   },

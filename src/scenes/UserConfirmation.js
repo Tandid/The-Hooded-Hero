@@ -10,6 +10,7 @@ class UserConfirmationScene extends Phaser.Scene {
   init(data) {
     this.socket = data.socket;
     this.username = data.username;
+    console.log({ UserConfirm: data });
   }
 
   create() {

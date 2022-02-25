@@ -1,9 +1,16 @@
 import Phaser from "phaser";
+import io from "socket.io-client";
 
 class InitialLoadScene extends Phaser.Scene {
   constructor() {
     super("InitialLoadScene");
+    this.socket = io();
   }
+
+  // init(data) {
+  //   this.socket = data.socket;
+  //   console.log({ InitialLoad: data });
+  // }
 
   preload() {
     this.load.scenePlugin(
@@ -25,8 +32,8 @@ class InitialLoadScene extends Phaser.Scene {
   startGame() {
     this.registry.set("level", 1);
     this.registry.set("unlocked-levels", 1);
-    this.scene.run("PreloadScene");
-    this.scene.start("LoadingScene");
+    this.scene.run("PreloadScene", { socket: this.socket });
+    this.scene.start("LoadingScene", { socket: this.socket });
   }
 }
 

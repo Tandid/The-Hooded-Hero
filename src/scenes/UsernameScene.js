@@ -11,6 +11,7 @@ class UsernameScene extends Phaser.Scene {
 
   init(data) {
     this.socket = data.socket;
+    console.log({ UsernameScene: data });
   }
 
   create() {
