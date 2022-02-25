@@ -24,7 +24,6 @@ class BossMeleeWeapon extends Phaser.Physics.Arcade.Sprite {
     this.on("animationcomplete", (animation) => {
       if (animation.key === this.weaponAnim) {
         this.activateWeapon(false);
-        console.log(this.body.checkCollision);
         this.body.checkCollision.none = false;
         this.body.reset(0, 0);
       }

@@ -138,7 +138,6 @@ class Play extends Phaser.Scene {
     map.addTilesetImage("environment", "environment-tiles");
     // map.addTilesetImage("bg_spikes_tileset", "bg-spikes-tileset");
 
-    console.log(this.make.tilemap);
     return map;
   }
 
@@ -148,19 +147,17 @@ class Play extends Phaser.Scene {
     const tileset3 = map.getTileset("environment");
     // const tilesetBg = map.getTileset("bg_spikes_tileset");
 
-    // map.createStaticLayer("distance", tilesetBg).setDepth(-12);
+    // map.createLayer("distance", tilesetBg).setDepth(-12);
 
-    const platformsColliders = map.createStaticLayer("platforms_colliders", [
+    const platformsColliders = map.createLayer("platforms_colliders", [
       tileset1,
       tileset2,
       tileset3,
     ]);
 
-    const environment = map
-      .createStaticLayer("environment", [tileset3])
-      .setDepth(-4);
+    const environment = map.createLayer("environment", [tileset3]).setDepth(-4);
 
-    const platforms = map.createStaticLayer("platforms", [
+    const platforms = map.createLayer("platforms", [
       tileset1,
       tileset2,
       tileset3,
@@ -168,7 +165,7 @@ class Play extends Phaser.Scene {
     const playerZones = map.getObjectLayer("player_zones");
     const enemySpawns = map.getObjectLayer("enemy_spawns");
     const collectables = map.getObjectLayer("collectables");
-    const traps = map.createStaticLayer("traps", tileset1);
+    const traps = map.createLayer("traps", tileset1);
 
     platformsColliders.setCollisionByProperty({ collides: true }).setAlpha(0);
     traps.setCollisionByExclusion(-1);
@@ -187,7 +184,6 @@ class Play extends Phaser.Scene {
   createBG(map) {
     const bgObject = map.getObjectLayer("distance_bg").objects[0];
     const level = this.getCurrentLevel();
-    console.log(level);
 
     if (level === 1) {
       this.forestImageOne = this.add
@@ -433,7 +429,6 @@ class Play extends Phaser.Scene {
   }
   createCollectables(collectableLayer) {
     const collectables = new Collectables(this).setDepth(-1);
-    console.log(collectables);
 
     collectables.addFromLayer(collectableLayer);
 
@@ -488,7 +483,6 @@ class Play extends Phaser.Scene {
   }
 
   createPlayerColliders(player, { colliders }) {
-    console.log({ colliders });
     player
       .addCollider(colliders.platformsColliders)
       .addCollider(colliders.projectiles, this.onHit)

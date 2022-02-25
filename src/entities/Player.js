@@ -25,12 +25,12 @@ class Player extends Phaser.Physics.Arcade.Sprite {
 
   init() {
     this.gravity = 1000;
-    this.playerSpeed = 400;
+    this.playerSpeed = 300;
     this.jumpCount = 0;
     this.consecutiveJumps = 1;
     this.hasBeenHit = false;
     this.isSliding = false;
-    this.bounceVelocity = 200;
+    this.bounceVelocity = 400;
     this.cursors = this.scene.input.keyboard.createCursorKeys();
 
     this.jumpSound = this.scene.sound.add("jump", { volume: 0.2 });
@@ -49,8 +49,8 @@ class Player extends Phaser.Physics.Arcade.Sprite {
     this.health = 100;
     this.hp = new HealthBar(
       this.scene,
-      this.scene.config.leftTopCorner.x + 5,
-      this.scene.config.leftTopCorner.y + 5,
+      this.scene.config.leftTopCorner.x + 150,
+      this.scene.config.leftTopCorner.y + 25,
       2,
       this.health
     );
@@ -88,6 +88,12 @@ class Player extends Phaser.Physics.Arcade.Sprite {
       return;
     }
 
+    // if (this.healthRegen()) {
+    //   return;
+    // }
+
+    // console.log(this.health);
+
     if (this.getBounds().top > this.scene.config.height * 2.5) {
       EventEmitter.emit("PLAYER_LOSE");
       return;
@@ -121,7 +127,7 @@ class Player extends Phaser.Physics.Arcade.Sprite {
     if (shift.isDown && onFloor) {
       this.playerSpeed = 500;
     } else {
-      this.playerSpeed = 400;
+      this.playerSpeed = 350;
     }
 
     if (onFloor) {
@@ -189,6 +195,16 @@ class Player extends Phaser.Physics.Arcade.Sprite {
     setTimeout(() => this.setVelocityY(-this.bounceVelocity), 0);
   }
 
+  healthRegen() {
+    setTimeout(() => {
+      if (!this.hasBeenHit && this.health < 100) {
+        this.health += 5;
+        this.hp.increase(this.health);
+        return;
+      }
+    }, 5000);
+  }
+
   takesHit(source) {
     this.takeDamageSound.play();
     if (this.hasBeenHit) {
@@ -196,6 +212,7 @@ class Player extends Phaser.Physics.Arcade.Sprite {
     }
 
     this.health -= source.damage || source.properties.damage || 0;
+
     if (this.health <= 0) {
       // this.play("player-die", true);
       EventEmitter.emit("PLAYER_LOSE");

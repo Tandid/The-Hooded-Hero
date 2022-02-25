@@ -43,7 +43,6 @@ class Enemy extends Phaser.Physics.Arcade.Sprite {
     this.setImmovable(true);
     this.setOrigin(0.5, 1);
     this.setVelocityX(this.speed);
-    console.log(this);
   }
 
   initEvents() {

@@ -80,8 +80,6 @@ class MenuScene extends BaseScene {
     settingsBtn.on("pointerup", () => {
       this.select.play();
       this.scene.launch("SettingsOverlayScene");
-      console.log(this.scene.isActive("MenuScene"));
-      console.log(this.scene.isActive("SettingsOverlayScene"));
     });
     settingsBtn.on("pointerover", () => {
       settingsBtn.setTint(0xc2c2c2);

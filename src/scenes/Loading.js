@@ -42,7 +42,7 @@ class LoadingScene extends Phaser.Scene {
 
     setTimeout(() => {
       this.scene.stop("LoadingScene");
-      this.scene.start("UsernameScene");
+      this.scene.start("PlayScene");
     }, 5000);
   }
 

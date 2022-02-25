@@ -34,7 +34,6 @@ class Boss extends EnemyBoss {
     }
 
     if (this.timeFromLastAttack + this.attackDelay <= time) {
-      console.log(this.flipX);
       this.play("boss-melee", true);
       // this.meleeWeapon.swing(this);
       if (this.flipX === true) {
