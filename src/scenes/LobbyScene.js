@@ -46,7 +46,7 @@ export default class LobbyScene extends BaseScene {
         // render open lobbies with green font, and red if closed
         if (staticRooms[i].isOpen) {
           rooms[i] = this.add
-            .text(width * 0.6, 100 * (i + 1), `Room ${i + 1}`, {
+            .text(width * 0.6, 50 * (i + 1), `Room ${i + 1}`, {
               fontFamily: "customFont",
               fontSize: "30px",
               fill: "#7CFC00",

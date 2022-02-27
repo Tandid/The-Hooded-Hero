@@ -30,6 +30,7 @@ import UsernameScene from "./scenes/UsernameScene";
 import UserConfirmationScene from "./scenes/UserConfirmation";
 import CharSelection from "./scenes/CharSelection";
 import LobbyScene from "./scenes/LobbyScene";
+import WaitingScene from "./scenes/WaitingScene";
 
 const MAP_WIDTH = 16000;
 
@@ -70,6 +71,7 @@ const Scenes = [
   ComingSoonScene,
   CharSelection,
   LobbyScene,
+  WaitingScene,
   LevelScene,
   SettingsOverlayScene,
   ControlsScene,
