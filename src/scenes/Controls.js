@@ -47,6 +47,10 @@ class ControlsScene extends BaseScene {
       .image(this.config.width / 3 + 30, 420, "space-key")
       .setOrigin(0.5)
       .setScale(0.5);
+    this.add
+      .image(this.config.width / 3 + 30, 520, "space-key")
+      .setOrigin(0.5)
+      .setScale(0.5);
 
     this.add
       .image(this.config.width / 2, this.config.height / 6, "header-shadow")
@@ -84,6 +88,13 @@ class ControlsScene extends BaseScene {
 
     this.add
       .text(this.config.width / 1.75, 420, "Space to Jump", {
+        fontFamily: "customFont",
+        fontSize: "40px",
+      })
+      .setOrigin(0.5, 0.5)
+      .setColor("0x000");
+    this.add
+      .text(this.config.width / 1.75, 520, "Shift to run", {
         fontFamily: "customFont",
         fontSize: "40px",
       })

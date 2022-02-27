@@ -35,7 +35,7 @@ import WaitingScene from "./scenes/WaitingScene";
 const MAP_WIDTH = 16000;
 
 const WIDTH = 1280;
-const HEIGHT = 600;
+const HEIGHT = 720;
 const ZOOM_FACTOR = 0.5;
 
 const SHARED_CONFIG = {

@@ -23,6 +23,8 @@ class WaitingScene extends Phaser.Scene {
   }
 
   create() {
+    const width = this.config.width;
+    const height = this.config.height;
     this.cursorOver = this.sound.add("cursorOver");
     this.cursorOver.volume = 0.4;
 
@@ -36,6 +38,7 @@ class WaitingScene extends Phaser.Scene {
     const layers = this.createLayers(map);
     const playerZones = this.getPlayerZones(layers.playerZones);
     const player = this.createPlayer(playerZones.start);
+    this.player = player;
 
     this.createPlayerColliders(player, {
       colliders: {
@@ -47,6 +50,231 @@ class WaitingScene extends Phaser.Scene {
     this.createHomeButton();
     this.createSettingsButton();
     this.setupFollowupCameraOn(player);
+
+    if (this.roomKey.length === 4) {
+      console.log(this.roomKey);
+      this.add
+        .text(300, 300, `Room Code: ${this.roomKey}`, {
+          fontFamily: "customFont",
+          fontSize: "100px",
+          fill: "#fff",
+        })
+        .setDepth(2);
+    }
+
+    this.usernameText = this.add
+      .text(this.player.x, this.player.y, this.username, {
+        fontSize: "40px",
+        fill: "#fff",
+      })
+      .setOrigin(0.5, 1)
+      .setDepth(2);
+
+    this.startButton = this.add
+      .text(590, 80, "", {
+        fontFamily: "customFont",
+        fontSize: "200px",
+        fill: "#000",
+      })
+      .setStroke("#fff", 2);
+
+    this.waitingForPlayers = this.add
+      .text(
+        1200,
+        height / 5 + 100,
+        `Waiting for ${
+          this.requiredPlayers - this.roomInfo.playerNum
+        } player(s)`,
+        {
+          fontFamily: "customFont",
+          fontSize: "0px",
+          fill: "#fff",
+        }
+      )
+      .setOrigin(0.5);
+
+    if (this.roomInfo.playerNum < this.requiredPlayers) {
+      this.waitingForPlayers.setFontSize("100px");
+    }
+
+    // sends message to randomize when first player joins lobby
+    if (this.roomInfo.playerNum === 1) {
+      this.socket.emit("randomize");
+    }
+
+    // renders start button when there are 4 or more players in lobby;
+    if (this.roomInfo.playerNum >= this.requiredPlayers) {
+      this.startButton.setText("Start");
+    }
+
+    Object.keys(this.roomInfo.players).forEach((playerId) => {
+      if (playerId !== this.socket.id) {
+        const { spriteKey, username } = this.roomInfo.players[playerId];
+        this.opponents[playerId] = new OnlinePlayer(
+          this,
+          playerZones.start.x,
+          playerZones.start.y,
+          spriteKey,
+          username,
+          this.socket
+        );
+        this.opponents[playerId].body.setAllowGravity(false);
+
+        this[`opponents${playerId}`] = this.add
+          .text(
+            this.opponents[playerId].x + 90,
+            this.opponents[playerId].y - 160,
+            username,
+            {
+              fontSize: "40px",
+              fill: "#fff",
+            }
+          )
+          .setOrigin(0.5, 1);
+      }
+    });
+
+    this.playerCounter = this.add
+      .text(1200, height / 5, `${this.roomInfo.playerNum} player(s) in lobby`, {
+        fontFamily: "customFont",
+        fontSize: "100px",
+        fill: "#000",
+      })
+      .setOrigin(0.5);
+
+    this.socket.on("newPlayerJoined", ({ playerId, playerInfo }) => {
+      if (!this.roomInfo.players[playerId]) {
+        this.roomInfo.playerNum += 1;
+        this.roomInfo.players[playerId] = playerInfo; // { username, spriteKey }
+        this.opponents[playerId] = new OnlinePlayer(
+          this,
+          playerZones.start.x,
+          playerZones.start.y,
+          this.roomInfo.players[playerId].spriteKey,
+          this.roomInfo.players[playerId].username,
+          this.socket
+        );
+        this.opponents[playerId].body.setAllowGravity(false);
+      }
+
+      if (this.roomInfo.playerNum === this.requiredPlayers) {
+        this.waitingForPlayers.setFontSize("0px");
+        this.startButton.setText("Start");
+      }
+
+      this.waitingForPlayers.setText(
+        `Waiting for ${
+          this.requiredPlayers - this.roomInfo.playerNum
+        } player(s)`
+      );
+
+      this.playerCounter.setText(
+        `${this.roomInfo.playerNum} player(s) in lobby`
+      );
+
+      this[`opponents${playerId}`] = this.add
+        .text(
+          this.opponents[playerId].x,
+          this.opponents[playerId].y,
+          this.roomInfo.players[playerId].username,
+          {
+            fontSize: "40px",
+            fill: "#fff",
+          }
+        )
+        .setOrigin(0.5, 1);
+    });
+
+    this.socket.on("playerLeft", ({ playerId }) => {
+      // remove opponent from opponent list
+      if (this.opponents[playerId]) {
+        this.opponents[playerId].destroy(); // remove opponent's game object
+        delete this.opponents[playerId]; // remove opponent's key-value pair
+        this[`opponents${playerId}`].destroy(); // remove opponent's name
+      }
+
+      // remove opponet from player list
+      if (this.roomInfo.players[playerId]) {
+        delete this.roomInfo.players[playerId];
+        this.roomInfo.playerNum -= 1;
+
+        // show waiting message if player num becomes lower than required num for starting game
+        if (this.roomInfo.playerNum < this.requiredPlayers) {
+          this.waitingForPlayers.setText(
+            `Waiting for ${
+              this.requiredPlayers - this.roomInfo.playerNum
+            } player(s)`
+          );
+          this.waitingForPlayers.setFontSize("100px");
+          this.startButton.setText("");
+        }
+      }
+
+      // update display for player num in the room
+      this.playerCounter.setText(
+        `${this.roomInfo.playerNum} player(s) in lobby`
+      );
+    });
+
+    this.socket.on("playerMoved", ({ playerId, moveState }) => {
+      if (this.opponents[playerId]) {
+        this.opponents[playerId].updateOtherPlayer(moveState);
+        this[`opponents${playerId}`].setX(this.opponents[playerId].x);
+        this[`opponents${playerId}`].setY(this.opponents[playerId].y);
+      }
+    });
+
+    const countdown = this.add.text(640, 80, `10`, {
+      fontFamily: "customFont",
+      fontSize: "0px",
+      fill: "#fff",
+    });
+
+    this.startButton.setInteractive();
+    this.startButton.on("pointerover", () => {
+      this.startButton.setFill("#fff");
+    });
+    this.startButton.on("pointerout", () => {
+      this.startButton.setFill("#000");
+    });
+    this.startButton.on("pointerup", () => {
+      this.input.enabled = false;
+      this.socket.emit("startTimer");
+      this.startButton.destroy();
+    });
+
+    this.socket.on("timerUpdated", (timeLeft) => {
+      if (this.startButton) {
+        this.startButton.destroy();
+      }
+      countdown.setFontSize("100px");
+      countdown.setText(`${timeLeft}`);
+    });
+
+    this.socket.on("loadNextStage", (roomInfo) => {
+      this.socket.removeAllListeners();
+      this.cameras.main.fadeOut(1000, 0, 0, 0);
+      this.cameras.main.on("camerafadeoutcomplete", () => {
+        eventsCenter.emit("startTransition");
+      });
+
+      this.time.addEvent({
+        delay: 2000,
+        callback: () => {
+          const nextStageKey = roomInfo.stages[0];
+          this.game.music.stopAll();
+          this.sound.stopAll();
+          this.scene.stop("WaitingScene");
+          this.scene.start(nextStageKey, {
+            socket: this.socket,
+            roomInfo,
+            charSpriteKey: this.charSpriteKey,
+            username: this.username,
+            isMultiplayer: true,
+          });
+        },
+      });
+    });
   }
 
   createMap() {
@@ -199,7 +427,7 @@ class WaitingScene extends Phaser.Scene {
 
     homeBtn.on("pointerup", () => {
       this.select.play();
-      this.scene.pause("PlayScene");
+      this.scene.pause("WaitingScene");
       // this.scene.sendToBack("PlayScene");
       this.scene.launch("PauseScene");
     });
@@ -228,12 +456,11 @@ class WaitingScene extends Phaser.Scene {
   }
 
   setupFollowupCameraOn(player) {
-    const { height, width, mapOffset, zoomFactor } = this.config;
+    const { height, width, mapOffset } = this.config;
     this.physics.world.setBounds(0, 0, width + mapOffset, height * 3);
     this.cameras.main
       .setBounds(0, 0, width + mapOffset, height + 1000)
-      .setZoom(zoomFactor);
-    this.cameras.main.startFollow(player);
+      .setZoom(0.5);
   }
 
   getPlayerZones(playerZonesLayer) {
@@ -242,6 +469,15 @@ class WaitingScene extends Phaser.Scene {
       start: playerZones.find((zone) => zone.name === "startZone"),
       end: playerZones.find((zone) => zone.name === "endZone"),
     };
+  }
+
+  update() {
+    this.displayUsername();
+  }
+
+  displayUsername() {
+    this.usernameText.setX(this.player.x + 90);
+    this.usernameText.setY(this.player.y - 160);
   }
 }
 

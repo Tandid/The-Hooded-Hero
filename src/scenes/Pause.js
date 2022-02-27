@@ -46,6 +46,7 @@ class PauseScene extends Phaser.Scene {
     yesBtn.on("pointerup", () => {
       this.select.play();
       this.scene.stop("PlayScene");
+      this.scene.stop("WaitingScene");
       this.scene.start("MenuScene");
     });
 
@@ -72,6 +73,9 @@ class PauseScene extends Phaser.Scene {
       this.scene.stop("PauseScene");
       this.scene.isPaused("PlayScene") === true
         ? this.scene.resume("PlayScene")
+        : "";
+      this.scene.isPaused("WaitingScene") === true
+        ? this.scene.resume("WaitingScene")
         : "";
     });
 
