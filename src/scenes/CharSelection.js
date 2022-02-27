@@ -52,7 +52,7 @@ class CharSelection extends BaseScene {
           "panel-4"
         )
         .setOrigin(0.5)
-        .setScale(0.4, 1.2);
+        .setScale(0.43, 1.2);
 
       const player = this.add
         .sprite(
@@ -68,12 +68,14 @@ class CharSelection extends BaseScene {
       player.on("pointerover", () => {
         player.play(`run-${key}`, true);
         this.cursorOver.play();
-        bg.setTint("#FFF");
+        bg.setTint("0xc2c2c2");
+        bg.setScale(0.45, 1.25);
       });
       player.on("pointerout", () => {
         player.play(`idle-${key}`, true);
         this.cursorOver.stop();
         bg.clearTint();
+        bg.setScale(0.43, 1.2);
       });
 
       player.on("pointerdown", () => {
