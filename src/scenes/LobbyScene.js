@@ -3,6 +3,7 @@ import BaseScene from "./BaseScene";
 export default class LobbyScene extends BaseScene {
   constructor(config) {
     super("LobbyScene", { ...config, canGoBack: true });
+    this.config = config;
   }
 
   init(data) {
@@ -14,7 +15,6 @@ export default class LobbyScene extends BaseScene {
 
   create() {
     super.create();
-    this.createCloseButton();
 
     this.add
       .image(this.config.width / 2, this.config.height / 2, "panel-2")
@@ -108,61 +108,6 @@ export default class LobbyScene extends BaseScene {
       });
     });
 
-    const joinCustomRoom = this.add.text(
-      width * 0.12,
-      225,
-      "Join a Custom Room",
-      {
-        fontFamily: "customFont",
-        fontSize: "30px",
-        fill: "#fff",
-      }
-    );
-
-    joinCustomRoom.setInteractive();
-    joinCustomRoom.on("pointerover", () => {
-      joinCustomRoom.setStroke("#fff", 2);
-    });
-    joinCustomRoom.on("pointerout", () => {
-      joinCustomRoom.setStroke("#fff", 0);
-    });
-    joinCustomRoom.on("pointerdown", () => {});
-    joinCustomRoom.on("pointerup", () => {
-      this.input.enabled = false;
-      this.socket.removeAllListeners();
-      this.scene.stop("LobbyScene");
-      this.scene.start("JoinRoomScene", {
-        socket: this.socket,
-        charSpriteKey: this.charSpriteKey,
-        username: this.username,
-      });
-    });
-
-    // create a custom room
-    const createRoomButton = this.add.text(
-      width * 0.15,
-      428,
-      "Create New Room",
-      {
-        fontFamily: "customFont",
-        fontSize: "30px",
-        fill: "#fff",
-      }
-    );
-
-    createRoomButton.setInteractive();
-    createRoomButton.on("pointerover", () => {
-      createRoomButton.setStroke("#fff", 2);
-    });
-    createRoomButton.on("pointerout", () => {
-      createRoomButton.setStroke("#fff", 0);
-    });
-    createRoomButton.on("pointerdown", () => {});
-    createRoomButton.on("pointerup", () => {
-      this.input.enabled = false;
-      this.socket.emit("createRoom");
-    });
-
     // immediately join the custom room that was created
     this.socket.on("roomCreated", (code) => {
       this.socket.emit("joinRoom", {
@@ -210,6 +155,86 @@ export default class LobbyScene extends BaseScene {
         charSpriteKey: this.charSpriteKey,
         username: this.username,
       });
+    });
+
+    this.createCloseButton();
+    this.createJoinRoomBtn();
+    this.createNewRoomBtn();
+  }
+
+  createJoinRoomBtn() {
+    this.add
+      .image(this.config.width / 3, this.config.height / 2 + 75, "panel-4")
+      .setOrigin(0.5)
+      .setScale(1, 0.5)
+      .setDepth(2);
+
+    const joinCustomRoom = this.add
+      .text(
+        this.config.width / 3,
+        this.config.height / 2 + 75,
+        "Join a Custom Room",
+        {
+          fontFamily: "customFont",
+          fontSize: "40px",
+          fill: "#000",
+        }
+      )
+      .setDepth(2)
+      .setOrigin(0.5);
+
+    joinCustomRoom.setInteractive();
+    joinCustomRoom.on("pointerover", () => {
+      joinCustomRoom.setFill("#fff", 2);
+    });
+    joinCustomRoom.on("pointerout", () => {
+      joinCustomRoom.setFill("#000", 0);
+    });
+    joinCustomRoom.on("pointerdown", () => {});
+    joinCustomRoom.on("pointerup", () => {
+      this.input.enabled = false;
+      this.socket.removeAllListeners();
+      this.scene.stop("LobbyScene");
+      this.scene.start("JoinRoomScene", {
+        socket: this.socket,
+        charSpriteKey: this.charSpriteKey,
+        username: this.username,
+      });
+    });
+  }
+
+  createNewRoomBtn() {
+    this.add
+      .image(this.config.width / 3, this.config.height / 2 - 75, "panel-4")
+      .setOrigin(0.5)
+      .setScale(1, 0.5)
+      .setDepth(2);
+
+    const createRoomButton = this.add
+      .text(
+        this.config.width / 3,
+        this.config.height / 2 - 75,
+        "Create New Room",
+        {
+          fontFamily: "customFont",
+          fontSize: "40px",
+          fill: "#000",
+        }
+      )
+      .setDepth(2)
+      .setOrigin(0.5);
+
+    createRoomButton.setInteractive();
+    createRoomButton.on("pointerover", () => {
+      createRoomButton.setFill("#fff", 2);
+    });
+    createRoomButton.on("pointerout", () => {
+      createRoomButton.setFill("#000", 0);
+    });
+    createRoomButton.on("pointerdown", () => {});
+    createRoomButton.on("pointerup", () => {
+      this.input.enabled = false;
+      this.socket.emit("createRoom");
     });
   }
 
