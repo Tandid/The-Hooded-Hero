@@ -283,14 +283,13 @@ class Preload extends Phaser.Scene {
       // spacing: 32,
     });
     this.load.spritesheet("player-2", "public/assets/player/player_2.png", {
-      frameWidth: 165,
+      frameWidth: 160,
       frameHeight: 180,
       // spacing: 32,
     });
     this.load.spritesheet("player-3", "public/assets/player/player_3.png", {
-      frameWidth: 165,
+      frameWidth: 169,
       frameHeight: 180,
-      // spacing: 32,
     });
     this.load.spritesheet("player-4", "public/assets/player/player_4.png", {
       frameWidth: 170,

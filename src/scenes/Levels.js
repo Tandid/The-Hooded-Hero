@@ -54,7 +54,7 @@ class LevelScene extends BaseScene {
     for (let i = 1; i <= 3; i++) {
       this.add
         .image(
-          this.config.width / 2 + 30,
+          this.config.width / 2 + 20,
           this.config.height / 4 + row,
           "panel-4"
         )
@@ -71,15 +71,10 @@ class LevelScene extends BaseScene {
         .setScale(0.5);
 
       this.add
-        .text(
-          this.config.width / 3 + 30,
-          this.config.height / 4 + row,
-          `${i}`,
-          {
-            fontFamily: "customFont",
-            fontSize: "50px",
-          }
-        )
+        .text(this.config.width / 3, this.config.height / 4 + row, `${i}`, {
+          fontFamily: "customFont",
+          fontSize: "50px",
+        })
         .setOrigin(0.5)
         .setColor("#000000");
 

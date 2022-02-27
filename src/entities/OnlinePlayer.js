@@ -46,8 +46,19 @@ class OnlinePlayer extends Phaser.Physics.Arcade.Sprite {
 
     this.lastDirection = Phaser.Physics.Arcade.FACING_RIGHT;
 
-    this.body.setSize(120, 150);
-    this.body.setOffset(90, 40);
+    if (this.spriteKey === "player-1") {
+      this.body.setSize(120, 150);
+      this.body.setOffset(90, 40);
+    }
+    if (this.spriteKey === "player-2") {
+      this.body.setSize(120, 150);
+    }
+    if (this.spriteKey === "player-3") {
+      this.body.setSize(120, 150);
+    }
+    if (this.spriteKey === "player-4") {
+      this.body.setSize(120, 150);
+    }
 
     this.body.setGravityY(this.gravity);
     this.setCollideWorldBounds(true);

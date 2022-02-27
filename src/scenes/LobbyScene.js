@@ -42,38 +42,47 @@ export default class LobbyScene extends BaseScene {
     // render buttons for rooms in the open lobby
     const rooms = [];
     this.socket.on("staticRoomStatus", (staticRooms) => {
-      for (let i = 0; i < staticRooms.length; ++i) {
+      for (let i = 0; i < staticRooms.length; i++) {
+        this.add
+          .image(this.config.width * 0.7, 150 + 75 * (i + 1), "panel-4")
+          .setOrigin(0.5)
+          .setScale(0.6, 0.4);
+
         // render open lobbies with green font, and red if closed
         if (staticRooms[i].isOpen) {
           rooms[i] = this.add
-            .text(width * 0.6, 50 * (i + 1), `Room ${i + 1}`, {
-              fontFamily: "customFont",
-              fontSize: "30px",
-              fill: "#7CFC00",
-              align: "center",
-            })
-            .setStroke("#000", 2);
+            .text(
+              this.config.width * 0.7,
+              150 + 75 * (i + 1),
+              `Room ${i + 1}`,
+              {
+                fontFamily: "customFont",
+                fontSize: "40px",
+                fill: "#15855b",
+              }
+            )
+            .setOrigin(0.5);
         } else {
-          rooms[i] = this.add.text(
-            width * 0.6,
-            100 * (i + 1),
-            `Room ${i + 1}`,
-            {
-              fontFamily: "customFont",
-              fontSize: "30px",
-              fill: "#FF0000",
-              align: "center",
-            }
-          );
+          rooms[i] = this.add
+            .text(
+              this.config.width * 0.7,
+              150 + 75 * (i + 1),
+              `Room ${i + 1}`,
+              {
+                fontFamily: "customFont",
+                fontSize: "40px",
+                fill: "#FF0000",
+              }
+            )
+            .setOrigin(0.5);
         }
         rooms[i].setInteractive();
         rooms[i].on("pointerover", () => {
-          rooms[i].setStroke("#fff", 2);
+          rooms[i].setFill("#FFF");
         });
         rooms[i].on("pointerout", () => {
-          rooms[i].setStroke("#000", 2);
           if (staticRooms[i].isOpen) {
-            rooms[i].setFill("#7CFC00");
+            rooms[i].setFill("#15855b");
           }
         });
         rooms[i].on("pointerdown", () => {
@@ -83,7 +92,7 @@ export default class LobbyScene extends BaseScene {
           this.input.enabled = false;
           rooms[i].clearTint();
           if (staticRooms[i].isOpen) {
-            rooms[i].setFill("#7CFC00");
+            rooms[i].setFill("#15855b");
           }
           this.socket.emit("joinRoom", {
             roomKey: `room${i + 1}`,
@@ -99,7 +108,7 @@ export default class LobbyScene extends BaseScene {
           // render open lobbies with green font, and red if closed
           if (rooms[i]) {
             if (staticRooms[i].isOpen) {
-              rooms[i].setFill("#7CFC00");
+              rooms[i].setFill("#15855b");
             } else {
               rooms[i].setFill("#FF0000");
             }
@@ -122,7 +131,7 @@ export default class LobbyScene extends BaseScene {
       this.input.enabled = true;
       const roomClosedText = this.add.text(350, 40, "This room is closed", {
         fontFamily: "customFont",
-        fontSize: "30px",
+        fontSize: "40px",
         fill: "#fff",
       });
       const roomClosedInterval = setInterval(() => {
@@ -135,7 +144,7 @@ export default class LobbyScene extends BaseScene {
       this.input.enabled = true;
       const roomFullText = this.add.text(350, 40, "This room is full", {
         fontFamily: "customFont",
-        fontSize: "30px",
+        fontSize: "40px",
         fill: "#fff",
       });
       const roomFullInterval = setInterval(() => {
