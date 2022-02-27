@@ -34,21 +34,20 @@ class WaitingScene extends Phaser.Scene {
     // const tileset = map.addTilesetImage("tileset_1", "forest-tiles");
     // const environment =  map.addTilesetImage("environment", "environment-tiles");
 
-    // this.platform = map.createLayer("WaitingScene", tileset, 0, 0);
+    this.platform = map.createLayer("WaitingScene", tileset, 0, 0);
 
-    // create player
-    // this.player = new onlinePlayer(
-    //   this,
-    //   20,
-    //   460,
-    //   this.charSpriteKey,
-    //   this.username,
-    //   this.socket,
-    //   this.platform
-    // ).setScale(2.25);
-    // const playerConfig = new PlayerConfig(this);
-    // playerConfig.createPlayerAnimations(this.charSpriteKey);
-    // this.cursors = this.input.keyboard.createCursorKeys();
+    this.player = new onlinePlayer(
+      this,
+      20,
+      460,
+      this.charSpriteKey,
+      this.username,
+      this.socket,
+      this.platform
+    ).setScale(2.25);
+    const playerConfig = new PlayerConfig(this);
+    playerConfig.createPlayerAnimations(this.charSpriteKey);
+    this.cursors = this.input.keyboard.createCursorKeys();
 
     // show room code
     if (this.roomKey.length === 4) {

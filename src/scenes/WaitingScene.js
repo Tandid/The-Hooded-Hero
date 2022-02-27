@@ -1,7 +1,5 @@
 import Phaser from "phaser";
-import Player from "../entities/Player";
-import Enemies from "../groups/Enemies";
-import Hud from "../hud";
+import OnlinePlayer from "../entities/OnlinePlayer";
 import EventEmitter from "../events/Emitter";
 
 import initAnims from "../anims";
@@ -215,7 +213,14 @@ class WaitingScene extends Phaser.Scene {
   }
 
   createPlayer(start) {
-    return new Player(this, start.x, start.y);
+    return new OnlinePlayer(
+      this,
+      start.x,
+      start.y,
+      this.charSpriteKey,
+      this.username,
+      this.socket
+    );
   }
 
   createPlayerColliders(player, { colliders }) {

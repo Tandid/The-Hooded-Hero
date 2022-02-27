@@ -1,6 +1,5 @@
 import "phaser";
-
-export default class onlinePlayer extends Phaser.Physics.Arcade.Sprite {
+class OnlinePlayer extends Phaser.Physics.Arcade.Sprite {
   constructor(scene, x, y, spriteKey, username, socket, platform) {
     super(scene, x, y, spriteKey);
     this.spriteKey = spriteKey;
@@ -9,11 +8,10 @@ export default class onlinePlayer extends Phaser.Physics.Arcade.Sprite {
     this.scene = scene;
     this.scene.physics.world.enable(this);
     this.scene.add.existing(this);
-    this.setCollideWorldBounds(this.scene.stageKey === "WaitingScene");
+    this.setCollideWorldBounds(this.scene.stageKey === "lobby");
     this.scene.physics.add.collider(this, platform, null, null, this);
     this.facingLeft = false;
     this.flipX = false;
-    this.setScale(2.25);
     this.body.setSize(this.width * 0.6);
     this.moveState = {
       x,
@@ -182,3 +180,5 @@ export default class onlinePlayer extends Phaser.Physics.Arcade.Sprite {
     }
   }
 }
+
+export default OnlinePlayer;
