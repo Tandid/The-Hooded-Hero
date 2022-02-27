@@ -10,7 +10,7 @@ class WaitingScene extends Phaser.Scene {
     this.config = config;
     this.stageKey = "lobby";
     this.opponents = {};
-    this.requiredPlayers = 4;
+    this.requiredPlayers = 1;
   }
 
   init(data) {
@@ -62,21 +62,14 @@ class WaitingScene extends Phaser.Scene {
         .setDepth(2);
     }
 
-    this.usernameText = this.add
-      .text(this.player.x, this.player.y, this.username, {
-        fontSize: "40px",
-        fill: "#fff",
-      })
-      .setOrigin(0.5, 1)
-      .setDepth(2);
-
-    this.startButton = this.add
-      .text(590, 80, "", {
+    this.playerCounter = this.add
+      .text(1200, height / 5, `${this.roomInfo.playerNum} player(s) in lobby`, {
         fontFamily: "customFont",
-        fontSize: "200px",
+        fontSize: "100px",
         fill: "#000",
       })
-      .setStroke("#fff", 2);
+      .setOrigin(0.5)
+      .setDepth(2);
 
     this.waitingForPlayers = this.add
       .text(
@@ -92,6 +85,32 @@ class WaitingScene extends Phaser.Scene {
         }
       )
       .setOrigin(0.5);
+
+    this.startButton = this.add
+      .text(1200, height / 5 + 200, "", {
+        fontFamily: "customFont",
+        fontSize: "200px",
+        fill: "#000",
+      })
+      .setOrigin(0.5)
+      .setDepth(2);
+
+    this.usernameText = this.add
+      .text(this.player.x, this.player.y, this.username, {
+        fontSize: "40px",
+        fill: "#fff",
+      })
+      .setOrigin(0.5, 1)
+      .setDepth(2);
+
+    const countdown = this.add
+      .text(1200, height / 5 + 200, `10`, {
+        fontFamily: "customFont",
+        fontSize: "0px",
+        fill: "#fff",
+      })
+      .setOrigin(0.5)
+      .setDepth(2);
 
     if (this.roomInfo.playerNum < this.requiredPlayers) {
       this.waitingForPlayers.setFontSize("100px");
@@ -133,14 +152,6 @@ class WaitingScene extends Phaser.Scene {
           .setOrigin(0.5, 1);
       }
     });
-
-    this.playerCounter = this.add
-      .text(1200, height / 5, `${this.roomInfo.playerNum} player(s) in lobby`, {
-        fontFamily: "customFont",
-        fontSize: "100px",
-        fill: "#000",
-      })
-      .setOrigin(0.5);
 
     this.socket.on("newPlayerJoined", ({ playerId, playerInfo }) => {
       if (!this.roomInfo.players[playerId]) {
@@ -222,12 +233,6 @@ class WaitingScene extends Phaser.Scene {
         this[`opponents${playerId}`].setX(this.opponents[playerId].x);
         this[`opponents${playerId}`].setY(this.opponents[playerId].y);
       }
-    });
-
-    const countdown = this.add.text(640, 80, `10`, {
-      fontFamily: "customFont",
-      fontSize: "0px",
-      fill: "#fff",
     });
 
     this.startButton.setInteractive();
