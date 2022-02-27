@@ -26,15 +26,6 @@ class BaseScene extends Phaser.Scene {
     this.add.image(0, 0, "sky-bg").setOrigin(0).setScale(1).setDepth(-1);
     this.add.image(0, 0, "mountain-bg").setOrigin(0).setScale(1).setDepth(-1);
 
-    this.cursorOver = this.sound.add("cursorOver");
-    this.cursorOver.volume = 0.4;
-
-    this.select = this.sound.add("select");
-    this.select.volume = 0.4;
-
-    this.pageFlip = this.sound.add("page-flip");
-    this.pageFlip.volume = 0.4;
-
     this.add
       .image(this.config.width / 30, this.config.height - 400, "tree-1")
       .setOrigin(0.5)

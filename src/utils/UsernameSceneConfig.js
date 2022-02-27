@@ -9,12 +9,13 @@ export default class UsernameSceneConfig {
     };
   }
 
-  runAllTextBoxLogic(x, y, config) {
+  runAllTextBoxLogic(x, y, config, sound) {
     const { scene } = this;
 
     this.saveConfigToState(x, y, config);
     this.state.inputTextBox = this.createNameInputBox(config);
     this.state.inputTextBox.setInteractive();
+
     const thisConfigContext = this;
 
     this.state.inputTextBox.on(
@@ -69,6 +70,10 @@ export default class UsernameSceneConfig {
 
   startConfirmation() {
     const { scene } = this;
+
+    this.pageFlip = scene.sound.add("page-flip");
+    this.pageFlip.volume = 0.4;
+    this.pageFlip.play();
 
     scene.scene.start("UserConfirmationScene", {
       socket: this.socket,

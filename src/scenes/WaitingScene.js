@@ -50,17 +50,7 @@ class WaitingScene extends Phaser.Scene {
     this.createHomeButton();
     this.createSettingsButton();
     this.setupFollowupCameraOn(player);
-
-    if (this.roomKey.length === 4) {
-      console.log(this.roomKey);
-      this.add
-        .text(300, 300, `Room Code: ${this.roomKey}`, {
-          fontFamily: "customFont",
-          fontSize: "100px",
-          fill: "#fff",
-        })
-        .setDepth(2);
-    }
+    this.createRoomKey();
 
     this.playerCounter = this.add
       .text(1200, height / 5, `${this.roomInfo.playerNum} player(s) in lobby`, {
@@ -204,7 +194,7 @@ class WaitingScene extends Phaser.Scene {
         this[`opponents${playerId}`].destroy(); // remove opponent's name
       }
 
-      // remove opponet from player list
+      // remove opponent from player list
       if (this.roomInfo.players[playerId]) {
         delete this.roomInfo.players[playerId];
         this.roomInfo.playerNum -= 1;
@@ -443,6 +433,18 @@ class WaitingScene extends Phaser.Scene {
     homeBtn.on("pointerout", () => {
       homeBtn.clearTint();
     });
+  }
+
+  createRoomKey() {
+    if (this.roomKey.length === 4) {
+      this.add
+        .text(300, 300, `Room Code: ${this.roomKey}`, {
+          fontFamily: "customFont",
+          fontSize: "100px",
+          fill: "#fff",
+        })
+        .setDepth(2);
+    }
   }
 
   createPlayer(start) {

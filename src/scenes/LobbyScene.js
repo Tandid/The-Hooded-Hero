@@ -16,6 +16,12 @@ export default class LobbyScene extends BaseScene {
   create() {
     super.create();
 
+    this.cursorOver = this.sound.add("cursorOver");
+    this.cursorOver.volume = 0.4;
+
+    this.select = this.sound.add("select");
+    this.select.volume = 0.4;
+
     this.add
       .image(this.config.width / 2, this.config.height / 2, "panel-2")
       .setOrigin(0.5)
@@ -33,8 +39,6 @@ export default class LobbyScene extends BaseScene {
       })
       .setOrigin(0.5, 0.5)
       .setColor("#D9B48FFF");
-
-    const width = this.scale.width;
 
     // send message to start room status communication chain
     this.socket.emit("checkStaticRooms");
@@ -78,6 +82,7 @@ export default class LobbyScene extends BaseScene {
         }
         rooms[i].setInteractive();
         rooms[i].on("pointerover", () => {
+          this.cursorOver.play();
           rooms[i].setFill("#FFF");
         });
         rooms[i].on("pointerout", () => {
@@ -89,6 +94,7 @@ export default class LobbyScene extends BaseScene {
           rooms[i].setTint("0xc2c2c2");
         });
         rooms[i].on("pointerup", () => {
+          this.select.play();
           this.input.enabled = false;
           rooms[i].clearTint();
           if (staticRooms[i].isOpen) {
@@ -194,6 +200,7 @@ export default class LobbyScene extends BaseScene {
 
     joinCustomRoom.setInteractive();
     joinCustomRoom.on("pointerover", () => {
+      this.cursorOver.play();
       joinCustomRoom.setFill("#fff", 2);
     });
     joinCustomRoom.on("pointerout", () => {
@@ -201,6 +208,7 @@ export default class LobbyScene extends BaseScene {
     });
     joinCustomRoom.on("pointerdown", () => {});
     joinCustomRoom.on("pointerup", () => {
+      this.select.play();
       this.input.enabled = false;
       this.socket.removeAllListeners();
       this.scene.stop("LobbyScene");
@@ -235,6 +243,7 @@ export default class LobbyScene extends BaseScene {
 
     createRoomButton.setInteractive();
     createRoomButton.on("pointerover", () => {
+      this.cursorOver.play();
       createRoomButton.setFill("#fff", 2);
     });
     createRoomButton.on("pointerout", () => {
@@ -242,6 +251,7 @@ export default class LobbyScene extends BaseScene {
     });
     createRoomButton.on("pointerdown", () => {});
     createRoomButton.on("pointerup", () => {
+      this.select.play();
       this.input.enabled = false;
       this.socket.emit("createRoom");
     });
