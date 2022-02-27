@@ -20,6 +20,9 @@ class UserConfirmationScene extends Phaser.Scene {
     this.select = this.sound.add("select");
     this.select.volume = 0.4;
 
+    this.flute = this.sound.add("flute");
+    this.flute.volume = 0.4;
+
     this.add
       .image(this.config.width / 2, this.config.height / 2, "panel-2")
       .setOrigin(0.5)
@@ -55,12 +58,16 @@ class UserConfirmationScene extends Phaser.Scene {
       .setDepth(2);
 
     yesBtn.on("pointerup", () => {
-      this.select.play();
-
-      this.scene.start("MenuScene", {
-        socket: this.socket,
-        username: this.username,
-      });
+      this.flute.play();
+      this.cameras.main.fadeOut(1500, 0, 0, 0);
+      setTimeout(
+        () =>
+          this.scene.start("MenuScene", {
+            socket: this.socket,
+            username: this.username,
+          }),
+        2000
+      );
     });
 
     yesBtn.on("pointerover", () => {
