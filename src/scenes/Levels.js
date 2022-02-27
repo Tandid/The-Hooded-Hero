@@ -53,7 +53,11 @@ class LevelScene extends BaseScene {
     let row = 70;
     for (let i = 1; i <= 3; i++) {
       this.add
-        .image(this.config.width / 2, this.config.height / 4 + row, "panel-4")
+        .image(
+          this.config.width / 2 + 30,
+          this.config.height / 4 + row,
+          "panel-4"
+        )
         .setOrigin(0.5)
         .setScale(1, 0.5);
 
@@ -67,11 +71,16 @@ class LevelScene extends BaseScene {
         .setScale(0.5);
 
       this.add
-        .text(this.config.width / 3, this.config.height / 4 + row, `${i}`, {
-          fontFamily: "customFont",
-          fontSize: "50px",
-        })
-        .setOrigin(0.5, 0.5)
+        .text(
+          this.config.width / 3 + 30,
+          this.config.height / 4 + row,
+          `${i}`,
+          {
+            fontFamily: "customFont",
+            fontSize: "50px",
+          }
+        )
+        .setOrigin(0.5)
         .setColor("#000000");
 
       row += 100;
@@ -88,7 +97,7 @@ class LevelScene extends BaseScene {
 
   createCloseButton() {
     const closeBtn = this.add
-      .image(this.config.width * 0.8, this.config.height / 7, "close-btn")
+      .image(this.config.width * 0.8, this.config.height / 7 + 30, "close-btn")
       .setOrigin(0.5)
       .setScale(0.7)
       .setInteractive()

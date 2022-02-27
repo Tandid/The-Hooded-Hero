@@ -89,7 +89,7 @@ class ContactScene extends BaseScene {
     const closeBtn = this.add
       .image(
         this.config.width / 1.1 - 20,
-        this.config.height / 7 - 10,
+        this.config.height / 7 + 20,
         "close-btn"
       )
       .setOrigin(0.5)

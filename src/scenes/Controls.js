@@ -106,7 +106,7 @@ class ControlsScene extends BaseScene {
     const closeBtn = this.add
       .image(
         this.config.width * 0.75 + 20,
-        this.config.height / 7 - 10,
+        this.config.height / 7 + 20,
         "close-btn"
       )
       .setOrigin(0.5)
