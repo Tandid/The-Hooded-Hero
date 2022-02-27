@@ -45,6 +45,15 @@ class CharSelection extends BaseScene {
 
     const charSpriteArr = ["player-1", "player-2", "player-3", "player-4"];
     charSpriteArr.forEach((key, i) => {
+      const bg = this.add
+        .image(
+          this.config.width * 0.15 * (i + 1) + 150,
+          this.config.height / 2 + 10,
+          "panel-4"
+        )
+        .setOrigin(0.5)
+        .setScale(0.4, 1.2);
+
       const player = this.add
         .sprite(
           this.config.width * 0.15 * (i + 1) + 150,
@@ -59,10 +68,12 @@ class CharSelection extends BaseScene {
       player.on("pointerover", () => {
         player.play(`run-${key}`, true);
         this.cursorOver.play();
+        bg.setTint("#FFF");
       });
       player.on("pointerout", () => {
         player.play(`idle-${key}`, true);
         this.cursorOver.stop();
+        bg.clearTint();
       });
 
       player.on("pointerdown", () => {
