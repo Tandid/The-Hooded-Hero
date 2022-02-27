@@ -15,7 +15,8 @@ class OnlinePlayer extends Phaser.Physics.Arcade.Sprite {
       y,
       left: false,
       right: false,
-      up: false,
+      space: false,
+      shift: false,
     };
 
     scene.add.existing(this);
@@ -88,12 +89,36 @@ class OnlinePlayer extends Phaser.Physics.Arcade.Sprite {
       this.lastDirection = Phaser.Physics.Arcade.FACING_LEFT;
       this.setVelocityX(-this.playerSpeed);
       this.setFlipX(true);
+      if (this.socket) {
+        this.moveState.x = this.x;
+        this.moveState.y = this.y;
+        this.moveState.left = true;
+        this.moveState.right = false;
+        this.moveState.up = false;
+        this.socket.emit("updatePlayer", this.moveState);
+      }
     } else if (right.isDown) {
       this.lastDirection = Phaser.Physics.Arcade.FACING_RIGHT;
       this.setVelocityX(this.playerSpeed);
       this.setFlipX(false);
+      if (this.socket) {
+        this.moveState.x = this.x;
+        this.moveState.y = this.y;
+        this.moveState.left = false;
+        this.moveState.right = true;
+        this.moveState.up = false;
+        this.socket.emit("updatePlayer", this.moveState);
+      }
     } else {
       this.setVelocityX(0);
+      if (this.socket) {
+        this.moveState.x = this.x;
+        this.moveState.y = this.y;
+        this.moveState.left = false;
+        this.moveState.right = false;
+        this.moveState.up = false;
+        this.socket.emit("updatePlayer", this.moveState);
+      }
     }
 
     if (
@@ -103,10 +128,26 @@ class OnlinePlayer extends Phaser.Physics.Arcade.Sprite {
       this.jumpSound.play();
       this.setVelocityY(-this.playerSpeed * 1.4);
       this.jumpCount++;
+      if (this.socket) {
+        this.moveState.x = this.x;
+        this.moveState.y = this.y;
+        this.moveState.left = false;
+        this.moveState.right = false;
+        this.moveState.space = true;
+        this.socket.emit("updatePlayer", this.moveState);
+      }
     }
 
     if (shift.isDown && onFloor) {
       this.playerSpeed = 500;
+      if (this.socket) {
+        this.moveState.x = this.x;
+        this.moveState.y = this.y;
+        this.moveState.left = false;
+        this.moveState.right = false;
+        this.moveState.shift = true;
+        this.socket.emit("updatePlayer", this.moveState);
+      }
     } else {
       this.playerSpeed = 350;
     }
@@ -162,6 +203,37 @@ class OnlinePlayer extends Phaser.Physics.Arcade.Sprite {
       hitAnim.stop();
       this.clearTint();
     });
+  }
+
+  updateOtherPlayer(moveState) {
+    // opponent moves left
+    if (moveState.left) {
+      if (!this.facingLeft) {
+        this.flipX = !this.flipX;
+        this.facingLeft = true;
+      }
+      this.play(`run-${this.spriteKey}`, true);
+      this.setPosition(moveState.x, moveState.y);
+      // this.setVelocityX(-250);
+    }
+
+    // opponent moves right
+    else if (moveState.right) {
+      if (this.facingLeft) {
+        this.flipX = !this.flipX;
+        this.facingLeft = false;
+      }
+      // this.setVelocityX(250);
+      this.play(`run-${this.spriteKey}`, true);
+      this.setPosition(moveState.x, moveState.y);
+    }
+
+    // neutral (opponent not moving)
+    else {
+      this.setVelocityX(0);
+      this.play(`idle-${this.spriteKey}`, true);
+      this.setPosition(moveState.x, moveState.y);
+    }
   }
 }
 
