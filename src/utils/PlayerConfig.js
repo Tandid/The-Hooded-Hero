@@ -6,13 +6,13 @@ export default class PlayerConfig {
     const { scene } = this;
     scene.anims.create({
       key: `idle-${key}`,
-      frames: scene.anims.generateFrameNumbers(key, { start: 0, end: 7 }),
-      frameRate: 6,
+      frames: scene.anims.generateFrameNumbers(key, { start: 0, end: 8 }),
+      frameRate: 18,
       repeat: -1,
     });
     scene.anims.create({
       key: `run-${key}`,
-      frames: scene.anims.generateFrameNumbers(key, { start: 8, end: 18 }),
+      frames: scene.anims.generateFrameNumbers(key, { start: 9, end: 17 }),
       frameRate: 20,
       repeat: -1,
     });

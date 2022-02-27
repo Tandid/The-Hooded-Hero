@@ -1,4 +1,5 @@
 import BaseScene from "./BaseScene";
+import PlayerConfig from "../utils/PlayerConfig";
 
 class CharSelection extends BaseScene {
   constructor(config) {
@@ -13,6 +14,11 @@ class CharSelection extends BaseScene {
 
   create() {
     super.create();
+    const playerConfig = new PlayerConfig(this);
+    playerConfig.createPlayerAnimations("player-1");
+    playerConfig.createPlayerAnimations("player-2");
+    playerConfig.createPlayerAnimations("player-3");
+    playerConfig.createPlayerAnimations("player-4");
 
     this.cursorOver = this.sound.add("cursorOver");
     this.cursorOver.volume = 0.4;
