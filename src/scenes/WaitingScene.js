@@ -23,7 +23,6 @@ class WaitingScene extends Phaser.Scene {
   }
 
   create() {
-    const width = this.config.width;
     const height = this.config.height;
     this.cursorOver = this.sound.add("cursorOver");
     this.cursorOver.volume = 0.4;
@@ -39,6 +38,7 @@ class WaitingScene extends Phaser.Scene {
     const playerZones = this.getPlayerZones(layers.playerZones);
     const player = this.createPlayer(playerZones.start);
     this.player = player;
+    console.log({ Me: this.player });
 
     this.createPlayerColliders(player, {
       colliders: {
@@ -125,7 +125,8 @@ class WaitingScene extends Phaser.Scene {
           playerZones.start.y,
           spriteKey,
           username,
-          this.socket
+          this.socket,
+          false
         );
         this.opponents[playerId].body.setAllowGravity(false);
 
@@ -153,10 +154,13 @@ class WaitingScene extends Phaser.Scene {
           playerZones.start.y,
           this.roomInfo.players[playerId].spriteKey,
           this.roomInfo.players[playerId].username,
-          this.socket
+          this.socket,
+          false
         );
         this.opponents[playerId].body.setAllowGravity(false);
       }
+
+      console.log({ Opponent: this.opponents[playerId] });
 
       if (this.roomInfo.playerNum === this.requiredPlayers) {
         this.waitingForPlayers.setFontSize("0px");
@@ -220,8 +224,8 @@ class WaitingScene extends Phaser.Scene {
     this.socket.on("playerMoved", ({ playerId, moveState }) => {
       if (this.opponents[playerId]) {
         this.opponents[playerId].updateOtherPlayer(moveState);
-        this[`opponents${playerId}`].setX(this.opponents[playerId].x);
-        this[`opponents${playerId}`].setY(this.opponents[playerId].y);
+        this[`opponents${playerId}`].setX(this.opponents[playerId].x + 90);
+        this[`opponents${playerId}`].setY(this.opponents[playerId].y - 160);
       }
     });
 
@@ -265,7 +269,6 @@ class WaitingScene extends Phaser.Scene {
             roomInfo,
             charSpriteKey: this.charSpriteKey,
             username: this.username,
-            isMultiplayer: true,
           });
         },
       });
@@ -454,7 +457,8 @@ class WaitingScene extends Phaser.Scene {
       start.y,
       this.charSpriteKey,
       this.username,
-      this.socket
+      this.socket,
+      true
     );
   }
 
