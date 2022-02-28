@@ -149,6 +149,7 @@ class Preload extends Phaser.Scene {
     this.load.image("left-key", "public/assets/ui/Icons/arrow_left_icon.png");
     this.load.image("right-key", "public/assets/ui/Icons/arrow_right_icon.png");
     this.load.image("space-key", "public/assets/ui/Icons/spacebar_icon.png");
+    this.load.image("shift-key", "public/assets/ui/Icons/shift_icon.png");
     this.load.image("q-key", "public/assets/ui/Icons/Q_icon.png");
     this.load.image("e-key", "public/assets/ui/Icons/E_icon.png");
 

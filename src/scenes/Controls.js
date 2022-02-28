@@ -25,30 +25,30 @@ class ControlsScene extends BaseScene {
       .setScale(0.7);
 
     this.add
-      .image(this.config.width / 3 - 20, 220, "left-key")
+      .image(this.config.width / 3 - 20, 240, "left-key")
       .setOrigin(0.5)
       .setScale(0.5);
 
     this.add
-      .image(this.config.width / 3 + 80, 220, "right-key")
+      .image(this.config.width / 3 + 80, 240, "right-key")
       .setOrigin(0.5)
       .setScale(0.5);
 
     this.add
-      .image(this.config.width / 3 - 20, 320, "q-key")
+      .image(this.config.width / 3 - 20, 330, "q-key")
       .setOrigin(0.5)
       .setScale(0.5);
 
     this.add
-      .image(this.config.width / 3 + 80, 320, "e-key")
+      .image(this.config.width / 3 + 80, 330, "e-key")
       .setOrigin(0.5)
       .setScale(0.5);
     this.add
-      .image(this.config.width / 3 + 30, 420, "space-key")
+      .image(this.config.width / 3 + 35, 420, "space-key")
       .setOrigin(0.5)
       .setScale(0.5);
     this.add
-      .image(this.config.width / 3 + 30, 520, "space-key")
+      .image(this.config.width / 3 + 40, 510, "shift-key")
       .setOrigin(0.5)
       .setScale(0.5);
 
@@ -71,7 +71,7 @@ class ControlsScene extends BaseScene {
       .setColor("#D9B48FFF");
 
     this.add
-      .text(this.config.width / 1.75, 220, "Move Left/Right", {
+      .text(this.config.width / 1.75, 240, "Move Left/Right", {
         fontFamily: "customFont",
         fontSize: "40px",
       })
@@ -79,7 +79,7 @@ class ControlsScene extends BaseScene {
       .setColor("0x000");
 
     this.add
-      .text(this.config.width / 1.75 + 20, 320, "Projectile/Sword Attack", {
+      .text(this.config.width / 1.75 + 20, 330, "Projectile/Sword Attack", {
         fontFamily: "customFont",
         fontSize: "40px",
       })
@@ -87,14 +87,14 @@ class ControlsScene extends BaseScene {
       .setColor("0x000");
 
     this.add
-      .text(this.config.width / 1.75, 420, "Space to Jump", {
+      .text(this.config.width / 1.75, 420, "Jump/Double Jump", {
         fontFamily: "customFont",
         fontSize: "40px",
       })
       .setOrigin(0.5, 0.5)
       .setColor("0x000");
     this.add
-      .text(this.config.width / 1.75, 520, "Shift to run", {
+      .text(this.config.width / 1.75, 510, "Hold to run", {
         fontFamily: "customFont",
         fontSize: "40px",
       })
