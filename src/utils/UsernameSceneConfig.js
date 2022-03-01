@@ -59,8 +59,9 @@ export default class UsernameSceneConfig {
       .rexBBCodeText(x, y, "", {
         fontFamily: "customFont",
         fontSize: "50px",
-        fixedWidth,
-        fixedHeight,
+        fixedWidth: 300,
+        fixedHeight: 80,
+        backgroundColor: "#958761",
         halign: "center",
         valign: "center",
         maxLines: 1,

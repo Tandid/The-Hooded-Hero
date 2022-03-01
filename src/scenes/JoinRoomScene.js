@@ -40,7 +40,7 @@ class JoinRoomScene extends BaseScene {
         {
           fontFamily: "customFont",
           fontSize: "72px",
-          color: "#FFF",
+          color: "#000",
         }
       )
       .setOrigin(0.5);

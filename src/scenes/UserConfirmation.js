@@ -31,13 +31,34 @@ class UserConfirmationScene extends Phaser.Scene {
     this.add
       .text(
         this.config.width / 2,
-        this.config.height / 2 - 50,
-        `Your name is: ${this.username}?`,
+        this.config.height / 2 - 150,
+        `Your name is: `,
         {
           fontFamily: "customFont",
           fontSize: "50px",
         }
       )
+      .setOrigin(0.5, 0.5)
+      .setColor("#000");
+
+    this.add
+      .text(
+        this.config.width / 2,
+        this.config.height / 2 - 75,
+        `${this.username}`,
+        {
+          fontFamily: "customFont",
+          fontSize: "50px",
+        }
+      )
+      .setOrigin(0.5, 0.5)
+      .setColor("#FFF");
+
+    this.add
+      .text(this.config.width / 2, this.config.height / 2, `Is this correct?`, {
+        fontFamily: "customFont",
+        fontSize: "50px",
+      })
       .setOrigin(0.5, 0.5)
       .setColor("#000");
 
@@ -49,7 +70,7 @@ class UserConfirmationScene extends Phaser.Scene {
     const yesBtn = this.add
       .image(
         this.config.width / 2 - 100,
-        this.config.height / 2 + 75,
+        this.config.height / 2 + 125,
         "yes-btn"
       )
       .setOrigin(0.5)
@@ -82,7 +103,11 @@ class UserConfirmationScene extends Phaser.Scene {
 
   createNoButton() {
     const noBtn = this.add
-      .image(this.config.width / 2 + 100, this.config.height / 2 + 75, "no-btn")
+      .image(
+        this.config.width / 2 + 100,
+        this.config.height / 2 + 125,
+        "no-btn"
+      )
       .setOrigin(0.5)
       .setScale(0.7)
       .setInteractive()

@@ -446,9 +446,9 @@ class WaitingScene extends Phaser.Scene {
   createRoomKey() {
     if (this.roomKey.length === 4) {
       this.add
-        .text(300, 300, `Room Code: ${this.roomKey}`, {
+        .text(100, this.config.height + 600, `Room Code: ${this.roomKey}`, {
           fontFamily: "customFont",
-          fontSize: "100px",
+          fontSize: "80px",
           fill: "#fff",
         })
         .setDepth(2);

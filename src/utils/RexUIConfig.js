@@ -74,7 +74,7 @@ export default class RexUIConfig {
         fontSize,
         fixedWidth,
         fixedHeight,
-        backgroundColor: "#333333",
+        backgroundColor: "#958761",
         halign: "center",
         valign: "center",
         maxLines: 1,
