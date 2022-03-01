@@ -280,6 +280,7 @@ class WaitingScene extends Phaser.Scene {
     map.addTilesetImage("tileset_1", "forest-tiles");
     map.addTilesetImage("tileset_2", "cave-tiles");
     map.addTilesetImage("environment", "environment-tiles");
+    map.addTilesetImage("house_inside_4", "house-tiles");
 
     return map;
   }
@@ -288,6 +289,7 @@ class WaitingScene extends Phaser.Scene {
     const tileset1 = map.getTileset("tileset_1");
     const tileset2 = map.getTileset("tileset_2");
     const tileset3 = map.getTileset("environment");
+    const tileset4 = map.getTileset("house_inside_4");
 
     const platformsColliders = map.createLayer("platforms_colliders", [
       tileset1,
@@ -295,12 +297,15 @@ class WaitingScene extends Phaser.Scene {
       tileset3,
     ]);
 
-    const environment = map.createLayer("environment", [tileset3]).setDepth(-4);
+    const environment = map
+      .createLayer("environment", [tileset3, tileset4])
+      .setDepth(-4);
 
     const platforms = map.createLayer("platforms", [
       tileset1,
       tileset2,
       tileset3,
+      tileset4,
     ]);
     const playerZones = map.getObjectLayer("player_zones");
 

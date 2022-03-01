@@ -218,9 +218,10 @@ class OnlinePlayer extends Phaser.Physics.Arcade.Sprite {
         this.flipX = !this.flipX;
         this.facingLeft = true;
       }
-      this.play(`run-${this.spriteKey}`, true);
-      this.setPosition(moveState.x, moveState.y);
       this.setVelocityX(-this.playerSpeed);
+      // this.play(`run-${this.spriteKey}`, true);
+      console.log(moveState.x, moveState.y);
+      this.setPosition(moveState.x, moveState.y);
     }
 
     // opponent moves right
@@ -230,7 +231,7 @@ class OnlinePlayer extends Phaser.Physics.Arcade.Sprite {
         this.facingLeft = false;
       }
       this.setVelocityX(this.playerSpeed);
-      this.play(`run-${this.spriteKey}`, true);
+      // this.play(`run-${this.spriteKey}`, true);
       this.setPosition(moveState.x, moveState.y);
     }
 
