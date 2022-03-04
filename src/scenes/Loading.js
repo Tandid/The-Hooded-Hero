@@ -48,7 +48,7 @@ class LoadingScene extends Phaser.Scene {
     setTimeout(() => {
       this.scene.stop("LoadingScene");
       this.scene.start("UsernameScene", { socket: this.socket });
-    }, 5000);
+    }, 8000);
   }
 
   generateRandomHint() {
@@ -78,7 +78,7 @@ class LoadingScene extends Phaser.Scene {
   }
 
   update() {
-    this.arrow.x += 5;
+    this.arrow.x += 3;
     if (this.arrow.x > 1000) {
       this.arrow.x = 1000;
     }
