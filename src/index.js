@@ -13,6 +13,7 @@ import TextEditPlugin from "phaser3-rex-plugins/plugins/textedit-plugin.js";
 
 import PlayScene from "./scenes/Play";
 import InitialLoadScene from "./scenes/InitialLoadScene";
+import InitialControlsScene from "./scenes/InitialControls";
 import PreloadScene from "./scenes/Preload";
 import MenuScene from "./scenes/Menu";
 import LevelScene from "./scenes/Levels";
@@ -67,6 +68,7 @@ const Scenes = [
   TransitionScene,
   UsernameScene,
   UserConfirmationScene,
+  InitialControlsScene,
   MenuScene,
   PlayScene,
   ComingSoonScene,

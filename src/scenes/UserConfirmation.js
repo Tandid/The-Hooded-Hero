@@ -83,7 +83,7 @@ class UserConfirmationScene extends Phaser.Scene {
       this.cameras.main.fadeOut(1500, 0, 0, 0);
       setTimeout(
         () =>
-          this.scene.start("MenuScene", {
+          this.scene.start("InitialControlsScene", {
             socket: this.socket,
             username: this.username,
           }),
