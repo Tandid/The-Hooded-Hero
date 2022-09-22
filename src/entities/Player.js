@@ -24,8 +24,8 @@ class Player extends Phaser.Physics.Arcade.Sprite {
   }
 
   init() {
-    this.gravity = 1000;
-    this.playerSpeed = 300;
+    this.gravity = 2500;
+    this.playerSpeed = 500;
     this.jumpCount = 0;
     this.consecutiveJumps = 1;
     this.hasBeenHit = false;
@@ -38,7 +38,7 @@ class Player extends Phaser.Physics.Arcade.Sprite {
     this.projectileSound = this.scene.sound.add("projectile-launch", {
       volume: 0.4,
     });
-    this.stepSound = this.scene.sound.add("step", { volume: 0.1 });
+    this.stepSound = this.scene.sound.add("step", { volume: 0.05 });
     this.swipeSound = this.scene.sound.add("swipe", { volume: 0.1 });
 
     this.lastDirection = Phaser.Physics.Arcade.FACING_RIGHT;
@@ -120,14 +120,14 @@ class Player extends Phaser.Physics.Arcade.Sprite {
       (onFloor || this.jumpCount < this.consecutiveJumps)
     ) {
       this.jumpSound.play();
-      this.setVelocityY(-this.playerSpeed * 1.4);
+      this.setVelocityY(-1000);
       this.jumpCount++;
     }
 
     if (shift.isDown && onFloor) {
-      this.playerSpeed = 500;
+      this.playerSpeed = 650;
     } else {
-      this.playerSpeed = 350;
+      this.playerSpeed = 500;
     }
 
     if (onFloor) {

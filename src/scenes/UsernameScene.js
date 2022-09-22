@@ -16,7 +16,7 @@ class UsernameScene extends Phaser.Scene {
 
   create() {
     const usernameConfig = new UsernameConfig(this, this.socket);
-    this.cameras.main.fadeIn(1000, 0, 0, 0);
+    this.cameras.main.fadeIn(500, 0, 0, 0);
 
     this.cursorOver = this.sound.add("cursorOver");
     this.cursorOver.volume = 0.4;

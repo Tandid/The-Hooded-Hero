@@ -33,8 +33,8 @@ class OnlinePlayer extends Phaser.Physics.Arcade.Sprite {
 
   init() {
     console.log(this.spriteKey);
-    this.gravity = 1000;
-    this.playerSpeed = 300;
+    this.gravity = 2500;
+    this.playerSpeed = 500;
     this.jumpCount = 0;
     this.consecutiveJumps = 1;
     this.hasBeenHit = false;
@@ -132,7 +132,7 @@ class OnlinePlayer extends Phaser.Physics.Arcade.Sprite {
       (onFloor || this.jumpCount < this.consecutiveJumps)
     ) {
       this.jumpSound.play();
-      this.setVelocityY(-this.playerSpeed * 1.4);
+      this.setVelocityY(-1000);
       this.jumpCount++;
       if (this.socket) {
         this.moveState.x = this.x;
@@ -145,7 +145,7 @@ class OnlinePlayer extends Phaser.Physics.Arcade.Sprite {
     }
 
     if (shift.isDown && onFloor && this.me) {
-      this.playerSpeed = 500;
+      this.playerSpeed = 650;
       if (this.socket) {
         this.moveState.x = this.x;
         this.moveState.y = this.y;
@@ -155,7 +155,7 @@ class OnlinePlayer extends Phaser.Physics.Arcade.Sprite {
         this.socket.emit("updatePlayer", this.moveState);
       }
     } else {
-      this.playerSpeed = 350;
+      this.playerSpeed = 500;
     }
 
     if (onFloor) {

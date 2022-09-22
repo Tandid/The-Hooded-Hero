@@ -45,7 +45,7 @@ const SHARED_CONFIG = {
   width: WIDTH,
   height: HEIGHT,
   zoomFactor: ZOOM_FACTOR,
-  debug: false,
+  debug: true,
   leftTopCorner: {
     x: (WIDTH - WIDTH / ZOOM_FACTOR) / 2,
     y: (HEIGHT - HEIGHT / ZOOM_FACTOR) / 2,
@@ -96,6 +96,10 @@ const config = {
     default: "arcade",
     arcade: {
       debug: SHARED_CONFIG.debug,
+      overlapBias: 8,
+      tileBias: 32,
+      fps: 60,
+      fixedStep: true,
     },
   },
   parent: "phaser-container",
