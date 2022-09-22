@@ -2,10 +2,10 @@ class Room {
   constructor() {
     this.players = {};
     this.playerNum = 0;
-    this.countdown = 10;
+    this.countdown = 5;
     this.stageTimer = 5;
     this.isOpen = true;
-    this.stages = ['StageForest', 'StageSnow', 'StageDungeon'];
+    this.stages = ["StageForest", "StageSnow", "StageDungeon"];
     this.stageIdx = 0;
     this.playersLoaded = 0;
     this.stageLimits = {};
@@ -41,7 +41,7 @@ class Room {
   }
 
   resetTimer() {
-    this.countdown = 10;
+    this.countdown = 5;
   }
 
   runStageTimer() {

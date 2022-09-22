@@ -94,7 +94,7 @@ class WaitingScene extends Phaser.Scene {
       .setDepth(2);
 
     const countdown = this.add
-      .text(1200, height / 5 + 200, `10`, {
+      .text(1200, height / 5 + 200, `5`, {
         fontFamily: "customFont",
         fontSize: "0px",
         fill: "#fff",
@@ -253,16 +253,11 @@ class WaitingScene extends Phaser.Scene {
     this.socket.on("loadNextStage", (roomInfo) => {
       this.socket.removeAllListeners();
       this.cameras.main.fadeOut(500, 0, 0, 0);
-      this.cameras.main.on("camerafadeoutcomplete", () => {
-        eventsCenter.emit("startTransition");
-      });
 
       this.time.addEvent({
-        delay: 2000,
+        delay: 1000,
         callback: () => {
-          const nextStageKey = roomInfo.stages[0];
-          this.game.music.stopAll();
-          this.sound.stopAll();
+          const nextStageKey = "ComingSoonScene";
           this.scene.stop("WaitingScene");
           this.scene.start(nextStageKey, {
             socket: this.socket,
