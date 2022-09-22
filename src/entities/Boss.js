@@ -13,17 +13,17 @@ class Boss extends EnemyBoss {
     this.health = 700;
 
     this.damage = 50;
-    this.setScale(1.7);
+    this.setScale(1.3);
     this.setSize(250, 250);
     this.setOffset(280, 200);
-    this.maxPatrolDistance = 600;
+    this.maxPatrolDistance = 650;
     this.timeFromLastAttack = 0;
     this.attackDelay = this.getAttackDelay();
     this.meleeWeapon = new BossMeleeWeapon(this.scene, 500, 500, "axe-default");
   }
 
   getAttackDelay() {
-    return Phaser.Math.Between(2500, 3500);
+    return Phaser.Math.Between(1500, 2500);
   }
 
   update(time, delta) {
