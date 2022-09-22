@@ -9,8 +9,8 @@ class SettingsOverlayScene extends Phaser.Scene {
   create() {
     this.toggleMute = false;
 
-    this.currentMusicBars = [1, 1, 1, 1, 1];
-    this.currentSFXBars = [1, 1, 1];
+    this.currentMusicBars = [1, 1, 1, 1, 1, 1, 1];
+    this.currentSFXBars = [1, 1, 1, 1, 1, 1, 1];
     this.maxVolumeBars = 10;
     this.minVolumeBars = 0;
 
@@ -281,7 +281,7 @@ class SettingsOverlayScene extends Phaser.Scene {
   }
 
   update() {
-    this.createMusicBars();
+    // this.createMusicBars();
     // this.createSFXBars();
   }
 }
