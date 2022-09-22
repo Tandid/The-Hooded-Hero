@@ -11,9 +11,9 @@ class TransitionScene extends Phaser.Scene {
   }
 
   create() {
-    this.cameras.main.fadeIn(1000, 0, 0, 0);
+    this.cameras.main.fadeIn(500, 0, 0, 0);
 
-    setTimeout(() => this.cameras.main.fadeOut(1000, 0, 0, 0), 2000);
+    setTimeout(() => this.cameras.main.fadeOut(500, 0, 0, 0), 2000);
 
     this.add
       .text(this.config.width / 2, this.config.height / 2, `Loading ...`, {

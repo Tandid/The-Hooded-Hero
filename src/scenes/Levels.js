@@ -128,9 +128,9 @@ class LevelScene extends BaseScene {
     });
 
     textGO.on("pointerup", () => {
-      this.cameras.main.fadeOut(1000, 0, 0, 0);
+      this.cameras.main.fadeOut(500, 0, 0, 0);
 
-      setTimeout(() => this.scene.start("TransitionScene"), 1000);
+      setTimeout(() => this.scene.start("TransitionScene"), 500);
       setTimeout(() => this.scene.stop("TransitionScene"), 4000);
 
       if (menuItem.scene) {

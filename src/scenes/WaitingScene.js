@@ -252,7 +252,7 @@ class WaitingScene extends Phaser.Scene {
 
     this.socket.on("loadNextStage", (roomInfo) => {
       this.socket.removeAllListeners();
-      this.cameras.main.fadeOut(1000, 0, 0, 0);
+      this.cameras.main.fadeOut(500, 0, 0, 0);
       this.cameras.main.on("camerafadeoutcomplete", () => {
         eventsCenter.emit("startTransition");
       });

@@ -80,14 +80,14 @@ class UserConfirmationScene extends Phaser.Scene {
 
     yesBtn.on("pointerup", () => {
       this.flute.play();
-      this.cameras.main.fadeOut(1000, 0, 0, 0);
+      this.cameras.main.fadeOut(500, 0, 0, 0);
       setTimeout(
         () =>
           this.scene.start("InitialControlsScene", {
             socket: this.socket,
             username: this.username,
           }),
-        1000
+        500
       );
     });
 

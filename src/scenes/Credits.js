@@ -7,7 +7,7 @@ class CreditsScene extends BaseScene {
 
   create() {
     super.create();
-    this.cameras.main.fadeIn(1000, 0, 0, 0);
+    this.cameras.main.fadeIn(500, 0, 0, 0);
 
     this.add
       .text(
@@ -37,7 +37,7 @@ class CreditsScene extends BaseScene {
       .setOrigin(0.5, 0.5)
       .setColor("#FFF");
 
-    setTimeout(() => this.cameras.main.fadeOut(1000, 0, 0, 0), 4000);
+    setTimeout(() => this.cameras.main.fadeOut(500, 0, 0, 0), 4000);
     setTimeout(() => this.scene.stop("CreditsScene"), 5000);
     setTimeout(() => this.scene.start("MenuScene"), 5000);
   }
