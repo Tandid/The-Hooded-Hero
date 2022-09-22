@@ -21,7 +21,7 @@ class InitialControlsScene extends Phaser.Scene {
     this.pageFlip = this.sound.add("page-flip");
     this.pageFlip.volume = 0.4;
 
-    this.cameras.main.fadeIn(1000, 0, 0, 0);
+    this.cameras.main.fadeIn(500, 0, 0, 0);
     this.add
       .image(this.config.width / 2, this.config.height / 2, "panel-2")
       .setOrigin(0.5)
