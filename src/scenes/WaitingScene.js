@@ -10,7 +10,7 @@ class WaitingScene extends Phaser.Scene {
     this.config = config;
     this.stageKey = "lobby";
     this.opponents = {};
-    this.requiredPlayers = 1;
+    this.requiredPlayers = 4;
   }
 
   init(data) {
