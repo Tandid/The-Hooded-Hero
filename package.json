@@ -36,7 +36,4 @@
     "webpack-dev-server": "^3.11.0"
   },
   "heroku-run-build-script": true
-  // "vercel": {
-  //   "start": "npm start"
-  // }
 }
