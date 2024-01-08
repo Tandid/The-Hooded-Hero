@@ -37,6 +37,6 @@
   },
   "heroku-run-build-script": true,
   "vercel": {
-    "start": "npm run start-dev"
+    "start": "npm start"
   }
 }
